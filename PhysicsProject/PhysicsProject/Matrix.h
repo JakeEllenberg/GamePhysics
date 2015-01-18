@@ -14,6 +14,7 @@ class Matrix
 {
 public:
 	Matrix();
+	Matrix(const Matrix& rhs);
 	Matrix(int rows, int columns);
 	Matrix(int length, bool identiy);
 	Matrix(int rows, int columns, float* matrixValues);
@@ -27,6 +28,9 @@ public:
 	Matrix operator*(const Matrix&) const;
 	Matrix operator*(const float&) const;
 	Matrix operator*(const Vector3D&) const;
+	Matrix& operator=(const Matrix&);
+	bool operator==(const Matrix&) const;
+	bool operator!=(const Matrix&) const;
 
 	Matrix CombinedMatrix(const Matrix& matrix2, bool add) const;
 

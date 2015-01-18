@@ -19,6 +19,9 @@ void display();
 void cleanUp();
 void update();
 void initalize();
+void handleMouse(int x, int y);
+void handleKeyboard(unsigned char key, int x, int y);
+void reshape(int w, int h);
 
 GlutTime* gp_GlutTime;
 GameApp* gp_GameApp;
@@ -41,13 +44,29 @@ void initalize()
 	gp_GlutTime = new GlutTime();
 	gp_GlutTime->Init();
 	gp_GameApp = new GameApp();
+	gp_GameApp->Init();
 
-	glutInitWindowSize(1280, 720);   // Set the window's initial width & height
-	glutInitWindowPosition(0, 0); // Position the window's initial top-left corner
-	glutCreateWindow("Physics"); // Create a window with the given title
-	glutDisplayFunc(display); // Register display callback handler for window re-paint
+	
+
+	glutInitWindowSize(720, 720);
+	glutInitWindowPosition(0, 0);
+	glutCreateWindow("Physics");
+	glutDisplayFunc(display);
 	glutIdleFunc(idle);
-	glutMainLoop();           // Enter the infinitely event-processing loop
+
+	float lightPosition[] = { 0.0, 0.0, -10.0, 0.0 };
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glShadeModel(GL_SMOOTH);
+	
+
+	glutPassiveMotionFunc(handleMouse);
+	glutKeyboardFunc(handleKeyboard);
+	glutReshapeFunc(reshape);
+
+	glutMainLoop();           
 }
 
 //--------------------------------------------------------------------------------
@@ -64,18 +83,42 @@ void idle()
 //--------------------------------------------------------------------------------
 void update()
 {
+	gp_GameApp->Update();
 	glutPostRedisplay(); //Refresh window
 }
 
 //--------------------------------------------------------------------------------
+void handleMouse(int x, int y)
+{
+	gp_GameApp->HandleMouse(Vector3D((float)x, (float)y, 0));
+}
+
+//--------------------------------------------------------------------------------
+void handleKeyboard(unsigned char key, int x, int y)
+{
+	gp_GameApp->HandleKey(key);
+}
+
+//--------------------------------------------------------------------------------
 void display() {
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0f); // Set background color to black and opaque
-	glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // Set background color to black and opaque
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 
-	glRotatef(1, 0, 50, 0);
-	glutWireCube(1.0);
+	//glRotatef(1.0f, 0, 0.45f, 0.45f);
+	//glTranslated(.01, 0, 0);
+	glutSolidCube(0.5);
 
-	glFlush();  // Render now
+	glutSwapBuffers();
+}
+
+//--------------------------------------------------------------------------------
+void reshape(int w, int h) {
+	glViewport(0, 0, (GLsizei)w, (GLsizei)h); 
+		glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(60, (GLfloat)w / (GLfloat)h, 1.0, 1000.0);
+		glMatrixMode(GL_MODELVIEW);
+
 }
 
 //--------------------------------------------------------------------------------

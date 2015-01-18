@@ -6,7 +6,10 @@
 //======================================================================
 #ifndef GAMEAPP_H
 #define GAMEAPP_H
-
+//======================================================================
+#include "Camera.h"
+#include "Vector3D.h"
+//======================================================================
 class GameApp
 {
 public:
@@ -16,7 +19,10 @@ public:
 	void Init();
 	void Update();
 	void CleanUp();
+	void HandleMouse(Vector3D mousePos);
+	void HandleKey(unsigned char key);
 private:
+	Camera* mp_Camera;
 };
 #endif
 //================================================================================

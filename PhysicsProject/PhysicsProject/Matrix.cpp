@@ -14,6 +14,19 @@ Matrix::Matrix()
 }
 
 //--------------------------------------------------------------------------------
+Matrix::Matrix(const Matrix& rhs)
+{
+	m_NumRows = rhs.GetNumRows();
+	m_NumColumns = rhs.GetNumColumns();
+	m_Size = m_NumRows * m_NumColumns;
+	mp_Matrix = new float[m_Size];
+	for (int i = 0; i < m_Size; ++i)
+	{
+		mp_Matrix[i] = rhs.mp_Matrix[i];
+	}
+}
+
+//--------------------------------------------------------------------------------
 Matrix::Matrix(int length, bool identiy)
 : Matrix(length, length)
 {
@@ -50,7 +63,7 @@ Matrix::Matrix(int rows, int columns, float* matrixValues)
 //--------------------------------------------------------------------------------
 Matrix::~Matrix()
 {
-	delete mp_Matrix;
+	delete [] mp_Matrix;
 	mp_Matrix = nullptr;
 }
 
@@ -124,18 +137,19 @@ Matrix Matrix::operator*(const Matrix& rhs) const
 
 	Matrix returnMatrix = Matrix(m_NumRows, rhs.GetNumColumns());
 
-	for (int i = 0; i < returnMatrix.GetNumColumns(); ++i)
+	for (int i = 0; i < m_NumRows; ++i)
 	{
-		for (int j = 0; j < returnMatrix.GetNumRows(); ++j)
+		for (int j = 0; j < returnMatrix.GetNumColumns(); ++j)
 		{
 			float value = 0;
-			for (int k = 0; k < m_NumRows; ++k)
+			for (int k = 0; k < m_NumColumns; ++k)
 			{
 				value += Get(i, k) * rhs.Get(k, j);
 			}
 			returnMatrix.Set(i, j, value);
 		}
 	}
+
 	return returnMatrix;
 }
 
@@ -165,5 +179,47 @@ Matrix Matrix::operator*(const Vector3D& rhs) const
 	return (*this * vectorMatrix);
 }
 
+//--------------------------------------------------------------------------------
+Matrix& Matrix::operator=(const Matrix& rhs)
+{
+	m_NumRows = rhs.GetNumRows();
+	m_NumColumns = rhs.GetNumColumns();
+	m_Size = m_NumRows * m_NumColumns;
+	mp_Matrix = new float[m_Size];
+	for (int i = 0; i < m_Size; ++i)
+	{
+		mp_Matrix[i] = rhs.mp_Matrix[i];
+	}
+
+	return *this;
+}
+
+//--------------------------------------------------------------------------------
+bool Matrix::operator==(const Matrix& rhs) const
+{
+	if (!CheckSameSize(rhs))
+	{
+		return false;
+	}
+
+	for (int row = 0; row < m_NumRows; row++)
+	{
+		for (int col = 0; col < m_NumColumns; col++)
+		{
+			if (Get(row, col) != rhs.Get(row, col))
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
+//--------------------------------------------------------------------------------
+bool Matrix::operator!=(const Matrix& rhs) const
+{
+	return !(*this == rhs);
+}
 
 //======================================================================
