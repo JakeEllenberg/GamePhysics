@@ -1,8 +1,8 @@
 //======================================================================
 //File: Matrix.cpp
 //Author: Jake Ellenberg
-//Created: 1/17/2915
-//Purpose: Vector storage and operations
+//Created: 1/17/2015
+//Purpose: Matrix storage and operations
 //======================================================================
 #ifndef MATRIX_H
 #define MATRIX_H

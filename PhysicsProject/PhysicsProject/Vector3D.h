@@ -1,7 +1,7 @@
 //======================================================================
 //File: Vector3D.cpp
 //Author: Jake Ellenberg
-//Created: 1/17/2915
+//Created: 1/17/2015
 //Purpose: Vector storage and operations
 //======================================================================
 #ifndef VECTOR3D_H

@@ -1,7 +1,7 @@
 //======================================================================
 //File: Camera.h
 //Author: Jake Ellenberg
-//Created: 1/17/2915
+//Created: 1/17/2015
 //Purpose: Handles translations and rotations for viewing
 //======================================================================
 #ifndef CAMERA_H
@@ -14,13 +14,26 @@ class Camera
 public:
 	Camera();
 	~Camera();
+	void Initalize(Vector3D screenSize);
+	void UpdateScreenSize(Vector3D screenSize);
 	void HandleMouse(Vector3D mousePos);
-	void HandleKey(unsigned char key);
+	void HandleKeyPressed(unsigned char key);
+	void HandleKeyReleased(unsigned char key);
 	void Update();
+private:
+	void move();
 private:
 	Vector3D m_LastMousePosition;
 	Vector3D m_Rotation;
 	Vector3D m_Position;
+	Vector3D m_ScreenSize;
+
+	bool m_Move_Foward;
+	bool m_Move_Back;
+	bool m_Move_Left;
+	bool m_Move_Right;
+	bool m_Move_Up;
+	bool m_Move_Down;
 
 	float m_MouseSpeed;
 	float m_CameraSpeed;

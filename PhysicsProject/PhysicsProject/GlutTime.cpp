@@ -1,7 +1,7 @@
 //======================================================================
 //File: GlutTime.cpp
 //Author: Jake Ellenberg
-//Created: 1/17/2915
+//Created: 1/17/2015
 //Purpose: Keep track of time for a constant frame rate
 //======================================================================
 #include "GlutTime.h"

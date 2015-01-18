@@ -1,7 +1,7 @@
 //======================================================================
 //File: Main.cpp
 //Author: Jake Ellenberg
-//Created: 1/17/2915
+//Created: 1/17/2015
 //Purpose: Entry point of the program, setup OpenGl functionality.
 //======================================================================
 #include "GameApp.h"
@@ -19,9 +19,15 @@ GameApp::~GameApp()
 }
 
 //--------------------------------------------------------------------------------
-void GameApp::Init()
+void GameApp::Init(Vector3D screenSize)
 {
 	mp_Camera = new Camera();
+	mp_Camera->Initalize(screenSize);
+}
+
+void GameApp::UpdateScreenSize(Vector3D screenSize)
+{
+	mp_Camera->UpdateScreenSize(screenSize);
 }
 
 //--------------------------------------------------------------------------------
@@ -36,9 +42,14 @@ void GameApp::HandleMouse(Vector3D mousePos)
 	mp_Camera->HandleMouse(mousePos);
 }
 
-void GameApp::HandleKey(unsigned char key)
+void GameApp::HandleKeyPressed(unsigned char key)
 {
-	mp_Camera->HandleKey(key);
+	mp_Camera->HandleKeyPressed(key);
+}
+
+void GameApp::HandleKeyReleased(unsigned char key)
+{
+	mp_Camera->HandleKeyReleased(key);
 }
 
 //--------------------------------------------------------------------------------

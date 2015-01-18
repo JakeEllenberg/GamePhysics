@@ -1,7 +1,7 @@
 //======================================================================
 //File: Main.cpp
 //Author: Jake Ellenberg
-//Created: 1/17/2915
+//Created: 1/17/2015
 //Purpose: Entry point of the program, setup OpenGl functionality.
 //======================================================================
 #ifndef GAMEAPP_H
@@ -16,11 +16,13 @@ public:
 	GameApp();
 	~GameApp();
 
-	void Init();
+	void Init(Vector3D screenSize);
 	void Update();
 	void CleanUp();
 	void HandleMouse(Vector3D mousePos);
-	void HandleKey(unsigned char key);
+	void HandleKeyPressed(unsigned char key);
+	void HandleKeyReleased(unsigned char key);
+	void UpdateScreenSize(Vector3D screenSize);
 private:
 	Camera* mp_Camera;
 };
