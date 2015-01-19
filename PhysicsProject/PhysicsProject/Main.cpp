@@ -9,6 +9,7 @@
 #include <gl\glut.h>
 #include "GlutTime.h"
 #include "GameApp.h"
+#include "GL/glui.h"
 
 using namespace std;
 
@@ -20,12 +21,15 @@ void cleanUp();
 void update();
 void initalize();
 void handleMouse(int x, int y);
+void handleMouseUI(int mouseButton, int mouseState, int x, int y);
 void handleKeyPressed(unsigned char key, int x, int y);
 void handleKeyReleased(unsigned char key, int x, int y);
+void handleGlui(int id);
 void reshape(int w, int h);
 void updateScreenSize();
 //================================================================================
 const int ESCAPE_KEY = 27;
+const int SPACE_KEY = 32;
 const Vector3D INITAL_SCREEN_SIZE = Vector3D(720, 720, 0);
 const Vector3D INITAL_WINDOW_POSITION = Vector3D(100, 100, 0);
 //================================================================================
@@ -36,7 +40,11 @@ Vector3D g_ScreenSize = INITAL_SCREEN_SIZE;
 
 int angle;
 bool g_FullScreen = false;
+bool g_UseGUIMouse;
+int g_MainWindow;
 
+GLUI* g_Glui_subwin;
+GLUI_StaticText* g_StaticText;
 //================================================================================
 int main(int argc, char** argv) {
 	
@@ -59,9 +67,8 @@ void initalize()
 
 	glutInitWindowSize((int)g_ScreenSize.X, (int)g_ScreenSize.Y);
 	glutInitWindowPosition((int)INITAL_WINDOW_POSITION.X, (int)INITAL_WINDOW_POSITION.Y);
-	glutCreateWindow("Physics");
-	glutDisplayFunc(display);
-	glutIdleFunc(idle);
+	g_MainWindow = glutCreateWindow("Physics");
+	
 	updateScreenSize();
 
 	float lightPosition[] = { 100.0, 100.0, 100.0, 0.0 };
@@ -77,17 +84,28 @@ void initalize()
 	glutIgnoreKeyRepeat(1);
 	glutMotionFunc(handleMouse);
 	glutPassiveMotionFunc(handleMouse);
-	glutKeyboardFunc(handleKeyPressed);
 	glutKeyboardUpFunc(handleKeyReleased);
-	glutReshapeFunc(reshape);
+
+	glutDisplayFunc(display);
+	GLUI_Master.set_glutKeyboardFunc(handleKeyPressed);
+	GLUI_Master.set_glutMouseFunc(handleMouseUI);
+	GLUI_Master.set_glutReshapeFunc(reshape);
+	GLUI_Master.set_glutIdleFunc(idle);
+
+	g_Glui_subwin = GLUI_Master.create_glui_subwindow(g_MainWindow, GLUI_SUBWINDOW_BOTTOM);
+	g_Glui_subwin->set_main_gfx_window(g_MainWindow);
+	g_Glui_subwin->add_button("Play", 3, handleGlui);
+	g_Glui_subwin->add_button("Pause", 1, handleGlui);
+	g_Glui_subwin->add_button("Stop", 2, handleGlui);
+	g_StaticText = g_Glui_subwin->add_statictext("Playing");
+	g_UseGUIMouse = false;
+
 	SetCursorPos((int)(g_ScreenSize.X / 2.0f), (int)(g_ScreenSize.Y / 2.0f));
 
 	glutMainLoop();           
 }
 
 //--------------------------------------------------------------------------------
-//Using windows functions to calculte the window size
-//and glut functions to calculate the screen size for our camera class
 void updateScreenSize()
 {
 	RECT windowRect;
@@ -102,6 +120,7 @@ void updateScreenSize()
 //--------------------------------------------------------------------------------
 void idle()
 {
+	glutSetWindow(g_MainWindow);
 	if (gp_GlutTime->UpdateTime())
 	{
 		gp_GlutTime->IncrementFrame();
@@ -115,13 +134,26 @@ void update()
 	angle = (angle + 1) % 360;
 	gp_GameApp->Update();
 	glutPostRedisplay(); //Refresh window
-	SetCursorPos((int)(g_ScreenSize.X / 2.0f), (int)(g_ScreenSize.Y / 2.0f));
+
+	if (!g_UseGUIMouse)
+	{
+		SetCursorPos((int)(g_ScreenSize.X / 2.0f) + glutGet(GLUT_WINDOW_X), (int)(g_ScreenSize.Y / 2.0f) + glutGet(GLUT_WINDOW_Y));
+	}
 }
 
 //--------------------------------------------------------------------------------
 void handleMouse(int x, int y)
 {
-	gp_GameApp->HandleMouse(Vector3D((float)x + glutGet(GLUT_WINDOW_X), (float)y + glutGet(GLUT_WINDOW_Y), 0));
+	if (!g_UseGUIMouse)
+	{
+		gp_GameApp->HandleMouse(Vector3D((float)x, (float)y, 0));
+	}
+	
+}
+
+void handleMouseUI(int mouseButton, int mouseState, int x, int y)
+{
+
 }
 
 //--------------------------------------------------------------------------------
@@ -150,10 +182,20 @@ void handleKeyPressed(unsigned char key, int x, int y)
 		
 		updateScreenSize();
 	}
-	
-	if (key == 'b')
+
+	if (key == SPACE_KEY)
 	{
-		int x = 5;
+		if (g_UseGUIMouse)
+		{
+			glutSetCursor(GLUT_CURSOR_NONE);
+			g_UseGUIMouse = false;
+			SetCursorPos((int)(g_ScreenSize.X / 2.0f) + glutGet(GLUT_WINDOW_X), (int)(g_ScreenSize.Y / 2.0f) + glutGet(GLUT_WINDOW_Y));
+		}
+		else
+		{
+			glutSetCursor(GLUT_CURSOR_INHERIT);
+			g_UseGUIMouse = true;
+		}
 	}
 }
 
@@ -185,6 +227,28 @@ void reshape(int w, int h) {
 		glMatrixMode(GL_MODELVIEW);
 
 }
+
+void handleGlui(int id)
+{
+	switch (id)
+	{
+	case 1:
+		gp_GlutTime->Pause();
+		g_StaticText->set_text("Paused");
+		break;
+	case 2:
+		gp_GlutTime->Pause();
+		angle = 0;
+		glutPostRedisplay();
+		g_StaticText->set_text("Stopped");
+		break;
+	case 3:
+		gp_GlutTime->Play();
+		g_StaticText->set_text("Playing");
+		break;
+	}
+}
+
 
 //--------------------------------------------------------------------------------
 void cleanUp()

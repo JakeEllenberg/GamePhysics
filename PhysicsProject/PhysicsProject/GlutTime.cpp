@@ -26,11 +26,29 @@ void GlutTime::Init()
 {
 	m_StartTime = glutGet(GLUT_ELAPSED_TIME);
 	m_CurrentFrameNum = 0;
+	m_Paused = false;
+}
+
+//--------------------------------------------------------------------------------
+void GlutTime::Pause()
+{
+	m_Paused = true;
+}
+
+//--------------------------------------------------------------------------------
+void GlutTime::Play()
+{
+	Init();
 }
 
 //--------------------------------------------------------------------------------
 bool GlutTime::UpdateTime()
 {
+	if (m_Paused)
+	{
+		return false;
+	}
+
 	double endFrameTime = m_StartTime + (m_CurrentFrameNum + 1) * TIME_PER_FRAME;
 	double endRenderTime = glutGet(GLUT_ELAPSED_TIME);
 	double idleTime = endFrameTime - endRenderTime;

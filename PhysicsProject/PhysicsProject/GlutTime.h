@@ -19,9 +19,12 @@ public:
 	void Init();
 	bool UpdateTime();
 	void IncrementFrame();
+	void Pause();
+	void Play();
 private:
 	double m_StartTime;
 	int m_CurrentFrameNum;
+	bool m_Paused;
 };
 #endif
 //================================================================================
