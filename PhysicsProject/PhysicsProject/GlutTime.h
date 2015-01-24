@@ -19,10 +19,12 @@ public:
 	void Init();
 	bool UpdateTime();
 	void IncrementFrame();
+	int GetDeltaTime();
 	void Pause();
 	void Play();
 private:
-	double m_StartTime;
+	int m_StartTime;
+	int m_LastFrameEnd;
 	int m_CurrentFrameNum;
 	bool m_Paused;
 };

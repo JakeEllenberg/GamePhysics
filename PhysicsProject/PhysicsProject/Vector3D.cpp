@@ -9,6 +9,8 @@
 #include <cmath>
 
 //======================================================================
+Vector3D const Vector3D::Zero = Vector3D(0, 0, 0);
+//======================================================================
 Vector3D::Vector3D()
 {
 	X = 0;
@@ -78,7 +80,23 @@ bool Vector3D::operator!=(const Vector3D& rhs) const
 }
 
 //--------------------------------------------------------------------------------
-float Vector3D::Magnitued()
+void Vector3D::operator+=(const Vector3D& rhs)
+{
+	X += rhs.X;
+	Y += rhs.Y;
+	Z += rhs.Z;
+}
+
+//--------------------------------------------------------------------------------
+void Vector3D::operator-=(const Vector3D& rhs)
+{
+	X -= rhs.X;
+	Y -= rhs.Y;
+	Z -= rhs.Z;
+}
+
+//--------------------------------------------------------------------------------
+float Vector3D::Magnitude()
 {
 	return sqrt(MagnitudeSquared());
 }
@@ -91,7 +109,7 @@ float Vector3D::MagnitudeSquared()
 //--------------------------------------------------------------------------------
 Vector3D Vector3D::Normalized()
 {
-	return *this / Magnitued();
+	return *this / Magnitude();
 }
 
 //--------------------------------------------------------------------------------

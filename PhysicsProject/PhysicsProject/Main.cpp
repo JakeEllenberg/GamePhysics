@@ -10,6 +10,9 @@
 #include "GlutTime.h"
 #include "GameApp.h"
 #include "GL/glui.h"
+#include "EditorState.h"
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 
@@ -18,7 +21,7 @@ void init();
 void idle();
 void display();
 void cleanUp();
-void update();
+void update(int deltaTime);
 void initalize();
 void handleMouse(int x, int y);
 void handleMouseUI(int mouseButton, int mouseState, int x, int y);
@@ -35,16 +38,17 @@ const Vector3D INITAL_WINDOW_POSITION = Vector3D(100, 100, 0);
 //================================================================================
 GlutTime* gp_GlutTime;
 GameApp* gp_GameApp;
+EditorState* gp_EditorState;
 
 Vector3D g_ScreenSize = INITAL_SCREEN_SIZE;
 
-int angle;
 bool g_FullScreen = false;
 bool g_UseGUIMouse;
 int g_MainWindow;
 
 GLUI* g_Glui_subwin;
 GLUI_StaticText* g_StaticText;
+
 //================================================================================
 int main(int argc, char** argv) {
 	
@@ -59,11 +63,13 @@ void initalize()
 {
 	atexit(cleanUp);
 
+	srand((unsigned int)time(0));
+
 	gp_GlutTime = new GlutTime();
 	gp_GlutTime->Init();
 	gp_GameApp = new GameApp();
 	gp_GameApp->Init(Vector3D(g_ScreenSize.X, g_ScreenSize.Y, 0.0f));
-	angle = 0;
+	gp_EditorState = new EditorState();
 
 	glutInitWindowSize((int)g_ScreenSize.X, (int)g_ScreenSize.Y);
 	glutInitWindowPosition((int)INITAL_WINDOW_POSITION.X, (int)INITAL_WINDOW_POSITION.Y);
@@ -102,6 +108,7 @@ void initalize()
 
 	SetCursorPos((int)(g_ScreenSize.X / 2.0f), (int)(g_ScreenSize.Y / 2.0f));
 
+
 	glutMainLoop();           
 }
 
@@ -123,16 +130,15 @@ void idle()
 	glutSetWindow(g_MainWindow);
 	if (gp_GlutTime->UpdateTime())
 	{
+		update(gp_GlutTime->GetDeltaTime());
 		gp_GlutTime->IncrementFrame();
-		update();
 	}
 }
 
 //--------------------------------------------------------------------------------
-void update()
+void update(int deltaTime)
 {
-	angle = (angle + 1) % 360;
-	gp_GameApp->Update();
+	gp_GameApp->Update(deltaTime, gp_EditorState);
 	glutPostRedisplay(); //Refresh window
 
 	if (!g_UseGUIMouse)
@@ -151,6 +157,7 @@ void handleMouse(int x, int y)
 	
 }
 
+//--------------------------------------------------------------------------------
 void handleMouseUI(int mouseButton, int mouseState, int x, int y)
 {
 
@@ -168,16 +175,15 @@ void handleKeyPressed(unsigned char key, int x, int y)
 
 	if (key == 'f')
 	{
-		if (g_FullScreen)
+		gp_EditorState->ToggleFullScreen();
+		if (gp_EditorState->GetIsFullScreen())
 		{
-			glutReshapeWindow((int)INITAL_SCREEN_SIZE.X, (int)INITAL_SCREEN_SIZE.Y);
-			glutPositionWindow((int)INITAL_WINDOW_POSITION.X, (int)INITAL_WINDOW_POSITION.Y);
-			g_FullScreen = false;
+			glutFullScreen();
 		}
 		else
 		{
-			glutFullScreen();
-			g_FullScreen = true;
+			glutReshapeWindow((int)INITAL_SCREEN_SIZE.X, (int)INITAL_SCREEN_SIZE.Y);
+			glutPositionWindow((int)INITAL_WINDOW_POSITION.X, (int)INITAL_WINDOW_POSITION.Y);
 		}
 		
 		updateScreenSize();
@@ -199,6 +205,7 @@ void handleKeyPressed(unsigned char key, int x, int y)
 	}
 }
 
+//--------------------------------------------------------------------------------
 void handleKeyReleased(unsigned char key, int x, int y)
 {
 	gp_GameApp->HandleKeyReleased(key);
@@ -209,10 +216,7 @@ void display() {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // Set background color to black and opaque
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 
-	glPushMatrix();
-	glRotatef((float)angle, 0, 0.45f, 0.45f);
-	glutSolidCube(0.5);
-	glPopMatrix();
+	gp_GameApp->Draw();
 
 	glutSwapBuffers();
 }
@@ -228,22 +232,23 @@ void reshape(int w, int h) {
 
 }
 
+//--------------------------------------------------------------------------------
 void handleGlui(int id)
 {
 	switch (id)
 	{
 	case 1:
-		gp_GlutTime->Pause();
+		gp_EditorState->Pause();
 		g_StaticText->set_text("Paused");
 		break;
 	case 2:
-		gp_GlutTime->Pause();
-		angle = 0;
+		gp_EditorState->Pause();
+		gp_GameApp->Reset();
 		glutPostRedisplay();
 		g_StaticText->set_text("Stopped");
 		break;
 	case 3:
-		gp_GlutTime->Play();
+		gp_EditorState->Play();
 		g_StaticText->set_text("Playing");
 		break;
 	}

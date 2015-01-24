@@ -25,6 +25,7 @@ GlutTime::~GlutTime()
 void GlutTime::Init()
 {
 	m_StartTime = glutGet(GLUT_ELAPSED_TIME);
+	m_LastFrameEnd = m_StartTime;
 	m_CurrentFrameNum = 0;
 	m_Paused = false;
 }
@@ -49,9 +50,9 @@ bool GlutTime::UpdateTime()
 		return false;
 	}
 
-	double endFrameTime = m_StartTime + (m_CurrentFrameNum + 1) * TIME_PER_FRAME;
-	double endRenderTime = glutGet(GLUT_ELAPSED_TIME);
-	double idleTime = endFrameTime - endRenderTime;
+	int endFrameTime = (int)(m_StartTime + (m_CurrentFrameNum + 1) * TIME_PER_FRAME);
+	int endRenderTime = glutGet(GLUT_ELAPSED_TIME);
+	int idleTime = endFrameTime - endRenderTime;
 	if (idleTime <= 0.0)
 	{
 		return true;
@@ -60,8 +61,18 @@ bool GlutTime::UpdateTime()
 }
 
 //--------------------------------------------------------------------------------
+//Returns the time its been since last frame
+int GlutTime::GetDeltaTime()
+{
+	int endRenderTime = glutGet(GLUT_ELAPSED_TIME);
+
+	return endRenderTime - m_LastFrameEnd;
+}
+
+//--------------------------------------------------------------------------------
 void GlutTime::IncrementFrame()
 {
 	m_CurrentFrameNum++;
+	m_LastFrameEnd = glutGet(GLUT_ELAPSED_TIME);;
 }
 //================================================================================

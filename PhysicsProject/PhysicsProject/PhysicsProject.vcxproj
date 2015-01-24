@@ -71,10 +71,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Firework.cpp" />
+    <ClCompile Include="FireworkLauncher.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GlutTime.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="PhysicsObject.cpp" />
+    <ClCompile Include="EditorState.cpp" />
     <ClCompile Include="Vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -82,9 +87,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Firework.h" />
+    <ClInclude Include="FireworkLauncher.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GlutTime.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="PhysicsObject.h" />
+    <ClInclude Include="EditorState.h" />
     <ClInclude Include="Vector3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

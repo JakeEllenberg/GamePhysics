@@ -9,6 +9,9 @@
 //======================================================================
 #include "Camera.h"
 #include "Vector3D.h"
+#include "EditorState.h"
+#include "PhysicsObject.h"
+#include "FireworkLauncher.h"
 //======================================================================
 class GameApp
 {
@@ -17,14 +20,19 @@ public:
 	~GameApp();
 
 	void Init(Vector3D screenSize);
-	void Update();
+	void Update(int deltaTime, const EditorState* state);
 	void CleanUp();
 	void HandleMouse(Vector3D mousePos);
 	void HandleKeyPressed(unsigned char key);
 	void HandleKeyReleased(unsigned char key);
 	void UpdateScreenSize(Vector3D screenSize);
+	void Draw();
+	void Reset();
 private:
 	Camera* mp_Camera;
+	void update(int deltaTime);
+	PhysicsObject* m_PhysicsObject;
+	FireworkLauncher* m_FireworkLauncher;
 };
 #endif
 //================================================================================

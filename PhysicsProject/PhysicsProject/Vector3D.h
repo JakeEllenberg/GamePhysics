@@ -12,10 +12,12 @@ public:
 	float X;
 	float Y;
 	float Z;
+	static const Vector3D Zero;
 
 	Vector3D();
 	Vector3D(float x, float y, float z);
 	~Vector3D();
+	
 
 	Vector3D operator*(const float&) const;
 	Vector3D operator/(const float&) const;
@@ -24,9 +26,12 @@ public:
 	bool operator==(const Vector3D&) const;
 	bool operator!=(const Vector3D&) const;
 
+	void operator+=(const Vector3D&);
+	void operator-=(const Vector3D&);
+
 	float Dot(const Vector3D&) const;
 	Vector3D Cross(const Vector3D&) const;
-	float Magnitued();
+	float Magnitude();
 	float MagnitudeSquared();
 
 	void Normalize();
