@@ -19,7 +19,7 @@ public:
 	~FireworkLauncher();
 
 	void Initialzie(Vector3D startPos, Vector3D startVelocity, int startLifeTime, int minExpFireworks, int maxExpFireworks, int minLifeTime, int maxLifeTime, int expChance, float minSpeed, float maxSpeed, int maxFireWorks, int numLevels);
-	void Update(int deltaTime);
+	void Update(float deltaTime);
 	void Draw();
 	void CleanUp();
 	void Reset();

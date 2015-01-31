@@ -16,7 +16,7 @@ Firework::~Firework()
 }
 
 //--------------------------------------------------------------------------------
-void Firework::Inititalize(bool isExploding, int lifeTime, Vector3D initialPosition, Vector3D initialVelocity,
+void Firework::Inititalize(bool isExploding, float lifeTime, Vector3D initialPosition, Vector3D initialVelocity,
 	Vector3D initialAcceleration, Vector3D initalRotation)
 {
 	Particle::Inititalize(lifeTime, initialPosition, initialVelocity, initialAcceleration, initalRotation);

@@ -15,7 +15,7 @@ GameApp::GameApp()
 //--------------------------------------------------------------------------------
 GameApp::~GameApp()
 {
-
+	CleanUp();
 }
 
 //--------------------------------------------------------------------------------
@@ -23,10 +23,21 @@ void GameApp::Init(Vector3D screenSize)
 {
 	mp_Camera = new Camera();
 	mp_Camera->Initalize(screenSize); 
-	m_PhysicsObject = new PhysicsObject();
-	m_PhysicsObject->Inititalize(Vector3D(0,0,0), Vector3D(0.0f, 0.0f, 0.0f));
-	m_FireworkLauncher = new FireworkLauncher();
-	m_FireworkLauncher->Initialzie(Vector3D::Zero, Vector3D(0.0, 0.01f, 0.0f), 1000, 1, 10, 500, 1500, 10, 0.01f, 0.1f, 100, 10);
+	mp_PlanetSystem = new PlanetSystem();
+	mp_PlanetSystem->Initialize();
+	mp_PhysicsObjectSystem = new PhysicsObjectSystem();
+	mp_PhysicsObjectSystem->Initialize();
+	GravityGenerator* gravityGenerator = new GravityGenerator();
+	mp_PhysicsObjectSystem->Add(gravityGenerator);
+
+	std::vector<Planet*> planets = mp_PlanetSystem->GetPlanets();
+	std::vector<PhysicsObject*> planetsAsPhysicsObjects;
+	for (unsigned int i = 0; i < planets.size(); i++)
+	{
+		mp_PhysicsObjectSystem->Add(planets[i]);
+		planetsAsPhysicsObjects.push_back(planets[i]);
+	}
+	mp_PhysicsObjectSystem->AddToRegistry(planetsAsPhysicsObjects, GeneratorType::GRAVITY_GENERATOR);
 }
 
 void GameApp::UpdateScreenSize(Vector3D screenSize)
@@ -35,7 +46,7 @@ void GameApp::UpdateScreenSize(Vector3D screenSize)
 }
 
 //--------------------------------------------------------------------------------
-void GameApp::Update(int deltaTime, const EditorState* state)
+void GameApp::Update(float deltaTime, const EditorState* state)
 {
 	if (!state->GetIsPaused())
 	{
@@ -45,17 +56,15 @@ void GameApp::Update(int deltaTime, const EditorState* state)
 }
 
 //--------------------------------------------------------------------------------
-void GameApp::update(int deltaTime)
-{	
-	m_PhysicsObject->Update(deltaTime);
-	m_FireworkLauncher->Update(deltaTime);
+void GameApp::update(float deltaTime)
+{
+	mp_PhysicsObjectSystem->Update(deltaTime);
 }
 
 //--------------------------------------------------------------------------------
 void GameApp::Draw()
 {
-	//m_PhysicsObject->Draw();
-	m_FireworkLauncher->Draw();
+	mp_PhysicsObjectSystem->Draw();
 }
 
 //--------------------------------------------------------------------------------
@@ -79,8 +88,7 @@ void GameApp::HandleKeyReleased(unsigned char key)
 //--------------------------------------------------------------------------------
 void GameApp::Reset()
 {
-	m_PhysicsObject->Reset();
-	m_FireworkLauncher->Reset();
+	mp_PhysicsObjectSystem->Reset();
 }
 
 //--------------------------------------------------------------------------------
@@ -88,12 +96,5 @@ void GameApp::CleanUp()
 {
 	delete mp_Camera;
 	mp_Camera = nullptr;
-
-	if (m_FireworkLauncher != nullptr)
-	{
-		m_FireworkLauncher->CleanUp();
-	}
-	delete m_FireworkLauncher;
-	m_FireworkLauncher = nullptr;
 }
 //================================================================================

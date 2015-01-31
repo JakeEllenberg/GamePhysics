@@ -15,7 +15,7 @@ public:
 	Firework();
 	~Firework();
 
-	virtual void Inititalize(bool isExploding, int lifeTime, Vector3D initialPosition = Vector3D::Zero, Vector3D initialVelocity = Vector3D::Zero, Vector3D initialAcceleration = Vector3D::Zero, Vector3D initalRotation = Vector3D::Zero);
+	virtual void Inititalize(bool isExploding, float lifeTime, Vector3D initialPosition = Vector3D::Zero, Vector3D initialVelocity = Vector3D::Zero, Vector3D initialAcceleration = Vector3D::Zero, Vector3D initalRotation = Vector3D::Zero);
 	inline bool CheckExploding() { return m_IsExploding; };
 private:
 	bool m_IsExploding;

@@ -9,7 +9,7 @@
 //======================================================================
 Particle::Particle()
 {
-	m_MsLifeTime = 0;
+	m_SLifeTime = 0;
 }
 
 //======================================================================
@@ -19,26 +19,26 @@ Particle::~Particle()
 }
 
 //--------------------------------------------------------------------------------
-void Particle::Inititalize(int lifeTime, Vector3D initialPosition, Vector3D initialVelocity, 
+void Particle::Inititalize(float lifeTime, Vector3D initialPosition, Vector3D initialVelocity, 
 	Vector3D initialAcceleration, Vector3D initalRotation)
 {
-	PhysicsObject::Inititalize(initialPosition, initialVelocity, initialAcceleration, initalRotation);
-	m_MsLifeTime = lifeTime;
+	PhysicsObject::Inititalize(1.0f, initialPosition, initialVelocity, initialAcceleration, initalRotation);
+	m_SLifeTime = lifeTime;
 }
 
 //--------------------------------------------------------------------------------
-void Particle::Update(int deltaTime)
+void Particle::Update(float deltaTime)
 {
 	PhysicsObject::Update(deltaTime);
 
-	if (m_MsLifeTime > 0)
+	if (m_SLifeTime > 0)
 	{
-		m_MsLifeTime -= deltaTime;
+		m_SLifeTime -= deltaTime;
 	}
 }
 
 //--------------------------------------------------------------------------------
 bool Particle::CheckAlive()
 {
-	return m_MsLifeTime > 0;
+	return m_SLifeTime > 0;
 }

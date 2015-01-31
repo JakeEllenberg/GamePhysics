@@ -36,6 +36,9 @@ public:
 
 	void Normalize();
 	Vector3D Normalized();
+
+	float CalculateDistanceSQ(Vector3D rhs);
+	float CalculateDistance(Vector3D rhs);
 };
 #endif
 //======================================================================

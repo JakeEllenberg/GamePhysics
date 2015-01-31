@@ -10,8 +10,9 @@
 #include "Camera.h"
 #include "Vector3D.h"
 #include "EditorState.h"
-#include "PhysicsObject.h"
-#include "FireworkLauncher.h"
+#include "PlanetSystem.h"
+#include "PhysicsObjectSystem.h"
+#include "GravityGenerator.h"
 //======================================================================
 class GameApp
 {
@@ -20,7 +21,7 @@ public:
 	~GameApp();
 
 	void Init(Vector3D screenSize);
-	void Update(int deltaTime, const EditorState* state);
+	void Update(float deltaTime, const EditorState* state);
 	void CleanUp();
 	void HandleMouse(Vector3D mousePos);
 	void HandleKeyPressed(unsigned char key);
@@ -30,9 +31,9 @@ public:
 	void Reset();
 private:
 	Camera* mp_Camera;
-	void update(int deltaTime);
-	PhysicsObject* m_PhysicsObject;
-	FireworkLauncher* m_FireworkLauncher;
+	void update(float deltaTime);
+	PlanetSystem* mp_PlanetSystem;
+	PhysicsObjectSystem* mp_PhysicsObjectSystem;
 };
 #endif
 //================================================================================

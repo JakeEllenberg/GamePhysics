@@ -15,11 +15,11 @@ class Particle :
 public:
 	Particle();
 	~Particle();
-	virtual void Inititalize(int lifeTime, Vector3D initialPosition = Vector3D::Zero, Vector3D initialVelocity = Vector3D::Zero, Vector3D initialAcceleration = Vector3D::Zero, Vector3D initalRotation = Vector3D::Zero);
-	virtual void Update(int deltaTime);
+	virtual void Inititalize(float lifeTime, Vector3D initialPosition = Vector3D::Zero, Vector3D initialVelocity = Vector3D::Zero, Vector3D initialAcceleration = Vector3D::Zero, Vector3D initalRotation = Vector3D::Zero);
+	virtual void Update(float deltaTime);
 	bool CheckAlive();
 private:
-	int m_MsLifeTime;
+	float m_SLifeTime;
 };
 #endif
 //======================================================================

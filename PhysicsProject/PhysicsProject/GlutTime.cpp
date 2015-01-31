@@ -62,11 +62,11 @@ bool GlutTime::UpdateTime()
 
 //--------------------------------------------------------------------------------
 //Returns the time its been since last frame
-int GlutTime::GetDeltaTime()
+float GlutTime::GetDeltaTime()
 {
 	int endRenderTime = glutGet(GLUT_ELAPSED_TIME);
 
-	return endRenderTime - m_LastFrameEnd;
+	return (endRenderTime - m_LastFrameEnd) / 1000.0f;
 }
 
 //--------------------------------------------------------------------------------

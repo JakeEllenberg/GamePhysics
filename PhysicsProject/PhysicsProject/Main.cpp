@@ -21,7 +21,7 @@ void init();
 void idle();
 void display();
 void cleanUp();
-void update(int deltaTime);
+void update(float deltaTime);
 void initalize();
 void handleMouse(int x, int y);
 void handleMouseUI(int mouseButton, int mouseState, int x, int y);
@@ -136,8 +136,9 @@ void idle()
 }
 
 //--------------------------------------------------------------------------------
-void update(int deltaTime)
+void update(float deltaTime)
 {
+	cout << deltaTime << endl;
 	gp_GameApp->Update(deltaTime, gp_EditorState);
 	glutPostRedisplay(); //Refresh window
 

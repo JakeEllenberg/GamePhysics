@@ -19,7 +19,7 @@ public:
 	void Init();
 	bool UpdateTime();
 	void IncrementFrame();
-	int GetDeltaTime();
+	float GetDeltaTime();
 	void Pause();
 	void Play();
 private:

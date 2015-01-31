@@ -120,4 +120,16 @@ void Vector3D::Normalize()
 	Y = normalizedVector.Y;
 	Z = normalizedVector.Z;
 }
+
+//--------------------------------------------------------------------------------
+float Vector3D::CalculateDistanceSQ(Vector3D rhs)
+{
+	return pow(X - rhs.X, 2) + pow(Y - rhs.Y, 2) + pow(Z - rhs.Z, 2);
+}
+
+//--------------------------------------------------------------------------------
+float Vector3D::CalculateDistance(Vector3D rhs)
+{
+	return sqrt(CalculateDistanceSQ(rhs));
+}
 //======================================================================

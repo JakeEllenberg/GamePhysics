@@ -44,12 +44,12 @@ void FireworkLauncher::Initialzie(Vector3D startPos, Vector3D startVelocity, int
 	m_CurrentLevel = 0;
 
 	Firework* startFireWork = new Firework();
-	startFireWork->Inititalize(true, startLifeTime, startPos, startVelocity);
+	startFireWork->Inititalize(true, (float)startLifeTime, startPos, startVelocity);
 	m_Fireworks.push_back(startFireWork);
 }
 
 //--------------------------------------------------------------------------------
-void FireworkLauncher::Update(int deltaTime)
+void FireworkLauncher::Update(float deltaTime)
 {
 	std::vector<Firework*>::iterator iter;
 	std::vector<Firework*> fireworksToExplode;
@@ -74,7 +74,7 @@ void FireworkLauncher::Update(int deltaTime)
 		GenerateExplosion(firework->GetPosition());
 	}
 
-	for (int index = 0; index < m_Fireworks.size(); index++)
+	for (unsigned int index = 0; index < m_Fireworks.size(); index++)
 	{
 		if (!m_Fireworks[index]->CheckAlive())
 		{
@@ -136,7 +136,7 @@ Vector3D FireworkLauncher::getVelocity(float speed)
 //--------------------------------------------------------------------------------
 void FireworkLauncher::GenerateExplosion(Vector3D startingPosition)
 {
-	if (m_Fireworks.size() >= m_MaxFireworks || m_CurrentLevel >= m_NumLevels)
+	if ((int)m_Fireworks.size() >= m_MaxFireworks || m_CurrentLevel >= m_NumLevels)
 	{
 		return;
 	}
@@ -149,7 +149,7 @@ void FireworkLauncher::GenerateExplosion(Vector3D startingPosition)
 	{
 		
 		Firework* newFirework = new Firework();
-		newFirework->Inititalize(getIsExploading(), lifeTime, startingPosition, getVelocity(speed));
+		newFirework->Inititalize(getIsExploading(), (float)lifeTime, startingPosition, getVelocity(speed));
 		m_Fireworks.push_back(newFirework);
 	}
 }
@@ -171,7 +171,7 @@ void FireworkLauncher::Reset()
 	CleanUp();
 
 	Firework* startFireWork = new Firework();
-	startFireWork->Inititalize(true, m_StartLifeTime, m_StartPosition, m_StartVelocity);
+	startFireWork->Inititalize(true, (float)m_StartLifeTime, m_StartPosition, m_StartVelocity);
 	m_Fireworks.push_back(startFireWork);
 	m_CurrentLevel = 0;
 }
