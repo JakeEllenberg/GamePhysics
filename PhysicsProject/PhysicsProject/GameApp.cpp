@@ -7,6 +7,8 @@
 #include "GameApp.h"
 
 //================================================================================
+int GameApp::TimeStep = 50;
+//================================================================================
 GameApp::GameApp()
 {
 	mp_Camera = nullptr;
@@ -22,7 +24,7 @@ GameApp::~GameApp()
 void GameApp::Init(Vector3D screenSize)
 {
 	mp_Camera = new Camera();
-	mp_Camera->Initalize(screenSize); 
+	
 	mp_PlanetSystem = new PlanetSystem();
 	mp_PlanetSystem->Initialize();
 	mp_PhysicsObjectSystem = new PhysicsObjectSystem();
@@ -32,6 +34,9 @@ void GameApp::Init(Vector3D screenSize)
 
 	std::vector<Planet*> planets = mp_PlanetSystem->GetPlanets();
 	std::vector<PhysicsObject*> planetsAsPhysicsObjects;
+
+	mp_Camera->Initalize(screenSize, planets, 2.5f);
+
 	for (unsigned int i = 0; i < planets.size(); i++)
 	{
 		mp_PhysicsObjectSystem->Add(planets[i]);
@@ -58,7 +63,10 @@ void GameApp::Update(float deltaTime, const EditorState* state)
 //--------------------------------------------------------------------------------
 void GameApp::update(float deltaTime)
 {
-	mp_PhysicsObjectSystem->Update(deltaTime);
+	for (int i = 0; i < TimeStep; i++)
+	{
+		mp_PhysicsObjectSystem->Update(deltaTime);
+	}
 }
 
 //--------------------------------------------------------------------------------

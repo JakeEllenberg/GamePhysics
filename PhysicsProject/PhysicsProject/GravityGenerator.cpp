@@ -8,7 +8,7 @@
 #include <math.h>
 
 //======================================================================
-float const GravityGenerator::GRAVITY = 6.6726f * pow(10.0f, -11.0f);
+float const GravityGenerator::GRAVITY = 3.965f * pow(10.0f, -14.0f); // AU^3 / Solar_Mass * Sec^2
 
 //======================================================================
 GravityGenerator::GravityGenerator()
@@ -28,7 +28,7 @@ void GravityGenerator::UpdateForce(PhysicsObject* object1, PhysicsObject* object
 	Vector3D direction = object2->GetPosition() - object1->GetPosition();
 	direction.Normalize();
 	float force = ((GRAVITY * object1->GetMass() * object2->GetMass()) / distanceSQ);
-	Vector3D gravityOnObject1 = direction * force * 10000;
+	Vector3D gravityOnObject1 = direction * force;
 	Vector3D gravityOnObject2 = gravityOnObject1 * -1;
 	object1->AddForce(gravityOnObject1);
 	object2->AddForce(gravityOnObject2);

@@ -20,6 +20,8 @@ public:
 	GameApp();
 	~GameApp();
 
+	static int TimeStep;
+
 	void Init(Vector3D screenSize);
 	void Update(float deltaTime, const EditorState* state);
 	void CleanUp();

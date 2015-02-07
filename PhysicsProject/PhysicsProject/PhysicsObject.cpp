@@ -5,6 +5,7 @@
 //Purpose: Base object class
 //======================================================================
 #include "PhysicsObject.h"
+#include "GameApp.h"
 
 //======================================================================
 PhysicsObject::PhysicsObject()
@@ -20,6 +21,7 @@ PhysicsObject::PhysicsObject()
 	m_Radius = .1f;
 	m_InitalRadius = .1f;
 	m_InverseMass = 1;
+	m_Dampening = 1;
 }
 
 //======================================================================
@@ -60,9 +62,13 @@ void PhysicsObject::Inititalize(float mass, Vector3D initialPosition, Vector3D i
 //--------------------------------------------------------------------------------
 void PhysicsObject::Update(float sTime)
 {
+	//seconds 31557600 per year
+	//seconds 86400 per day
+	sTime *= 86400; //seconds per day
 	m_Position += m_Velocity * sTime;
-	m_Acceleration = m_LastAppliedForce * m_InverseMass;
+	m_Acceleration = m_LastAppliedForce * (m_InverseMass);
 	m_Velocity += m_Acceleration * sTime;
+	m_Velocity = m_Velocity * m_Dampening;
 	
 	m_LastAppliedForce = Vector3D::Zero;
 }

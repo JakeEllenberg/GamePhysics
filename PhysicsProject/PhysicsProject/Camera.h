@@ -8,13 +8,15 @@
 #define CAMERA_H
 //======================================================================
 #include "Vector3D.h"
+#include <vector>
+#include "Planet.h"
 //======================================================================
 class Camera
 {
 public:
 	Camera();
 	~Camera();
-	void Initalize(Vector3D screenSize);
+	void Initalize(Vector3D screenSize, std::vector<Planet*> planets, float followDistance);
 	void UpdateScreenSize(Vector3D screenSize);
 	void HandleMouse(Vector3D mousePos);
 	void HandleKeyPressed(unsigned char key);
@@ -37,6 +39,12 @@ private:
 
 	float m_MouseSpeed;
 	float m_CameraSpeed;
+
+	int m_CurrentFollowIndex;
+	bool m_IsFollowing;
+	bool m_IsZoomedOut;
+	float m_FollowDistance;
+	std::vector<Planet*> m_Planets;
 };
 #endif
 //======================================================================

@@ -138,7 +138,6 @@ void idle()
 //--------------------------------------------------------------------------------
 void update(float deltaTime)
 {
-	cout << deltaTime << endl;
 	gp_GameApp->Update(deltaTime, gp_EditorState);
 	glutPostRedisplay(); //Refresh window
 

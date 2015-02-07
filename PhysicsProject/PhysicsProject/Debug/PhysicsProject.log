@@ -1,29 +1,11 @@
-﻿Build started 1/31/2015 5:23:38 PM.
-     1>Project "C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\PhysicsProject.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 2/7/2015 4:53:49 PM.
+     1>Project "C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\PhysicsProject\PhysicsProject.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/include/" /I"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\\Libs\glui-2.36\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp Firework.cpp FireworkLauncher.cpp ForceGenerator.cpp GameApp.cpp Generator.cpp GlutTime.cpp GravityGenerator.cpp Main.cpp Matrix.cpp ObjectForceGenerator.cpp Particle.cpp PhysicsObject.cpp EditorState.cpp PhysicsObjectForceRegistry.cpp PhysicsObjectSystem.cpp Planet.cpp PlanetSystem.cpp Vector3D.cpp
-         Vector3D.cpp
-         PlanetSystem.cpp
-         Planet.cpp
-         PhysicsObjectSystem.cpp
-         PhysicsObjectForceRegistry.cpp
-         EditorState.cpp
-         PhysicsObject.cpp
-         Particle.cpp
-         ObjectForceGenerator.cpp
-         Matrix.cpp
-         Main.cpp
-         GravityGenerator.cpp
-         GlutTime.cpp
-         Generator.cpp
-         GameApp.cpp
-         ForceGenerator.cpp
-         FireworkLauncher.cpp
-         Firework.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/include/ /I"C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\\Libs\glui-2.36\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp
          Camera.cpp
-         Generating Code...
+     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\Debug\PhysicsProject.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\\Libs\glui-2.36\Debug\\" "C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glew32.lib" "C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glfw3dll.lib" "C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\freeglut.lib" glui32.lib OpenGL32.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\Debug\PhysicsProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\Debug\PhysicsProject.lib" /MACHINE:X86 Debug\Camera.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\Debug\PhysicsProject.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\\Libs\glui-2.36\Debug\\" C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glew32.lib C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glfw3dll.lib C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\freeglut.lib glui32.lib OpenGL32.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\Debug\PhysicsProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\Debug\PhysicsProject.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\Firework.obj
          Debug\FireworkLauncher.obj
          Debug\ForceGenerator.obj
@@ -42,9 +24,9 @@
          Debug\Planet.obj
          Debug\PlanetSystem.obj
          Debug\Vector3D.obj
-         PhysicsProject.vcxproj -> C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\Debug\PhysicsProject.exe
-     1>Done Building Project "C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\PhysicsProject.vcxproj" (Rebuild target(s)).
+         PhysicsProject.vcxproj -> C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\Debug\PhysicsProject.exe
+     1>Done Building Project "C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\PhysicsProject\PhysicsProject.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:07.24
+Time Elapsed 00:00:01.78

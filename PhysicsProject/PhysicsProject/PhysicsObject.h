@@ -34,6 +34,7 @@ public:
 	inline float GetInverseMass() { return m_InverseMass; };
 	inline float GetMass() { return 1 / m_InverseMass; };
 	inline float GetRadius() { return m_Radius; };
+	inline void SetDampening(float dampening) { m_Dampening = dampening; };
 
 protected:
 	Vector3D m_Position;
@@ -45,7 +46,8 @@ protected:
 	Vector3D m_InitialAcceleration;
 	Vector3D m_InitialRotation;
 	Vector3D m_LastAppliedForce;
-
+	
+	float m_Dampening;
 	float m_Radius;
 	float m_InitalRadius;
 	float m_InverseMass;
