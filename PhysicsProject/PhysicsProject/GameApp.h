@@ -13,6 +13,7 @@
 #include "PlanetSystem.h"
 #include "PhysicsObjectSystem.h"
 #include "GravityGenerator.h"
+class Skybox;
 //======================================================================
 class GameApp
 {
@@ -36,6 +37,7 @@ private:
 	void update(float deltaTime);
 	PlanetSystem* mp_PlanetSystem;
 	PhysicsObjectSystem* mp_PhysicsObjectSystem;
+	Skybox* mp_SkyBox;
 };
 #endif
 //================================================================================

@@ -6,6 +6,7 @@
 //======================================================================
 #include <iostream>
 #include <Windows.h>
+#include <GL\glew.h>
 #include <gl\glut.h>
 #include "GlutTime.h"
 #include "GameApp.h"
@@ -68,14 +69,15 @@ void initalize()
 	gp_GlutTime = new GlutTime();
 	gp_GlutTime->Init();
 	gp_GameApp = new GameApp();
-	gp_GameApp->Init(Vector3D(g_ScreenSize.X, g_ScreenSize.Y, 0.0f));
+	
+	
 	gp_EditorState = new EditorState();
 
 	glutInitWindowSize((int)g_ScreenSize.X, (int)g_ScreenSize.Y);
 	glutInitWindowPosition((int)INITAL_WINDOW_POSITION.X, (int)INITAL_WINDOW_POSITION.Y);
 	g_MainWindow = glutCreateWindow("Physics");
 	
-	updateScreenSize();
+	glewInit();
 
 	float lightPosition[] = { 100.0, 100.0, 100.0, 0.0 };
 	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
@@ -84,8 +86,11 @@ void initalize()
 	glEnable(GL_LIGHT0);
 	glShadeModel(GL_SMOOTH);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-	
+	glDepthFunc(GL_LEQUAL);
 	glutSetCursor(GLUT_CURSOR_NONE);
+
+	gp_GameApp->Init(Vector3D(g_ScreenSize.X, g_ScreenSize.Y, 0.0f));
+	updateScreenSize();
 
 	glutIgnoreKeyRepeat(1);
 	glutMotionFunc(handleMouse);
@@ -108,6 +113,11 @@ void initalize()
 
 	SetCursorPos((int)(g_ScreenSize.X / 2.0f), (int)(g_ScreenSize.Y / 2.0f));
 
+
+	gp_EditorState->Pause();
+	gp_GameApp->Reset();
+	glutPostRedisplay();
+	g_StaticText->set_text("Stopped");
 
 	glutMainLoop();           
 }

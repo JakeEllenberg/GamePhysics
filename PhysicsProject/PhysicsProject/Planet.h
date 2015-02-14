@@ -15,9 +15,13 @@ public:
 	Planet();
 	~Planet();
 
-	void Initialize(float radius = 0.1f, float mass = 0.0f, Vector3D initalPosition = Vector3D::Zero, Vector3D initalVelocity = Vector3D::Zero, std::string planetName = "");
+	void Initialize(float radius = 0.1f, float mass = 0.0f, Vector3D initalPosition = Vector3D::Zero, Vector3D initalVelocity = Vector3D::Zero, std::string planetName = "", std::string texturePath = "");
+	void loadImage(std::string filePath);
+	void Draw();
 private:
 	std::string m_Name;
+	GLuint m_Tex;
+	GLUquadric* m_Quad;
 };
 #endif
 //=======================================================================

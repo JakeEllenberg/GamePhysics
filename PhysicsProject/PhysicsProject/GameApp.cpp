@@ -4,8 +4,8 @@
 //Created: 1/17/2015
 //Purpose: Entry point of the program, setup OpenGl functionality.
 //======================================================================
+#include "Skybox.h"
 #include "GameApp.h"
-
 //================================================================================
 int GameApp::TimeStep = 50;
 //================================================================================
@@ -24,6 +24,9 @@ GameApp::~GameApp()
 void GameApp::Init(Vector3D screenSize)
 {
 	mp_Camera = new Camera();
+
+	mp_SkyBox = new Skybox();
+	mp_SkyBox->Initialize();
 	
 	mp_PlanetSystem = new PlanetSystem();
 	mp_PlanetSystem->Initialize();
@@ -43,6 +46,8 @@ void GameApp::Init(Vector3D screenSize)
 		planetsAsPhysicsObjects.push_back(planets[i]);
 	}
 	mp_PhysicsObjectSystem->AddToRegistry(planetsAsPhysicsObjects, GeneratorType::GRAVITY_GENERATOR);
+
+	
 }
 
 void GameApp::UpdateScreenSize(Vector3D screenSize)
@@ -73,6 +78,7 @@ void GameApp::update(float deltaTime)
 void GameApp::Draw()
 {
 	mp_PhysicsObjectSystem->Draw();
+	mp_SkyBox->Render();
 }
 
 //--------------------------------------------------------------------------------
