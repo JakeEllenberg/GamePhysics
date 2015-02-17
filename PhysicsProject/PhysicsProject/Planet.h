@@ -16,8 +16,10 @@ public:
 	~Planet();
 
 	void Initialize(float radius = 0.1f, float mass = 0.0f, Vector3D initalPosition = Vector3D::Zero, Vector3D initalVelocity = Vector3D::Zero, std::string planetName = "", std::string texturePath = "");
+	void Update(float sTime);
 	void loadImage(std::string filePath);
 	void Draw();
+	inline std::string GetName() { return m_Name; };
 private:
 	std::string m_Name;
 	GLuint m_Tex;

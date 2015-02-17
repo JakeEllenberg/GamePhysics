@@ -21,6 +21,7 @@ public:
 	void HandleMouse(Vector3D mousePos);
 	void HandleKeyPressed(unsigned char key);
 	void HandleKeyReleased(unsigned char key);
+	void SetCurrentFollowIndex(int index) { m_CurrentFollowIndex = index;};
 	void Update();
 private:
 	void move();

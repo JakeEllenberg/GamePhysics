@@ -64,7 +64,7 @@ void PhysicsObject::Update(float sTime)
 {
 	//seconds 31557600 per year
 	//seconds 86400 per day
-	sTime *= 86400; //seconds per day
+	sTime *= 86400.0f * 1.4f; //seconds per day
 	m_Position += m_Velocity * sTime;
 	m_Acceleration = m_LastAppliedForce * (m_InverseMass);
 	m_Velocity += m_Acceleration * sTime;

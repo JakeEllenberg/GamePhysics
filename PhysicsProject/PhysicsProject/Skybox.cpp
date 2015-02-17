@@ -46,9 +46,9 @@ void Skybox::Render()
 	glEnable(GL_TEXTURE_2D);
 	glDisable(GL_LIGHTING);
 
-	int width = 50;
-	int height = 50;
-	int length = 50;
+	float width = 40;
+	float height = 40;
+	float length = 40;
 
 	glBindTexture(GL_TEXTURE_2D, m_TextureTop);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);

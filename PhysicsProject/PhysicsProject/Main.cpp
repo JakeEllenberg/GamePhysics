@@ -49,6 +49,7 @@ int g_MainWindow;
 
 GLUI* g_Glui_subwin;
 GLUI_StaticText* g_StaticText;
+GLUI_StaticText* g_Time;
 
 //================================================================================
 int main(int argc, char** argv) {
@@ -108,7 +109,24 @@ void initalize()
 	g_Glui_subwin->add_button("Play", 3, handleGlui);
 	g_Glui_subwin->add_button("Pause", 1, handleGlui);
 	g_Glui_subwin->add_button("Stop", 2, handleGlui);
+	g_Glui_subwin->add_button("Toggle Debug", 4, handleGlui);
 	g_StaticText = g_Glui_subwin->add_statictext("Playing");
+	g_Glui_subwin->add_column(1);
+	GLUI_StaticText* name = g_Glui_subwin->add_statictext("Planet Name: ");
+	g_Glui_subwin->add_statictext("Planet Mass (KG):");
+	GLUI_StaticText* mass = g_Glui_subwin->add_statictext("                                                         ");
+	g_Glui_subwin->add_statictext("");
+	g_Time = g_Glui_subwin->add_statictext(std::string("Simulation Speed: " + std::to_string(GameApp::TimeStep) +  " day/second").c_str());
+	g_Glui_subwin->add_button("Increase Simulation Speed", 6, handleGlui);
+	g_Glui_subwin->add_column(1);
+	GLUI_StaticText* position = g_Glui_subwin->add_statictext("Position: ");
+	GLUI_StaticText* velocity = g_Glui_subwin->add_statictext("Velocity: ");
+	GLUI_StaticText* acceleration = g_Glui_subwin->add_statictext("Acceleration: ");
+	g_Glui_subwin->add_statictext("");
+	g_Glui_subwin->add_statictext("");
+	g_Glui_subwin->add_button("Decrease Simulation Speed", 5, handleGlui);
+
+	gp_GameApp->SetGluiText(name, mass, position, velocity, acceleration);
 	g_UseGUIMouse = false;
 
 	SetCursorPos((int)(g_ScreenSize.X / 2.0f), (int)(g_ScreenSize.Y / 2.0f));
@@ -260,6 +278,25 @@ void handleGlui(int id)
 	case 3:
 		gp_EditorState->Play();
 		g_StaticText->set_text("Playing");
+		break;
+	case 4:
+		GameApp::DebugData = !GameApp::DebugData;
+		break;
+	case 5:
+		GameApp::TimeStep -= 5;
+		if (GameApp::TimeStep <= 0)
+		{
+			GameApp::TimeStep = 1;
+		}
+		g_Time->set_text(std::string("Simulation Speed: " + std::to_string(GameApp::TimeStep) + " day/second").c_str());
+		break;
+	case 6:
+		GameApp::TimeStep += 5;
+		if (GameApp::TimeStep > 100)
+		{
+			GameApp::TimeStep = 100;
+		}
+		g_Time->set_text(std::string("Simulation Speed: " + std::to_string(GameApp::TimeStep) + " day/second").c_str());
 		break;
 	}
 }

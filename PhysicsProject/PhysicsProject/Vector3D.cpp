@@ -132,4 +132,30 @@ float Vector3D::CalculateDistance(Vector3D rhs)
 {
 	return sqrt(CalculateDistanceSQ(rhs));
 }
+
+//--------------------------------------------------------------------------------
+void Vector3D::Lerp(Vector3D other, float rate)
+{
+	Vector3D difference = other - *this;
+	difference = difference * rate;
+	X += difference.X;
+	Y += difference.Y;
+	Z += difference.Z;
+}
+
+//--------------------------------------------------------------------------------
+std::string Vector3D::ToString(bool ignoreDecimals)
+{
+	if (!ignoreDecimals)
+	{
+		return std::to_string(X) + ", " + std::to_string(Y) + ", " + std::to_string(Z);
+	}
+	else
+	{
+		//Ignores all but the first decimal
+		return std::to_string(X).substr(0, std::to_string(X).size() - 5) + ", " + 
+			std::to_string(Y).substr(0, std::to_string(Y).size() - 5) + ", " + 
+			std::to_string(Z).substr(0, std::to_string(Z).size() - 5);
+	}
+}
 //======================================================================

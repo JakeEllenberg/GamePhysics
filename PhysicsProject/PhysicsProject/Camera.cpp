@@ -129,47 +129,38 @@ void Camera::HandleKeyPressed(unsigned char key)
 		m_IsFollowing = false;
 		break;
 	case '1':
-		m_CurrentFollowIndex = 0;
 		m_IsFollowing = true;
 		m_IsZoomedOut = false;
 		break;
 	case '2':
-		m_CurrentFollowIndex = 1;
 		m_IsFollowing = true;
 		m_IsZoomedOut = false;
 		break;
 	case '3':
-		m_CurrentFollowIndex = 2;
 		m_IsFollowing = true;
 		m_IsZoomedOut = false;
 		break;
 	case '4':
-		m_CurrentFollowIndex = 3;
 		m_IsFollowing = true;
 		m_IsZoomedOut = false;
 		break;
 	case '5':
-		m_CurrentFollowIndex = 4;
 		m_IsFollowing = true;
 		m_IsZoomedOut = false;
 		break;
 	case '6':
-		m_CurrentFollowIndex = 5;
 		m_IsFollowing = true;
 		m_IsZoomedOut = false;
 		break;
 	case '7':
-		m_CurrentFollowIndex = 6;
 		m_IsFollowing = true;
 		m_IsZoomedOut = false;
 		break;
 	case '8':
-		m_CurrentFollowIndex = 7;
 		m_IsFollowing = true;
 		m_IsZoomedOut = false;
 		break;
 	case '9':
-		m_CurrentFollowIndex = 8;
 		m_IsFollowing = true;
 		m_IsZoomedOut = false;
 		break;
@@ -235,24 +226,30 @@ void Camera::HandleKeyReleased(unsigned char key)
 
 void Camera::Update()
 {
+	Vector3D desiredPosition = m_Position;
+
 	if (m_IsFollowing)
 	{
-		m_Position = m_Planets[m_CurrentFollowIndex]->GetPosition();
+		desiredPosition = m_Planets[m_CurrentFollowIndex]->GetPosition();
 		m_Rotation = Vector3D(90.0f, 0.0f, 0.0f);
-		m_Position.Y += m_FollowDistance;
+		desiredPosition.Y += m_FollowDistance;
+		m_Position.Lerp(desiredPosition, 0.1f);
 	}
 	else if (m_IsZoomedOut)
 	{
-		m_Position = Vector3D(0.0f, m_FollowDistance * 10.0f, 0.0f);
-		m_Rotation = Vector3D(90.0f, 0.0f, 0.0f);
+		desiredPosition = Vector3D(-12.0f, m_FollowDistance * 10.0f, 0.0f);
+		m_Rotation = Vector3D(60.0f, 90.0f, 0.0f);
+		m_Position.Lerp(desiredPosition, 0.02f);
 	}
 	else
 	{
 		move();
 	}
+
+	
 	
 
-	glLoadIdentity();
+ 	glLoadIdentity();
 	glRotatef(m_Rotation.X, 1.0, 0.0, 0.0);
 	glRotatef(m_Rotation.Y, 0.0, 1.0, 0.0);
 	glTranslated(-m_Position.X, -m_Position.Y, -m_Position.Z);

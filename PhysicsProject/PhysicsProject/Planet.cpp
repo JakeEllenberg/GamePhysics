@@ -6,6 +6,8 @@
 //======================================================================
 #include "Planet.h"
 #include "SOIL.h"
+#include "GameApp.h"
+#include <iostream>
 
 //======================================================================
 Planet::Planet()
@@ -23,6 +25,17 @@ void Planet::Initialize(float radius, float mass, Vector3D initalPosition, Vecto
 	PhysicsObject::Inititalize(mass, initalPosition, velocity, Vector3D::Zero, Vector3D::Zero, radius);
 	m_Name = planetName;
 	loadImage(fileName);
+}
+
+void Planet::Update(float sTime)
+{
+	
+	if (GameApp::DebugData)
+	{
+		std::cout << "Planet: " << m_Name << " position, " << m_Position.ToString() << " velocity " << m_Velocity.ToString()
+			<< " acceleartion " << m_Acceleration.ToString() << " total force " << m_LastAppliedForce.ToString() << std::endl;
+	}
+	PhysicsObject::Update(sTime);
 }
 
 //--------------------------------------------------------------------------------

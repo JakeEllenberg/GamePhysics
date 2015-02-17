@@ -1,36 +1,30 @@
-﻿Build started 2/14/2015 5:27:25 PM.
-     1>Project "C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\PhysicsProject\PhysicsProject.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2/17/2015 10:34:52 AM.
+     1>Project "C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\PhysicsProject\PhysicsProject.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/include/ /I"C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\\Libs\glui-2.36\include" /I"C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\\Libs\Simple OpenGL Image Library\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameApp.cpp Skybox.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/include/ /I"C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\\Libs\glui-2.36\include" /I"C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\\Libs\Simple OpenGL Image Library\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp Firework.cpp FireworkLauncher.cpp ForceGenerator.cpp GameApp.cpp Generator.cpp GlutTime.cpp GravityGenerator.cpp Main.cpp Matrix.cpp ObjectForceGenerator.cpp Particle.cpp PhysicsObject.cpp EditorState.cpp PhysicsObjectForceRegistry.cpp PhysicsObjectSystem.cpp Planet.cpp PlanetSystem.cpp Skybox.cpp Vector3D.cpp
+         Vector3D.cpp
          Skybox.cpp
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(61): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(62): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(63): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(64): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(72): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(73): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(74): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(75): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(84): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(85): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(86): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(87): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(96): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(97): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(98): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(99): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(107): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(108): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(109): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(110): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(119): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(120): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(121): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
-     1>c:\users\jacob.ellenberg\desktop\physics\gamephysics\physicsproject\physicsproject\skybox.cpp(122): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+         PlanetSystem.cpp
+         Planet.cpp
+         PhysicsObjectSystem.cpp
+         PhysicsObjectForceRegistry.cpp
+         EditorState.cpp
+         PhysicsObject.cpp
+         Particle.cpp
+         ObjectForceGenerator.cpp
+         Matrix.cpp
+         Main.cpp
+         GravityGenerator.cpp
+         GlutTime.cpp
+         Generator.cpp
          GameApp.cpp
+         ForceGenerator.cpp
+         FireworkLauncher.cpp
+         Firework.cpp
+         Camera.cpp
          Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\Debug\PhysicsProject.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\\Libs\glui-2.36\Debug\\" /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\\Libs\Simple OpenGL Image Library\Debug" C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glew32.lib C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glfw3dll.lib C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\freeglut.lib glui32.lib OpenGL32.lib glu32.lib SOIL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\Debug\PhysicsProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\Debug\PhysicsProject.lib" /MACHINE:X86 Debug\Camera.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\Debug\PhysicsProject.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\\Libs\glui-2.36\Debug\\" /LIBPATH:"C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\\Libs\Simple OpenGL Image Library\Debug" C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glew32.lib C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glfw3dll.lib C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\freeglut.lib glui32.lib OpenGL32.lib glu32.lib SOIL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\Debug\PhysicsProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\Debug\PhysicsProject.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\Firework.obj
          Debug\FireworkLauncher.obj
          Debug\ForceGenerator.obj
@@ -50,9 +44,9 @@
          Debug\PlanetSystem.obj
          Debug\Skybox.obj
          Debug\Vector3D.obj
-         PhysicsProject.vcxproj -> C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\Debug\PhysicsProject.exe
-     1>Done Building Project "C:\Users\jacob.ellenberg\Desktop\Physics\GamePhysics\PhysicsProject\PhysicsProject\PhysicsProject.vcxproj" (Build target(s)).
+         PhysicsProject.vcxproj -> C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\Debug\PhysicsProject.exe
+     1>Done Building Project "C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\PhysicsProject\PhysicsProject.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.56
+Time Elapsed 00:00:08.07
