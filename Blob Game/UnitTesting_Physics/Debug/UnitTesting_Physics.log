@@ -1,0 +1,21 @@
+﻿Build started 1/17/2015 4:45:13 PM.
+     1>Project "C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\UnitTesting_Physics\UnitTesting_Physics.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /Zi /clr:safe /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\DefaultTest.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /FU"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib MatrixTest.cpp
+         MatrixTest.cpp
+     1>C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\Matrix.h(14): error C4959: cannot define unmanaged class 'Matrix' in /clr:safe because accessing its members yields unverifiable code
+     1>C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\Matrix.h(19): error C4956: 'float *' : this type is not verifiable
+     1>C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\Matrix.h(23): error C4956: 'const int &' : this type is not verifiable
+     1>C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\Matrix.h(25): error C4956: 'const Matrix &' : this type is not verifiable
+     1>C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\Matrix.h(26): error C4956: 'const Matrix &' : this type is not verifiable
+     1>C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\Matrix.h(27): error C4956: 'const Matrix &' : this type is not verifiable
+     1>C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\Matrix.h(28): error C4956: 'const float &' : this type is not verifiable
+     1>C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\Matrix.h(29): error C4956: 'const Vector3D &' : this type is not verifiable
+     1>C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\Matrix.h(31): error C4956: 'const Matrix &' : this type is not verifiable
+     1>C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\Matrix.h(35): error C4956: 'const Matrix &' : this type is not verifiable
+     1>C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\PhysicsProject\Matrix.h(41): error C4956: 'float *' : this type is not verifiable
+     1>Done Building Project "C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\PhysicsProject\UnitTesting_Physics\UnitTesting_Physics.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.41
