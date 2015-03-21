@@ -17,12 +17,12 @@ Skybox::~Skybox()
 }
 void Skybox::Initialize()
 {
-	loadImage("Stars/Stars_right1.jpg", &m_TextureRight);
-	loadImage("Stars/Stars_left2.jpg", &m_TextureLeft);
-	loadImage("Stars/Stars_top3.jpg", &m_TextureTop);
-	loadImage("Stars/Stars_front5.jpg", &m_TextureFront);
-	loadImage("Stars/Stars_bottom4.jpg", &m_TextureBot);
-	loadImage("Stars/Stars_back6.jpg", &m_TextureBack);
+	loadImage("Seige/siege_right.jpg", &m_TextureLeft);
+	loadImage("Seige/siege_left.jpg", &m_TextureRight);
+	loadImage("Seige/siege_top.jpg", &m_TextureTop);
+	loadImage("Seige/siege_front.jpg", &m_TextureFront);
+	loadImage("Seige/siege_bot.jpg", &m_TextureBot);
+	loadImage("Seige/siege_back.jpg", &m_TextureBack);
 }
 
 //--------------------------------------------------------------------------------

@@ -14,18 +14,22 @@ PhysicsObjectSystem::PhysicsObjectSystem()
 //--------------------------------------------------------------------------------
 PhysicsObjectSystem::~PhysicsObjectSystem()
 {
+	CleanUp();
 }
 
 //--------------------------------------------------------------------------------
 void PhysicsObjectSystem::Initialize()
 {
 	mp_ForceRegistry = new PhysicsObjectForceRegistry();
+	mp_CollisionSystem = new CollisionSystem();
+	mp_CollisionSystem->Inititalize(0.0f);
 }
 
 //--------------------------------------------------------------------------------
 void PhysicsObjectSystem::Add(PhysicsObject* physicsObject)
 {
 	m_PhysicsObjects.push_back(physicsObject);
+	mp_CollisionSystem->AddCollisionObject(physicsObject);
 }
 
 //--------------------------------------------------------------------------------
@@ -38,6 +42,12 @@ void PhysicsObjectSystem::Add(ObjectForceGenerator* objectForceGenerator)
 void PhysicsObjectSystem::Add(ForceGenerator* forceGenerator)
 {
 	m_ForceGenerators.push_back(forceGenerator);
+}
+
+//--------------------------------------------------------------------------------
+void PhysicsObjectSystem::Add(ContactGenerator* contactGenerator)
+{
+	mp_CollisionSystem->AddContactGenerator(contactGenerator);
 }
 
 //--------------------------------------------------------------------------------
@@ -203,16 +213,9 @@ void PhysicsObjectSystem::Update(float elapsedTime)
 	{
 		m_PhysicsObjects[i]->Update(elapsedTime);
 	}
-}
 
-
-//--------------------------------------------------------------------------------
-void PhysicsObjectSystem::Draw()
-{
-	for (unsigned int i = 0; i < m_PhysicsObjects.size(); i++)
-	{
-		m_PhysicsObjects[i]->Draw();
-	}
+	mp_CollisionSystem->CheckCollisions();
+	mp_CollisionSystem->ResolveContacts(elapsedTime);
 }
 
 //--------------------------------------------------------------------------------
@@ -227,10 +230,7 @@ void PhysicsObjectSystem::Reset()
 //--------------------------------------------------------------------------------
 void PhysicsObjectSystem::CleanUp()
 {
-	for (unsigned int i = 0; i < m_PhysicsObjects.size(); i++)
-	{
-		delete m_PhysicsObjects[i];
-	}
+	
 	for (unsigned int i = 0; i < m_ForceGenerators.size(); i++)
 	{
 		delete m_ForceGenerators[i];
@@ -242,4 +242,11 @@ void PhysicsObjectSystem::CleanUp()
 	m_PhysicsObjects.clear();
 	m_ForceGenerators.clear();
 	m_ObjectForceGenerators.clear();
+
+	if (mp_CollisionSystem != nullptr)
+	{
+		mp_CollisionSystem->CleanUp();
+	}
+	delete mp_CollisionSystem;
+	mp_CollisionSystem = nullptr;
 }

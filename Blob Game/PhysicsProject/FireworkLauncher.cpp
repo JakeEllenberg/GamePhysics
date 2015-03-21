@@ -91,7 +91,7 @@ void FireworkLauncher::Draw()
 	std::vector<Firework*>::iterator iter;
 	for (iter = m_Fireworks.begin(); iter != m_Fireworks.end(); iter++)
 	{
-		(*iter)->Draw();
+		//(*iter)->Draw();
 	}
 }
 

@@ -13,6 +13,7 @@
 #include "PhysicsObjectForceRegistry.h"
 #include <vector>
 #include "Generator.h"
+#include "CollisionSystem.h"
 //======================================================================
 class PhysicsObjectSystem
 {
@@ -25,6 +26,7 @@ public:
 	void Add(PhysicsObject* physicsObject);
 	void Add(ObjectForceGenerator* objectForceGenerator);
 	void Add(ForceGenerator* forceGenerator);
+	void Add(ContactGenerator* contactGenerator);
 
 	void Remove(PhysicsObject* physicsObject);
 	void Remove(ObjectForceGenerator* objectForceGenerator);
@@ -35,7 +37,6 @@ public:
 
 	void Update(float elapsedTime);
 	void Reset();
-	void Draw();
 	void CleanUp();
 
 private:
@@ -43,6 +44,7 @@ private:
 	std::vector<ObjectForceGenerator*> m_ObjectForceGenerators;
 	std::vector<ForceGenerator*> m_ForceGenerators;
 	PhysicsObjectForceRegistry* mp_ForceRegistry;
+	CollisionSystem* mp_CollisionSystem;
 };
 #endif
 //======================================================================

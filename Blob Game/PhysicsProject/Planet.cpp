@@ -20,9 +20,9 @@ Planet::~Planet()
 }
 
 //--------------------------------------------------------------------------------
-void Planet::Initialize(float radius, float mass, Vector3D initalPosition, Vector3D velocity, std::string planetName, std::string fileName)
+void Planet::Initialize(float mass, Vector3D initalPosition, Vector3D velocity, std::string planetName, std::string fileName)
 {
-	PhysicsObject::Inititalize(mass, initalPosition, velocity, Vector3D::Zero, Vector3D::Zero, radius);
+	PhysicsObject::Inititalize(mass, initalPosition, velocity, Vector3D::Zero, Vector3D::Zero);
 	m_Name = planetName;
 	loadImage(fileName);
 }

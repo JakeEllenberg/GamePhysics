@@ -1,22 +1,23 @@
-﻿Build started 2/17/2015 10:35:00 AM.
-     1>Project "C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\UnitTesting_PhysicsProject\UnitTesting_PhysicsProject.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 3/21/2015 5:38:10 PM.
+     1>Project "C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\UnitTesting_PhysicsProject\UnitTesting_PhysicsProject.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\UnitTesting_PhysicsProject.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt stdafx.cpp
          stdafx.cpp
+     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\UnitTesting_PhysicsProject.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt Test_Matrix.cpp Test_Vector3D.cpp unittest1.cpp
          unittest1.cpp
          Test_Vector3D.cpp
          Test_Matrix.cpp
          Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\Debug\UnitTesting_PhysicsProject.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\lib" /LIBPATH:C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\\PhysicsProject\Debug\ Matrix.obj Vector3D.obj kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\Debug\UnitTesting_PhysicsProject.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\Debug\UnitTesting_PhysicsProject.lib" /MACHINE:X86 /DLL Debug\stdafx.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\UnitTesting_PhysicsProject.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\lib" /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\\PhysicsProject\Debug\\" Matrix.obj Vector3D.obj kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\UnitTesting_PhysicsProject.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\UnitTesting_PhysicsProject.lib" /MACHINE:X86 /DLL Debug\stdafx.obj
          Debug\Test_Matrix.obj
          Debug\Test_Vector3D.obj
          Debug\unittest1.obj
-            Creating library C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\Debug\UnitTesting_PhysicsProject.lib and object C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\Debug\UnitTesting_PhysicsProject.exp
-         UnitTesting_PhysicsProject.vcxproj -> C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\Debug\UnitTesting_PhysicsProject.dll
-     1>Done Building Project "C:\Users\Jake\Desktop\Physics\GamePhysics\PhysicsProject\UnitTesting_PhysicsProject\UnitTesting_PhysicsProject.vcxproj" (Rebuild target(s)).
+            Creating library C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\UnitTesting_PhysicsProject.lib and object C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\UnitTesting_PhysicsProject.exp
+         UnitTesting_PhysicsProject.vcxproj -> C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\UnitTesting_PhysicsProject.dll
+     1>Done Building Project "C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\UnitTesting_PhysicsProject\UnitTesting_PhysicsProject.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.82
+Time Elapsed 00:00:01.74

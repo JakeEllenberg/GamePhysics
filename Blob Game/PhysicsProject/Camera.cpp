@@ -27,8 +27,6 @@ Camera::Camera()
 	m_Move_Right = false;
 	m_Move_Foward = false;
 	m_Move_Back = false;
-	m_IsFollowing = false;
-	m_CurrentFollowIndex = 0;
 }
 
 //--------------------------------------------------------------------------------
@@ -37,7 +35,7 @@ Camera::~Camera()
 }
 
 //--------------------------------------------------------------------------------
-void Camera::Initalize(Vector3D screenSize, std::vector<Planet*> planets, float followDistane)
+void Camera::Initalize(Vector3D screenSize)
 {
 	m_ScreenSize = screenSize;
 	m_Position = Vector3D(-1, 1, 1);
@@ -52,12 +50,6 @@ void Camera::Initalize(Vector3D screenSize, std::vector<Planet*> planets, float 
 	m_Move_Right = false;
 	m_Move_Foward = false;
 	m_Move_Back = false;
-
-	m_IsFollowing = false;
-	m_IsZoomedOut = true;
-	m_CurrentFollowIndex = 0;
-	m_Planets = planets;
-	m_FollowDistance = followDistane;
 }
 
 void Camera::UpdateScreenSize(Vector3D screenSize)
@@ -123,80 +115,26 @@ void Camera::HandleKeyPressed(unsigned char key)
 {
 	switch (key)
 	{
-	case '0':
-		//reset
-		m_IsZoomedOut = true;
-		m_IsFollowing = false;
-		break;
-	case '1':
-		m_IsFollowing = true;
-		m_IsZoomedOut = false;
-		break;
-	case '2':
-		m_IsFollowing = true;
-		m_IsZoomedOut = false;
-		break;
-	case '3':
-		m_IsFollowing = true;
-		m_IsZoomedOut = false;
-		break;
-	case '4':
-		m_IsFollowing = true;
-		m_IsZoomedOut = false;
-		break;
-	case '5':
-		m_IsFollowing = true;
-		m_IsZoomedOut = false;
-		break;
-	case '6':
-		m_IsFollowing = true;
-		m_IsZoomedOut = false;
-		break;
-	case '7':
-		m_IsFollowing = true;
-		m_IsZoomedOut = false;
-		break;
-	case '8':
-		m_IsFollowing = true;
-		m_IsZoomedOut = false;
-		break;
-	case '9':
-		m_IsFollowing = true;
-		m_IsZoomedOut = false;
-		break;
-	case 'w':
-		m_Move_Foward = true;
-		m_IsFollowing = false;
-		m_IsZoomedOut = false;
-		break;
-	case 's':
-		m_Move_Back = true;
-		m_IsFollowing = false;
-		m_IsZoomedOut = false;
-		break;
-	case 'd':
-		m_Move_Right = true;
-		m_IsFollowing = false;
-		m_IsZoomedOut = false;
-		break;
-	case 'a':
-		m_Move_Left = true;
-		m_IsFollowing = false;
-		m_IsZoomedOut = false;
-		break;
-	case 'q':
-		m_Move_Up = true;
-		m_IsFollowing = false;
-		m_IsZoomedOut = false;
-		break;
-	case 'e':
-		m_Move_Down = true;
-		m_IsFollowing = false;
-		m_IsZoomedOut = false;
-		break;
+		case 'w':
+			m_Move_Foward = true;
+			break;
+		case 's':
+			m_Move_Back = true;
+			break;
+		case 'd':
+			m_Move_Right = true;
+			break;
+		case 'a':
+			m_Move_Left = true;
+			break;
+		case 'q':
+			m_Move_Up = true;
+			break;
+		case 'e':
+			m_Move_Down = true;
+			break;
 	}
 }
-
 
 //--------------------------------------------------------------------------------
 void Camera::HandleKeyReleased(unsigned char key)
@@ -224,31 +162,10 @@ void Camera::HandleKeyReleased(unsigned char key)
 	}
 }
 
+//--------------------------------------------------------------------------------
 void Camera::Update()
 {
-	Vector3D desiredPosition = m_Position;
-
-	if (m_IsFollowing)
-	{
-		desiredPosition = m_Planets[m_CurrentFollowIndex]->GetPosition();
-		m_Rotation = Vector3D(90.0f, 0.0f, 0.0f);
-		desiredPosition.Y += m_FollowDistance;
-		m_Position.Lerp(desiredPosition, 0.1f);
-	}
-	else if (m_IsZoomedOut)
-	{
-		desiredPosition = Vector3D(-12.0f, m_FollowDistance * 10.0f, 0.0f);
-		m_Rotation = Vector3D(60.0f, 90.0f, 0.0f);
-		m_Position.Lerp(desiredPosition, 0.02f);
-	}
-	else
-	{
-		move();
-	}
-
-	
-	
-
+	move();
  	glLoadIdentity();
 	glRotatef(m_Rotation.X, 1.0, 0.0, 0.0);
 	glRotatef(m_Rotation.Y, 0.0, 1.0, 0.0);

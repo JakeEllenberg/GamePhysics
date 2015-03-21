@@ -111,26 +111,9 @@ void initalize()
 	g_Glui_subwin->add_button("Stop", 2, handleGlui);
 	g_Glui_subwin->add_button("Toggle Debug", 4, handleGlui);
 	g_StaticText = g_Glui_subwin->add_statictext("Playing");
-	g_Glui_subwin->add_column(1);
-	GLUI_StaticText* name = g_Glui_subwin->add_statictext("Planet Name: ");
-	g_Glui_subwin->add_statictext("Planet Mass (KG):");
-	GLUI_StaticText* mass = g_Glui_subwin->add_statictext("                                                         ");
-	g_Glui_subwin->add_statictext("");
-	g_Time = g_Glui_subwin->add_statictext(std::string("Simulation Speed: " + std::to_string(GameApp::TimeStep) +  " day/second").c_str());
-	g_Glui_subwin->add_button("Increase Simulation Speed", 6, handleGlui);
-	g_Glui_subwin->add_column(1);
-	GLUI_StaticText* position = g_Glui_subwin->add_statictext("Position: ");
-	GLUI_StaticText* velocity = g_Glui_subwin->add_statictext("Velocity: ");
-	GLUI_StaticText* acceleration = g_Glui_subwin->add_statictext("Acceleration: ");
-	g_Glui_subwin->add_statictext("");
-	g_Glui_subwin->add_statictext("");
-	g_Glui_subwin->add_button("Decrease Simulation Speed", 5, handleGlui);
-
-	gp_GameApp->SetGluiText(name, mass, position, velocity, acceleration);
 	g_UseGUIMouse = false;
 
 	SetCursorPos((int)(g_ScreenSize.X / 2.0f), (int)(g_ScreenSize.Y / 2.0f));
-
 
 	gp_EditorState->Pause();
 	gp_GameApp->Reset();

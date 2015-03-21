@@ -15,6 +15,7 @@ public:
 	float Y;
 	float Z;
 	static const Vector3D Zero;
+	static const Vector3D Up;
 
 	Vector3D();
 	Vector3D(float x, float y, float z);

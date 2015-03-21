@@ -10,6 +10,7 @@ enum GeneratorType
 {
 	GENERATOR = 0,
 	FORCE_GENERATOR,
+	EARTH_GRAVITY_GENERATOR,
 	OBJECT_FORCE_GENERATOR, //All object force generator types MUST go below this point
 	GRAVITY_GENERATOR
 };

@@ -70,7 +70,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CableContactGenerator.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CollisionSystem.cpp" />
+    <ClCompile Include="Contact.cpp" />
+    <ClCompile Include="ContactGenerator.cpp" />
+    <ClCompile Include="EarthGravityGenerator.cpp" />
     <ClCompile Include="Firework.cpp" />
     <ClCompile Include="FireworkLauncher.cpp" />
     <ClCompile Include="ForceGenerator.cpp" />
@@ -78,6 +83,9 @@
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="GlutTime.cpp" />
     <ClCompile Include="GravityGenerator.cpp" />
+    <ClCompile Include="Ground.cpp" />
+    <ClCompile Include="GroundContactGenerator.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="ObjectForceGenerator.cpp" />
@@ -86,8 +94,9 @@
     <ClCompile Include="EditorState.cpp" />
     <ClCompile Include="PhysicsObjectForceRegistry.cpp" />
     <ClCompile Include="PhysicsObjectSystem.cpp" />
-    <ClCompile Include="Planet.cpp" />
-    <ClCompile Include="PlanetSystem.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RenderObject.cpp" />
+    <ClCompile Include="RodContactGenerator.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Vector3D.cpp" />
   </ItemGroup>
@@ -95,7 +104,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CableContactGenerator.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CollisionSystem.h" />
+    <ClInclude Include="Contact.h" />
+    <ClInclude Include="ContactGenerator.h" />
+    <ClInclude Include="EarthGravityGenerator.h" />
     <ClInclude Include="Firework.h" />
     <ClInclude Include="FireworkLauncher.h" />
     <ClInclude Include="ForceGenerator.h" />
@@ -103,6 +117,9 @@
     <ClInclude Include="Generator.h" />
     <ClInclude Include="GlutTime.h" />
     <ClInclude Include="GravityGenerator.h" />
+    <ClInclude Include="Ground.h" />
+    <ClInclude Include="GroundContactGenerator.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="ObjectForceGenerator.h" />
     <ClInclude Include="Particle.h" />
@@ -110,8 +127,9 @@
     <ClInclude Include="EditorState.h" />
     <ClInclude Include="PhysicsObjectForceRegistry.h" />
     <ClInclude Include="PhysicsObjectSystem.h" />
-    <ClInclude Include="Planet.h" />
-    <ClInclude Include="PlanetSystem.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="RenderObject.h" />
+    <ClInclude Include="RodContactGenerator.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="Vector3D.h" />
   </ItemGroup>

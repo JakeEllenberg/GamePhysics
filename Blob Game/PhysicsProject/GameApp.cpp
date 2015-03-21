@@ -1,13 +1,13 @@
 //======================================================================
-//File: Main.cpp
+//File: GameApp.cpp
 //Author: Jake Ellenberg
 //Created: 1/17/2015
-//Purpose: Entry point of the program, setup OpenGl functionality.
+//Purpose: Holds Game State Information
 //======================================================================
 #include "Skybox.h"
 #include "GameApp.h"
 //================================================================================
-int GameApp::TimeStep = 50;
+int GameApp::TimeStep = 1;
 bool GameApp::DebugData = false;
 //================================================================================
 GameApp::GameApp()
@@ -25,30 +25,35 @@ GameApp::~GameApp()
 void GameApp::Init(Vector3D screenSize)
 {
 	mp_Camera = new Camera();
+	mp_Camera->Initalize(screenSize);
 
 	mp_SkyBox = new Skybox();
 	mp_SkyBox->Initialize();
+
+	m_Level = new Level();
+	m_Level->Initialize();
+
+	EarthGravityGenerator* earthGravity = new EarthGravityGenerator(Vector3D(0, -9.8f, 0));
+
+	std::vector<PhysicsObject*> collisionObjects = m_Level->GetCollisionObjects();
 	
-	mp_PlanetSystem = new PlanetSystem();
-	mp_PlanetSystem->Initialize();
 	mp_PhysicsObjectSystem = new PhysicsObjectSystem();
 	mp_PhysicsObjectSystem->Initialize();
-	GravityGenerator* gravityGenerator = new GravityGenerator();
-	mp_PhysicsObjectSystem->Add(gravityGenerator);
+	mp_PhysicsObjectSystem->Add(earthGravity);
 
-	std::vector<Planet*> planets = mp_PlanetSystem->GetPlanets();
-	std::vector<PhysicsObject*> planetsAsPhysicsObjects;
-
-	mp_Camera->Initalize(screenSize, planets, 2.5f);
-
-	for (unsigned int i = 0; i < planets.size(); i++)
+	for each (PhysicsObject* object in collisionObjects)
 	{
-		mp_PhysicsObjectSystem->Add(planets[i]);
-		planetsAsPhysicsObjects.push_back(planets[i]);
+		mp_PhysicsObjectSystem->Add(object);
 	}
-	mp_PhysicsObjectSystem->AddToRegistry(planetsAsPhysicsObjects, GeneratorType::GRAVITY_GENERATOR);
-
+	mp_PhysicsObjectSystem->AddToRegistry(collisionObjects, GeneratorType::EARTH_GRAVITY_GENERATOR);
 	
+	std::vector<ContactGenerator*> contactGenerators = m_Level->GetContactGenerators();
+
+	for each(ContactGenerator* contactGenerator in contactGenerators)
+	{
+		mp_PhysicsObjectSystem->Add(contactGenerator);
+	}
+
 }
 
 void GameApp::UpdateScreenSize(Vector3D screenSize)
@@ -64,23 +69,6 @@ void GameApp::Update(float deltaTime, const EditorState* state)
 		update(deltaTime);
 	}
 	mp_Camera->Update();
-	
-	Planet* currentPlanet = mp_PlanetSystem->GetPlanets()[m_CurrentSelectIndex];
-	std::string planetName = "Planet Name: " + currentPlanet->GetName();
-	mp_GluiText_Name->set_text(planetName.c_str());
-
-	std::string planetMass = std::to_string(currentPlanet->GetMass() * 1.9891 *  pow(10, 30));
-	planetMass = planetMass.substr(0, planetMass.size() - 5); // take off all but the first decimal point
-	mp_GluiText_Mass->set_text(planetMass.c_str());
-
-	std::string planetPosition = "Position(KM): " + (currentPlanet->GetPosition() * 149597871.0f).ToString(true);
-	mp_GluiText_Position->set_text(planetPosition.c_str());
-
-	std::string planetVelocity = "Velocity(KM/S): " + (currentPlanet->GetVelocity() * 149597871.0f).ToString();
-	mp_GluiText_Velocity->set_text(planetVelocity.c_str());
-
-	std::string planetAcceleration = "Acceleration(M/(S*S)): " + (currentPlanet->GetAcceleration() * 149597871.0f * 1000).ToString();
-	mp_GluiText_Acceleration->set_text(planetAcceleration.c_str());
 }
 
 //--------------------------------------------------------------------------------
@@ -99,7 +87,7 @@ void GameApp::update(float deltaTime)
 //--------------------------------------------------------------------------------
 void GameApp::Draw()
 {
-	mp_PhysicsObjectSystem->Draw();
+	m_Level->Draw();
 	mp_SkyBox->Render();
 }
 
@@ -112,38 +100,7 @@ void GameApp::HandleMouse(Vector3D mousePos)
 //--------------------------------------------------------------------------------
 void GameApp::HandleKeyPressed(unsigned char key)
 {
-	switch (key)
-	{
-	case '1':
-		m_CurrentSelectIndex = 1;
-		break;
-	case '2':
-		m_CurrentSelectIndex = 2;
-		break;
-	case '3':
-		m_CurrentSelectIndex = 3;
-		break;
-	case '4':
-		m_CurrentSelectIndex = 4;
-		break;
-	case '5':
-		m_CurrentSelectIndex = 5;
-		break;
-	case '6':
-		m_CurrentSelectIndex = 6;
-		break;
-	case '7':
-		m_CurrentSelectIndex = 7;
-		break;
-	case '8':
-		m_CurrentSelectIndex = 8;
-		break;
-	case '9':
-		m_CurrentSelectIndex = 9;
-		break;
-	}
 	mp_Camera->HandleKeyPressed(key);
-	mp_Camera->SetCurrentFollowIndex(m_CurrentSelectIndex);
 }
 
 //--------------------------------------------------------------------------------

@@ -16,12 +16,11 @@ class Camera
 public:
 	Camera();
 	~Camera();
-	void Initalize(Vector3D screenSize, std::vector<Planet*> planets, float followDistance);
+	void Initalize(Vector3D screenSize);
 	void UpdateScreenSize(Vector3D screenSize);
 	void HandleMouse(Vector3D mousePos);
 	void HandleKeyPressed(unsigned char key);
 	void HandleKeyReleased(unsigned char key);
-	void SetCurrentFollowIndex(int index) { m_CurrentFollowIndex = index;};
 	void Update();
 private:
 	void move();
@@ -40,12 +39,6 @@ private:
 
 	float m_MouseSpeed;
 	float m_CameraSpeed;
-
-	int m_CurrentFollowIndex;
-	bool m_IsFollowing;
-	bool m_IsZoomedOut;
-	float m_FollowDistance;
-	std::vector<Planet*> m_Planets;
 };
 #endif
 //======================================================================
