@@ -3,11 +3,11 @@
 //Author: Jake Ellenberg
 //Created: 3/21/2015
 //======================================================================
-#ifndef GROUNDCONTACTGENERATOR_H
-#define GROUNDCONTACTGENERATOR_H
+#ifndef SHAPE_H
+#define SHAPE_H
 //======================================================================
 #include <vector>
-#include "PhysicsObject.h"
+#include "RenderObject.h"
 #include "RodContactGenerator.h"
 //======================================================================
 class Shape
@@ -16,9 +16,13 @@ public:
 	Shape();
 	~Shape();
 
+	virtual void Inititalize(Vector3D centerPosition, std::string texturePath, float length) = 0;
+	std::vector<PhysicsObject*> GetPhysicsObjects();
+	inline std::vector<RenderObject*> GetRenderObjects() { return m_Objects; };
+	inline std::vector<RodContactGenerator*> GetRods() { return m_Rods; };
 
-private:
-	std::vector<PhysicsObject*> m_PhysicsObjects;
+protected:
+	std::vector<RenderObject*> m_Objects;
 	std::vector<RodContactGenerator*> m_Rods;
 };
 #endif

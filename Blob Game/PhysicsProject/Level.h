@@ -12,6 +12,7 @@
 #include <vector>
 #include <map>
 #include "Player.h"
+#include "Shape.h"
 class SpringForceGenerator;
 class ContactGenerator;
 //======================================================================
@@ -29,10 +30,13 @@ public:
 	std::vector<PhysicsObject*> GetCollisionObjects();
 	std::vector<ContactGenerator*> GetContactGenerators();
 	std::map<SpringForceGenerator*, std::vector<PhysicsObject*>> GetSpringForceGenerators();
+	void AddShape(Shape* shape);
+	Player* GetPlayer() { return m_Player; };
 private:
 	std::vector<RenderObject*> m_RenderObjects;
 	std::vector<ContactGenerator*> m_ContactGenerators;
 	std::map<SpringForceGenerator*, std::vector<PhysicsObject*>> m_SpringForceGenerators;
+	
 	Ground* m_Ground;
 	Player* m_Player;
 };

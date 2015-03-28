@@ -27,15 +27,18 @@ Camera::Camera()
 	m_Move_Right = false;
 	m_Move_Foward = false;
 	m_Move_Back = false;
+	m_CameraObject = nullptr;
 }
 
 //--------------------------------------------------------------------------------
 Camera::~Camera()
 {
+	delete m_CameraObject;
+	m_CameraObject = nullptr;
 }
 
 //--------------------------------------------------------------------------------
-void Camera::Initalize(Vector3D screenSize)
+void Camera::Initalize(Vector3D screenSize, PhysicsObject* cameraObject)
 {
 	m_ScreenSize = screenSize;
 	m_Position = Vector3D(-1, 1, 1);
@@ -50,6 +53,8 @@ void Camera::Initalize(Vector3D screenSize)
 	m_Move_Right = false;
 	m_Move_Foward = false;
 	m_Move_Back = false;
+
+	m_CameraObject = cameraObject;
 }
 
 void Camera::UpdateScreenSize(Vector3D screenSize)
@@ -169,7 +174,8 @@ void Camera::Update()
  	glLoadIdentity();
 	glRotatef(m_Rotation.X, 1.0, 0.0, 0.0);
 	glRotatef(m_Rotation.Y, 0.0, 1.0, 0.0);
-	glTranslated(-m_Position.X, -m_Position.Y, -m_Position.Z);
+	//glTranslated(-m_Position.X, -m_Position.Y, -m_Position.Z);
+	glTranslated(-m_CameraObject->GetPosition().X, -10.0f, -m_CameraObject->GetPosition().Z);
 	m_LastMousePosition = Vector3D((float)((int)((m_ScreenSize.X / 2.0f))),
 		(float)((int)((m_ScreenSize.Y / 2.0f))), 0);
 }

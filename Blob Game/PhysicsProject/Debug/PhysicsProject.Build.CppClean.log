@@ -1,8 +1,5 @@
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\vc120.pdb
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\vc120.idb
-c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\generator.obj
-c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\gluttime.obj
-c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\gravitygenerator.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\ground.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\groundcontactgenerator.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\level.obj
@@ -17,8 +14,11 @@ c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\player.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\renderobject.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\rodcontactgenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\shape.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\skybox.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\springforcegenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\cube.obj
+c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\tetrahedron.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\vector3d.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\bungeeforcegenerator.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\cablecontactgenerator.obj
@@ -31,6 +31,10 @@ c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\fireworklauncher.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\forcegenerator.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\gameapp.obj
+c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\generator.obj
+c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\gluttime.obj
+c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\gravitygenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\pyramid.obj
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\debug\physicsproject.ilk
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\debug\physicsproject.exe
 c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\debug\physicsproject.pdb

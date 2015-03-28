@@ -101,12 +101,12 @@ void Contact::resolveInterpenetration(float deltaTime)
 	}
 
 	Vector3D movePerIMass = m_ContactNormal * (m_Penetration / totalInverseMass);
-	Vector3D particleMovementOne = movePerIMass * mp_ContactOne->GetInverseMass();
+	Vector3D particleMovementOne = movePerIMass * mp_ContactOne->GetInverseMass() * deltaTime;
 	mp_ContactOne->SetPosition(mp_ContactOne->GetPosition() + particleMovementOne);
 	Vector3D particleMovementTwo = Vector3D::Zero;
 	if (mp_ContactTwo != nullptr)
 	{
-		particleMovementTwo = movePerIMass * -mp_ContactTwo->GetInverseMass();
+		particleMovementTwo = movePerIMass * -mp_ContactTwo->GetInverseMass() * deltaTime;
 		mp_ContactTwo->SetPosition(mp_ContactTwo->GetPosition() + particleMovementTwo);
 	}
 	

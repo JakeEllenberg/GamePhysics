@@ -14,6 +14,20 @@ class Player : public RenderObject
 public:
 	Player();
 	~Player();
+
+	inline void SetSpeed(float speed) { m_Speed = speed; };
+
+	void Update(float sTime);
+
+	void HandleKeyPressed(unsigned char key);
+	void HandleKeyReleased(unsigned char key);
+
+private:
+	float m_Speed;
+	bool m_Pressed_W;
+	bool m_Pressed_A;
+	bool m_Pressed_S;
+	bool m_Pressed_D;
 };
 #endif
 //======================================================================

@@ -16,7 +16,7 @@ class Camera
 public:
 	Camera();
 	~Camera();
-	void Initalize(Vector3D screenSize);
+	void Initalize(Vector3D screenSize, PhysicsObject* cameraObject);
 	void UpdateScreenSize(Vector3D screenSize);
 	void HandleMouse(Vector3D mousePos);
 	void HandleKeyPressed(unsigned char key);
@@ -29,6 +29,7 @@ private:
 	Vector3D m_Rotation;
 	Vector3D m_Position;
 	Vector3D m_ScreenSize;
+	PhysicsObject* m_CameraObject;
 
 	bool m_Move_Foward;
 	bool m_Move_Back;

@@ -9,6 +9,9 @@
 #include "CableContactGenerator.h"
 #include "SpringForceGenerator.h"
 #include "BungeeForceGenerator.h"
+#include "Cube.h"
+#include "Tetrahedron.h"
+#include "Pyramid.h"
 
 //--------------------------------------------------------------------------------
 Level::Level()
@@ -28,7 +31,7 @@ void Level::Initialize()
 	m_Ground->Inititalize("Seige/siege_bot.jpg");
 	m_Player = new Player();
 	m_Player->Inititalize(1.0f, Vector3D(0,5,0), Vector3D(0,0,0), Vector3D::Zero, Vector3D::Zero, 1.0f, "Characters/smile-texture.jpg");
-	m_Player->SetDampening(0.9999f);
+	m_Player->SetSpeed(10.0f);
 
 	RenderObject* collectable1 = new RenderObject();
 	collectable1->Inititalize(1.0f, Vector3D(5, 5, 0), Vector3D::Zero, Vector3D::Zero, Vector3D::Zero, 1.0f, "Characters/smile-texture2.jpg");
@@ -41,11 +44,33 @@ void Level::Initialize()
 	m_RenderObjects.push_back(collectable1);
 	m_RenderObjects.push_back(collectable2);
 
+	Cube* cube = new Cube();
+	cube->Inititalize(Vector3D(15, 20, 0), "Characters/smile-texture2.jpg", 10);
+	//AddShape(cube);
+
+	Tetrahedron* tet = new Tetrahedron();
+	tet->Inititalize(Vector3D(15, 20, 0), "Characters/smile-texture2.jpg", 5);
+	//AddShape(tet);
+
+	Pyramid* pyramid = new Pyramid();
+	pyramid->Inititalize(Vector3D(15, 20, 0), "Characters/smile-texture2.jpg", 5);
+	AddShape(pyramid);
+
+
 	//m_ContactGenerators.push_back(new CableContactGenerator(collectable1, collectable2, 1.0f));
 
-	SpringForceGenerator* springOne = new BungeeForceGenerator(1.0f, 2, collectable2);
+	//SpringForceGenerator* springOne = new BungeeForceGenerator(1.0f, 2, collectable2);
 
-	m_SpringForceGenerators[springOne].push_back(collectable1);
+	//m_SpringForceGenerators[springOne].push_back(collectable1);
+}
+
+//--------------------------------------------------------------------------------
+void Level::AddShape(Shape* shape)
+{
+	std::vector<RenderObject*> objects = shape->GetRenderObjects();
+	m_RenderObjects.insert(m_RenderObjects.end(), objects.begin(), objects.end());
+	std::vector<RodContactGenerator*> rods = shape->GetRods();
+	m_ContactGenerators.insert(m_ContactGenerators.end(), rods.begin(), rods.end());
 }
 
 //--------------------------------------------------------------------------------

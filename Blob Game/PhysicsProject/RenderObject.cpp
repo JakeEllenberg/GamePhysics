@@ -20,6 +20,12 @@ void RenderObject::Inititalize(float mass, Vector3D initialPosition, Vector3D in
 	loadImage(imageFileName);
 }
 
+void RenderObject::Inititalize(float mass, Vector3D initialPosition, std::string imageFileName)
+{
+	PhysicsObject::Inititalize(mass, initialPosition);
+	loadImage(imageFileName);
+}
+
 //--------------------------------------------------------------------------------
 void RenderObject::loadImage(std::string filePath)
 {

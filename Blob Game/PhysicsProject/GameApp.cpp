@@ -7,6 +7,7 @@
 #include "Skybox.h"
 #include "GameApp.h"
 #include "SpringForceGenerator.h"
+#include "BungeeForceGenerator.h"
 #include <map>
 //================================================================================
 int GameApp::TimeStep = 1;
@@ -26,14 +27,19 @@ GameApp::~GameApp()
 //--------------------------------------------------------------------------------
 void GameApp::Init(Vector3D screenSize)
 {
+	Vector3D cameraOffSet = Vector3D(0, 0, -5);
+	PhysicsObject* cameraObject = new PhysicsObject();
+	
+
 	mp_Camera = new Camera();
-	mp_Camera->Initalize(screenSize);
+	mp_Camera->Initalize(screenSize, cameraObject);
 
 	mp_SkyBox = new Skybox();
 	mp_SkyBox->Initialize();
 
 	m_Level = new Level();
 	m_Level->Initialize();
+	cameraObject->Inititalize(1.0f, m_Level->GetPlayer()->GetPosition() + cameraOffSet);
 
 	EarthGravityGenerator* earthGravity = new EarthGravityGenerator(Vector3D(0, -9.8f, 0));
 
@@ -66,6 +72,10 @@ void GameApp::Init(Vector3D screenSize)
 			mp_PhysicsObjectSystem->AddToRegistry(physicsObject, iter->first);
 		}
 	}
+
+	
+	mp_PhysicsObjectSystem->Add(cameraObject);
+	mp_PhysicsObjectSystem->AddToRegistry(cameraObject, new BungeeForceGenerator(10.0f, 4.0f, m_Level->GetPlayer()));
 
 }
 
@@ -114,12 +124,15 @@ void GameApp::HandleMouse(Vector3D mousePos)
 void GameApp::HandleKeyPressed(unsigned char key)
 {
 	mp_Camera->HandleKeyPressed(key);
+	m_Level->GetPlayer()->HandleKeyPressed(key);
+	
 }
 
 //--------------------------------------------------------------------------------
 void GameApp::HandleKeyReleased(unsigned char key)
 {
 	mp_Camera->HandleKeyReleased(key);
+	m_Level->GetPlayer()->HandleKeyReleased(key);
 }
 
 //--------------------------------------------------------------------------------
