@@ -6,6 +6,8 @@
 //======================================================================
 #include "Skybox.h"
 #include "GameApp.h"
+#include "SpringForceGenerator.h"
+#include <map>
 //================================================================================
 int GameApp::TimeStep = 1;
 bool GameApp::DebugData = false;
@@ -52,6 +54,17 @@ void GameApp::Init(Vector3D screenSize)
 	for each(ContactGenerator* contactGenerator in contactGenerators)
 	{
 		mp_PhysicsObjectSystem->Add(contactGenerator);
+	}
+
+	std::map<SpringForceGenerator*, std::vector<PhysicsObject*>> springForceGenerators = m_Level->GetSpringForceGenerators();
+
+	std::map<SpringForceGenerator*, std::vector<PhysicsObject*>>::iterator iter;
+	for (iter = springForceGenerators.begin(); iter != springForceGenerators.end(); iter++)
+	{
+		for each(PhysicsObject* physicsObject in iter->second)
+		{
+			mp_PhysicsObjectSystem->AddToRegistry(physicsObject, iter->first);
+		}
 	}
 
 }

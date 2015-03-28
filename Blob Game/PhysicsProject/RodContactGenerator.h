@@ -14,8 +14,8 @@ public:
 	RodContactGenerator(PhysicsObject* endOne, PhysicsObject* endTwo, float maxLength);
 	~RodContactGenerator();
 
-	void AddContact(CollisionSystem* collisionSystem);
-private:
+	virtual void AddContact(CollisionSystem* collisionSystem);
+protected:
 	float currentLength();
 
 	float m_MaxLength;

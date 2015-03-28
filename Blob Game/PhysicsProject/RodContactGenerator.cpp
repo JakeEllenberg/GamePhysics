@@ -3,10 +3,13 @@
 //Author: Jake Ellenberg
 //Created: 3/21/2015
 //======================================================================
+#ifndef ROD_CONTACT_GENERATOR_H
+#define ROD_CONTACT_GENERATOR_H
+//======================================================================
 #include "RodContactGenerator.h"
 #include "CollisionSystem.h"
 #include <math.h>
-
+//======================================================================
 //-----------------------------------------------------------------------------
 RodContactGenerator::RodContactGenerator(PhysicsObject* endOne, PhysicsObject* endTwo, float maxLength)
 {
@@ -19,6 +22,7 @@ RodContactGenerator::RodContactGenerator(PhysicsObject* endOne, PhysicsObject* e
 RodContactGenerator::~RodContactGenerator()
 {
 }
+
 //-----------------------------------------------------------------------------
 float RodContactGenerator::currentLength()
 {
@@ -48,3 +52,5 @@ void RodContactGenerator::AddContact(CollisionSystem* collisionSystem)
 
 	collisionSystem->AddContact(Contact(restitution, normal, penetration, m_EndOne, m_EndTwo));
 }
+#endif
+//======================================================================

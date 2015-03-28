@@ -1,9 +1,8 @@
-﻿Build started 3/21/2015 5:38:10 PM.
+﻿Build started 3/28/2015 1:05:14 PM.
      1>Project "C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\UnitTesting_PhysicsProject\UnitTesting_PhysicsProject.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\UnitTesting_PhysicsProject.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt stdafx.cpp
          stdafx.cpp
-     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\UnitTesting_PhysicsProject.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt Test_Matrix.cpp Test_Vector3D.cpp unittest1.cpp
          unittest1.cpp
          Test_Vector3D.cpp
@@ -20,4 +19,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.74
+Time Elapsed 00:00:01.63

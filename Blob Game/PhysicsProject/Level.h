@@ -10,7 +10,9 @@
 #include "RenderObject.h"
 #include "Ground.h"
 #include <vector>
+#include <map>
 #include "Player.h"
+class SpringForceGenerator;
 class ContactGenerator;
 //======================================================================
 class Level
@@ -26,9 +28,11 @@ public:
 	Ground* GetGround() { return m_Ground; };
 	std::vector<PhysicsObject*> GetCollisionObjects();
 	std::vector<ContactGenerator*> GetContactGenerators();
+	std::map<SpringForceGenerator*, std::vector<PhysicsObject*>> GetSpringForceGenerators();
 private:
 	std::vector<RenderObject*> m_RenderObjects;
 	std::vector<ContactGenerator*> m_ContactGenerators;
+	std::map<SpringForceGenerator*, std::vector<PhysicsObject*>> m_SpringForceGenerators;
 	Ground* m_Ground;
 	Player* m_Player;
 };

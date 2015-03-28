@@ -90,6 +90,12 @@ void PhysicsObjectSystem::Remove(ForceGenerator* forceGenerator)
 }
 
 //--------------------------------------------------------------------------------
+void PhysicsObjectSystem::AddToRegistry(PhysicsObject* object, ForceGenerator* generator)
+{
+	mp_ForceRegistry->Add(object, generator);
+}
+
+//--------------------------------------------------------------------------------
 void PhysicsObjectSystem::AddToRegistry(std::vector<PhysicsObject*> objects, GeneratorType type)
 {
 	bool twoObjects = type >= GeneratorType::OBJECT_FORCE_GENERATOR;
@@ -215,7 +221,19 @@ void PhysicsObjectSystem::Update(float elapsedTime)
 	}
 
 	mp_CollisionSystem->CheckCollisions();
-	mp_CollisionSystem->ResolveContacts(elapsedTime);
+	int maxIterations = 25;
+	int iterations = mp_CollisionSystem->GetNumContacts() * 2;
+	if (iterations > maxIterations)
+	{
+		iterations = maxIterations;
+	}
+	int i = 0;
+	while (i < iterations && mp_CollisionSystem->GetNumContacts() > 0)
+	{
+		mp_CollisionSystem->ResolveContacts(elapsedTime);
+		mp_CollisionSystem->CheckCollisions();
+		i++;
+	}
 }
 
 //--------------------------------------------------------------------------------

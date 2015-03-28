@@ -6,6 +6,9 @@
 //======================================================================
 #include "Level.h"
 #include "RodContactGenerator.h"
+#include "CableContactGenerator.h"
+#include "SpringForceGenerator.h"
+#include "BungeeForceGenerator.h"
 
 //--------------------------------------------------------------------------------
 Level::Level()
@@ -38,7 +41,11 @@ void Level::Initialize()
 	m_RenderObjects.push_back(collectable1);
 	m_RenderObjects.push_back(collectable2);
 
-	m_ContactGenerators.push_back(new RodContactGenerator(collectable1, collectable2, 10.0f));
+	//m_ContactGenerators.push_back(new CableContactGenerator(collectable1, collectable2, 1.0f));
+
+	SpringForceGenerator* springOne = new BungeeForceGenerator(1.0f, 2, collectable2);
+
+	m_SpringForceGenerators[springOne].push_back(collectable1);
 }
 
 //--------------------------------------------------------------------------------
@@ -67,6 +74,11 @@ std::vector<PhysicsObject*> Level::GetCollisionObjects()
 std::vector<ContactGenerator*> Level::GetContactGenerators()
 {
 	return m_ContactGenerators;
+}
+
+std::map<SpringForceGenerator*, std::vector<PhysicsObject*>> Level::GetSpringForceGenerators()
+{
+	return m_SpringForceGenerators;
 }
 
 //--------------------------------------------------------------------------------

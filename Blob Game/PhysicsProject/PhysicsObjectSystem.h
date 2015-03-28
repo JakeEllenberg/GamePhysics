@@ -32,6 +32,7 @@ public:
 	void Remove(ObjectForceGenerator* objectForceGenerator);
 	void Remove(ForceGenerator* forceGenerator);
 
+	void AddToRegistry(PhysicsObject* object, ForceGenerator* generator);
 	void AddToRegistry(std::vector<PhysicsObject*> objects, GeneratorType type);
 	void RemoveFromRegistry(std::vector<PhysicsObject*> objects, GeneratorType type);
 

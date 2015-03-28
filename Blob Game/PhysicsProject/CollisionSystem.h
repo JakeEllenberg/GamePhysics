@@ -29,6 +29,7 @@ public:
 	void AddContact(Contact& contact);
 	void ResolveContacts(float deltaTime);
 
+	inline int GetNumContacts(){ return (int)m_Contacts.size(); };
 	inline std::vector<PhysicsObject*> GetCollisionObjects() { return m_CollisionObjects; };
 
 private:

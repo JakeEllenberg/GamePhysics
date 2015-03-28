@@ -70,6 +70,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BungeeForceGenerator.cpp" />
     <ClCompile Include="CableContactGenerator.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CollisionSystem.cpp" />
@@ -97,13 +98,16 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderObject.cpp" />
     <ClCompile Include="RodContactGenerator.cpp" />
+    <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Skybox.cpp" />
+    <ClCompile Include="SpringForceGenerator.cpp" />
     <ClCompile Include="Vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BungeeForceGenerator.h" />
     <ClInclude Include="CableContactGenerator.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CollisionSystem.h" />
@@ -130,7 +134,9 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="RenderObject.h" />
     <ClInclude Include="RodContactGenerator.h" />
+    <ClInclude Include="Shape.h" />
     <ClInclude Include="Skybox.h" />
+    <ClInclude Include="SpringForceGenerator.h" />
     <ClInclude Include="Vector3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

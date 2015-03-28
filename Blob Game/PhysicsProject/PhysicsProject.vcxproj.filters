@@ -105,25 +105,34 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EarthGravityGenerator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Contact.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ContactGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GroundContactGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RodContactGenerator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CableContactGenerator.cpp">
+      <Filter>Source Files\Force Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="EarthGravityGenerator.cpp">
+      <Filter>Source Files\Force Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="RodContactGenerator.cpp">
+      <Filter>Source Files\Force Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="ContactGenerator.cpp">
+      <Filter>Source Files\Force Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="SpringForceGenerator.cpp">
+      <Filter>Source Files\Force Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="BungeeForceGenerator.cpp">
+      <Filter>Source Files\Force Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionSystem.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -197,22 +206,31 @@
     <ClInclude Include="EarthGravityGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Contact.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ContactGenerator.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="RodContactGenerator.h">
+      <Filter>Header Files\Force Generators</Filter>
     </ClInclude>
     <ClInclude Include="GroundContactGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RodContactGenerator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Force Generators</Filter>
     </ClInclude>
     <ClInclude Include="CableContactGenerator.h">
+      <Filter>Header Files\Force Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactGenerator.h">
+      <Filter>Header Files\Force Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="SpringForceGenerator.h">
+      <Filter>Header Files\Force Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="BungeeForceGenerator.h">
+      <Filter>Header Files\Force Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionSystem.h">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

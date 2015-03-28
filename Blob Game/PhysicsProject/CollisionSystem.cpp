@@ -44,7 +44,6 @@ void CollisionSystem::AddContactGenerator(ContactGenerator* contact)
 //--------------------------------------------------------------------------------
 void CollisionSystem::AddContact(Contact& contact)
 {
-	
 	m_Contacts.push_back(contact);
 }
 

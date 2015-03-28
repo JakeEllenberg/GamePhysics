@@ -1,5 +1,5 @@
 //======================================================================
-//File: RodContactGenerator.h
+//File: CableContactGenerator.h
 //Author: Jake Ellenberg
 //Created: 3/21/2015
 //======================================================================
@@ -8,11 +8,13 @@
 //======================================================================
 #include "RodContactGenerator.h"
 //======================================================================
-class CableContactGenerator //: //public RodContactGenerator
+class CableContactGenerator : public RodContactGenerator
 {
 public:
-	CableContactGenerator();
+	CableContactGenerator(PhysicsObject* endOne, PhysicsObject* endTwo, float maxLength);
 	~CableContactGenerator();
+
+	void AddContact(CollisionSystem* collisionSystem);
 };
 #endif
 //======================================================================

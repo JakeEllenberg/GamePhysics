@@ -1,8 +1,10 @@
-﻿Build started 3/21/2015 5:37:55 PM.
+﻿Build started 3/28/2015 1:04:57 PM.
      1>Project "C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\PhysicsProject\PhysicsProject.vcxproj" on node 2 (Rebuild target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'c:\users\jacob.ellenberg\desktop\physics 2\gamephysics\blob game\physicsproject\debug\physicsproject.tlog\cl.read.1.tlog' because it is being used by another process.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/include/" /I"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\\Libs\glui-2.36\include" /I"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\\Libs\Simple OpenGL Image Library\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CableContactGenerator.cpp Camera.cpp CollisionSystem.cpp Contact.cpp ContactGenerator.cpp EarthGravityGenerator.cpp Firework.cpp FireworkLauncher.cpp ForceGenerator.cpp GameApp.cpp Generator.cpp GlutTime.cpp GravityGenerator.cpp Ground.cpp GroundContactGenerator.cpp Level.cpp Main.cpp Matrix.cpp ObjectForceGenerator.cpp Particle.cpp PhysicsObject.cpp EditorState.cpp PhysicsObjectForceRegistry.cpp PhysicsObjectSystem.cpp Player.cpp RenderObject.cpp RodContactGenerator.cpp Skybox.cpp Vector3D.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/include/" /I"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\\Libs\glui-2.36\include" /I"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\\Libs\Simple OpenGL Image Library\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BungeeForceGenerator.cpp CableContactGenerator.cpp Camera.cpp CollisionSystem.cpp Contact.cpp ContactGenerator.cpp EarthGravityGenerator.cpp Firework.cpp FireworkLauncher.cpp ForceGenerator.cpp GameApp.cpp Generator.cpp GlutTime.cpp GravityGenerator.cpp Ground.cpp GroundContactGenerator.cpp Level.cpp Main.cpp Matrix.cpp ObjectForceGenerator.cpp Particle.cpp PhysicsObject.cpp EditorState.cpp PhysicsObjectForceRegistry.cpp PhysicsObjectSystem.cpp Player.cpp RenderObject.cpp RodContactGenerator.cpp Skybox.cpp SpringForceGenerator.cpp Vector3D.cpp
          Vector3D.cpp
+         SpringForceGenerator.cpp
          Skybox.cpp
          RodContactGenerator.cpp
          RenderObject.cpp
@@ -21,9 +23,9 @@
          GravityGenerator.cpp
          GlutTime.cpp
          Generator.cpp
-         GameApp.cpp
          Generating Code...
          Compiling...
+         GameApp.cpp
          ForceGenerator.cpp
          FireworkLauncher.cpp
          Firework.cpp
@@ -33,9 +35,11 @@
          CollisionSystem.cpp
          Camera.cpp
          CableContactGenerator.cpp
+         BungeeForceGenerator.cpp
          Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\PhysicsProject.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\\Libs\glui-2.36\Debug\\" /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\\Libs\Simple OpenGL Image Library\Debug" "C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glew32.lib" "C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glfw3dll.lib" "C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\freeglut.lib" glui32.lib OpenGL32.lib glu32.lib SOIL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\PhysicsProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\PhysicsProject.lib" /MACHINE:X86 Debug\CableContactGenerator.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\PhysicsProject.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\\Libs\glui-2.36\Debug\\" /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\\Libs\Simple OpenGL Image Library\Debug" "C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glew32.lib" "C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glfw3dll.lib" "C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\freeglut.lib" glui32.lib OpenGL32.lib glu32.lib SOIL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\PhysicsProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\PhysicsProject.lib" /MACHINE:X86 Debug\BungeeForceGenerator.obj
+         Debug\CableContactGenerator.obj
          Debug\Camera.obj
          Debug\CollisionSystem.obj
          Debug\Contact.obj
@@ -63,10 +67,11 @@
          Debug\RenderObject.obj
          Debug\RodContactGenerator.obj
          Debug\Skybox.obj
+         Debug\SpringForceGenerator.obj
          Debug\Vector3D.obj
          PhysicsProject.vcxproj -> C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\Debug\PhysicsProject.exe
      1>Done Building Project "C:\Users\jacob.ellenberg\Desktop\physics 2\GamePhysics\Blob Game\PhysicsProject\PhysicsProject.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:15.42
+Time Elapsed 00:00:16.49
