@@ -49,6 +49,8 @@ int g_MainWindow;
 
 GLUI* g_Glui_subwin;
 GLUI_StaticText* g_StaticText;
+GLUI_StaticText* g_CollectableText;
+GLUI_StaticText* g_WinText;
 GLUI_StaticText* g_Time;
 
 //================================================================================
@@ -112,6 +114,9 @@ void initalize()
 	g_Glui_subwin->add_button("Toggle Debug", 4, handleGlui);
 	g_StaticText = g_Glui_subwin->add_statictext("Playing");
 	g_UseGUIMouse = false;
+	g_Glui_subwin->add_column(1);
+	g_CollectableText = g_Glui_subwin->add_statictext("Collectables: ");
+	g_WinText = g_Glui_subwin->add_statictext("You haven't won!");
 
 	SetCursorPos((int)(g_ScreenSize.X / 2.0f), (int)(g_ScreenSize.Y / 2.0f));
 
@@ -142,6 +147,9 @@ void idle()
 	if (gp_GlutTime->UpdateTime())
 	{
 		update(gp_GlutTime->GetDeltaTime());
+		std::string collectables = "Collectables Left: " + std::to_string(gp_GameApp->GetNumCollectables());
+		g_CollectableText->set_text(collectables.c_str());
+		g_WinText->set_text((const char*)(gp_GameApp->GetNumCollectables() > 0 ? "You still haven't won!" : "You win!"));
 		gp_GlutTime->IncrementFrame();
 	}
 }

@@ -8,6 +8,7 @@
 #include "GameApp.h"
 #include "SpringForceGenerator.h"
 #include "BungeeForceGenerator.h"
+#include "CableContactGenerator.h"
 #include <map>
 //================================================================================
 int GameApp::TimeStep = 1;
@@ -27,7 +28,8 @@ GameApp::~GameApp()
 //--------------------------------------------------------------------------------
 void GameApp::Init(Vector3D screenSize)
 {
-	Vector3D cameraOffSet = Vector3D(0, 0, -5);
+	m_ScreenSize = screenSize;
+	Vector3D cameraOffSet = Vector3D(0, 0, 10);
 	PhysicsObject* cameraObject = new PhysicsObject();
 	
 
@@ -40,6 +42,7 @@ void GameApp::Init(Vector3D screenSize)
 	m_Level = new Level();
 	m_Level->Initialize();
 	cameraObject->Inititalize(1.0f, m_Level->GetPlayer()->GetPosition() + cameraOffSet);
+	cameraObject->SetDampening(.9f);
 
 	EarthGravityGenerator* earthGravity = new EarthGravityGenerator(Vector3D(0, -9.8f, 0));
 
@@ -73,9 +76,8 @@ void GameApp::Init(Vector3D screenSize)
 		}
 	}
 
-	
 	mp_PhysicsObjectSystem->Add(cameraObject);
-	mp_PhysicsObjectSystem->AddToRegistry(cameraObject, new BungeeForceGenerator(10.0f, 4.0f, m_Level->GetPlayer()));
+	mp_PhysicsObjectSystem->AddToRegistry(cameraObject, new BungeeForceGenerator(10.0f, 10.0f, m_Level->GetPlayer()));
 
 }
 
@@ -97,6 +99,21 @@ void GameApp::Update(float deltaTime, const EditorState* state)
 //--------------------------------------------------------------------------------
 void GameApp::update(float deltaTime)
 {
+	m_Level->UpdateAI();
+	std::vector<Shape*> collidingCollectables = m_Level->GetCollidingCollectables();
+	for each(Shape* shape in collidingCollectables)
+	{
+		CableContactGenerator* cable = new CableContactGenerator(m_Level->GetPlayer(), shape->GetPhysicsObjects()[0],
+			m_Level->GetPlayer()->GetPosition().CalculateDistance(shape->GetPhysicsObjects()[0]->GetPosition()));
+		mp_PhysicsObjectSystem->Add(cable);
+	}
+	std::vector<EnemyAI*> enemies = m_Level->GetCollidingEnemies();
+	for each(EnemyAI* enemy in enemies)
+	{
+		mp_PhysicsObjectSystem->AddToRegistry(m_Level->GetPlayer(), new SpringForceGenerator(10.0f, 4.0f, enemy->GetShape()->GetPhysicsObjects()[0]));
+		enemy->SetPlayerAttached();
+	}
+
 	bool tempDebugData = DebugData;
 	DebugData = false;
 	for (int i = 0; i < TimeStep - 1; i++) //-1 for the debug update
@@ -138,12 +155,26 @@ void GameApp::HandleKeyReleased(unsigned char key)
 //--------------------------------------------------------------------------------
 void GameApp::Reset()
 {
-	mp_PhysicsObjectSystem->Reset();
+	//mp_PhysicsObjectSystem->Reset();
+	CleanUp();
+	Init(m_ScreenSize);
 }
 
 //--------------------------------------------------------------------------------
 void GameApp::CleanUp()
 {
+	if (mp_PhysicsObjectSystem != nullptr)
+	{
+		mp_PhysicsObjectSystem->CleanUp();
+	}
+	delete mp_PhysicsObjectSystem;
+	mp_PhysicsObjectSystem = nullptr;
+	if (m_Level != nullptr)
+	{
+		m_Level->CleanUp();
+	}
+	delete m_Level;
+	m_Level = nullptr;
 	delete mp_Camera;
 	mp_Camera = nullptr;
 }

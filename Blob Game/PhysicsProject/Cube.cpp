@@ -33,7 +33,7 @@ void Cube::Inititalize(Vector3D centerPosition, std::string texturePath, float l
 	Vector3D botRightposClose = botRightPos;
 	botRightposClose.Z += length;
 
-	std::string filePath = "Characters/smile-texture2.jpg";
+	std::string filePath = texturePath;
 
 	RenderObject* topLeftObject = new RenderObject();
 	topLeftObject->Inititalize(1.0f, topLeftPos, filePath);
@@ -78,4 +78,18 @@ void Cube::Inititalize(Vector3D centerPosition, std::string texturePath, float l
 	m_Rods.push_back(new RodContactGenerator(topLeftObjectClose, botLeftObjectClose, length));
 	m_Rods.push_back(new RodContactGenerator(botLeftObjectClose, botRightObjectClose, length));
 	m_Rods.push_back(new RodContactGenerator(botRightObjectClose, topRightObjectClose, length));
+
+	//connect the diagonals
+	m_Rods.push_back(new RodContactGenerator(botLeftObject, botRightObjectClose, botLeftPos.CalculateDistance(botRightposClose)));
+	m_Rods.push_back(new RodContactGenerator(botRightObject, botLeftObjectClose, botLeftPosClose.CalculateDistance(botRightPos)));
+	m_Rods.push_back(new RodContactGenerator(botLeftObject, topRightObject, botLeftPos.CalculateDistance(topRightPos)));
+	m_Rods.push_back(new RodContactGenerator(botRightObject, topLeftObject, botRightPos.CalculateDistance(topLeftPos)));
+	m_Rods.push_back(new RodContactGenerator(botLeftObjectClose, topRightObjectClose, botLeftPosClose.CalculateDistance(topRightPosClose)));
+	m_Rods.push_back(new RodContactGenerator(botRightObjectClose, topLeftObjectClose, botRightposClose.CalculateDistance(topLeftPosClose)));
+	m_Rods.push_back(new RodContactGenerator(topLeftObject, topRightObjectClose, topLeftPos.CalculateDistance(topRightPosClose)));
+	m_Rods.push_back(new RodContactGenerator(topRightObject, topLeftObjectClose, topLeftPosClose.CalculateDistance(topRightPos)));
+	m_Rods.push_back(new RodContactGenerator(botLeftObject, topLeftObjectClose, botLeftPos.CalculateDistance(topLeftPosClose)));
+	m_Rods.push_back(new RodContactGenerator(topLeftObject, botLeftObjectClose, topLeftPos.CalculateDistance(botLeftPosClose)));
+	m_Rods.push_back(new RodContactGenerator(botRightObject, topRightObjectClose, botRightPos.CalculateDistance(topRightPosClose)));
+	m_Rods.push_back(new RodContactGenerator(topRightObject, botRightObjectClose, topRightPos.CalculateDistance(botRightposClose)));
 }

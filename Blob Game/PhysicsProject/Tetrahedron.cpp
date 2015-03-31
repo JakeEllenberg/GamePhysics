@@ -13,7 +13,7 @@ Tetrahedron::~Tetrahedron()
 
 void Tetrahedron::Inititalize(Vector3D centerPosition, std::string texturePath, float length)
 {
-	std::string filePath = "Characters/smile-texture2.jpg";
+	std::string filePath = texturePath;
 
 	Vector3D topPos = centerPosition;
 	topPos.Y += length / 2.0f;
@@ -41,7 +41,7 @@ void Tetrahedron::Inititalize(Vector3D centerPosition, std::string texturePath, 
 	botRightObject->Inititalize(1.0f, botRightPos, filePath);
 	m_Objects.push_back(botRightObject);
 	RenderObject* botCenterObject = new RenderObject();
-	botCenterObject->Inititalize(1.0f, botCenterPos, "Characters/smile-texture.jpg");
+	botCenterObject->Inititalize(1.0f, botCenterPos, filePath);
 	m_Objects.push_back(botCenterObject);
 
 	

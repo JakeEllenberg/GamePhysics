@@ -20,7 +20,7 @@ PhysicsObject::PhysicsObject()
 	m_LastAppliedForce = Vector3D::Zero;
 
 	m_InverseMass = 1;
-	m_Dampening = .99999f;
+	m_Dampening = .99f;
 	m_Radius = 1.0f;
 }
 

@@ -37,12 +37,16 @@ public:
 	void UpdateScreenSize(Vector3D screenSize);
 	void Draw();
 	void Reset();
+
+	inline int GetNumCollectables() { return m_Level->GetNumCollectables(); };
+	inline int GetNumEnemies() { return m_Level->GetNumEnemies(); };
 private:
 	Camera* mp_Camera;
 	void update(float deltaTime);
 	PhysicsObjectSystem* mp_PhysicsObjectSystem;
 	Skybox* mp_SkyBox;
 	Level* m_Level;
+	Vector3D m_ScreenSize;
 };
 #endif
 //================================================================================

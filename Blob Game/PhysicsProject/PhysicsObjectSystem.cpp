@@ -267,4 +267,10 @@ void PhysicsObjectSystem::CleanUp()
 	}
 	delete mp_CollisionSystem;
 	mp_CollisionSystem = nullptr;
+	if (mp_ForceRegistry != nullptr)
+	{
+		mp_ForceRegistry->Clear();
+	}
+	delete mp_ForceRegistry;
+	mp_ForceRegistry = nullptr;
 }

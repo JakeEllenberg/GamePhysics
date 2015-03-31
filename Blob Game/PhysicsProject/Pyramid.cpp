@@ -37,7 +37,7 @@ void Pyramid::Inititalize(Vector3D centerPosition, std::string texturePath, floa
 	Vector3D botRightposClose = botRightPos;
 	botRightposClose.Z += length;
 
-	std::string filePath = "Characters/smile-texture2.jpg";
+	std::string filePath = texturePath;
 
 	RenderObject* topObject = new RenderObject();
 	topObject->Inititalize(1.0f, topPos, filePath);

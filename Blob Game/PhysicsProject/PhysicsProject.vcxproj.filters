@@ -150,6 +150,9 @@
     <ClCompile Include="Pyramid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyAI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -218,9 +221,6 @@
     <ClInclude Include="EarthGravityGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Contact.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RodContactGenerator.h">
       <Filter>Header Files\Force Generators</Filter>
     </ClInclude>
@@ -248,13 +248,19 @@
     <ClInclude Include="Shape.h">
       <Filter>Header Files\Shapes</Filter>
     </ClInclude>
+    <ClInclude Include="Pyramid.h">
+      <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Contact.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="Cube.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Shapes</Filter>
     </ClInclude>
     <ClInclude Include="Tetrahedron.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="Pyramid.h">
+    <ClInclude Include="EnemyAI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
