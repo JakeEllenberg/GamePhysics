@@ -27,7 +27,7 @@ public:
 	Matrix operator-(const Matrix&) const;
 	Matrix operator*(const Matrix&) const;
 	Matrix operator*(const float&) const;
-	Matrix operator*(const Vector3D&) const;
+	Vector3D operator*(const Vector3D&) const;
 	Matrix& operator=(const Matrix&);
 	bool operator==(const Matrix&) const;
 	bool operator!=(const Matrix&) const;
@@ -37,6 +37,14 @@ public:
 	inline int GetNumRows() const { return m_NumRows; };
 	inline int GetNumColumns() const { return m_NumColumns; };
 	inline bool CheckSameSize(const Matrix& rhs) const { return rhs.GetNumRows() == m_NumRows && rhs.GetNumColumns() == m_NumColumns; };
+
+	void Set(int index, float value);
+	float Get(int index) const;
+
+	Matrix InvMatrix() const;
+	float Det();
+
+	Vector3D Transform(const Vector3D vector);
 
 private:
 	void initalizeMatrix(int rows, int columns);

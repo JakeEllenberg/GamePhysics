@@ -6,12 +6,21 @@
 #include "Quaternion.h"
 
 //======================================================================
+Quaternion::Quaternion()
+{
+	R = 1;
+	I = 0;
+	J = 0;
+	K = 0;
+}
+
+//--------------------------------------------------------------------------------
 Quaternion::Quaternion(float r, float i, float j, float k)
 {
-	m_R = r;
-	m_I = i;
-	m_J = j;
-	m_K = k;
+	R = r;
+	I = i;
+	J = j;
+	K = k;
 }
 
 //--------------------------------------------------------------------------------
@@ -22,28 +31,28 @@ Quaternion::~Quaternion()
 //--------------------------------------------------------------------------------
 void Quaternion::Normalize()
 {
-	float d = m_R * m_R * m_I * m_I * m_J * m_J * m_K * m_K;
+	float d = R * R * I * I * J * J * K * K;
 
 	if (d == 0)
 	{
-		m_R = 1;
+		R = 1;
 		return;
 	}
 
 	d = 1.0f / sqrt(d);
-	m_R *= d;
-	m_I *= d;
-	m_J *= d;
-	m_K *= d;
+	R *= d;
+	I *= d;
+	J *= d;
+	K *= d;
 }
 
 void Quaternion::operator *= (const Quaternion& rhs)
 {
 	Quaternion q = *this;
-	m_R = q.m_R * rhs.m_R - q.m_I * rhs.m_I - q.m_J * rhs.m_J - q.m_K * rhs.m_K;
-	m_I = q.m_R * rhs.m_I - q.m_I * rhs.m_R - q.m_J * rhs.m_K - q.m_K * rhs.m_J;
-	m_J = q.m_R * rhs.m_J - q.m_J * rhs.m_R - q.m_K * rhs.m_I - q.m_I - rhs.m_K;
-	m_K = q.m_R * rhs.m_K - q.m_K * rhs.m_R - q.m_I * rhs.m_J - q.m_J - rhs.m_I;
+	R = q.R * rhs.R - q.I * rhs.I - q.J * rhs.J - q.K * rhs.K;
+	I = q.R * rhs.I - q.I * rhs.R - q.J * rhs.K - q.K * rhs.J;
+	J = q.R * rhs.J - q.J * rhs.R - q.K * rhs.I - q.I - rhs.K;
+	K = q.R * rhs.K - q.K * rhs.R - q.I * rhs.J - q.J - rhs.I;
 }
 
 void Quaternion::RotateByVector(const Vector3D& vector)
@@ -57,8 +66,8 @@ void Quaternion::AddScaledVector(const Vector3D& vector, float scale)
 	Vector3D scaledVector = vector * scale;
 	Quaternion q(0, scaledVector.X, scaledVector.Y, scaledVector.Z);
 	q *= *this;
-	m_R += q.m_R * 0.5f;
-	m_I += q.m_I * 0.5f;
-	m_J += q.m_J * 0.5f;
-	m_K += q.m_K * 0.5f;
+	R += q.R * 0.5f;
+	I += q.I * 0.5f;
+	J += q.J * 0.5f;
+	K += q.K * 0.5f;
 }

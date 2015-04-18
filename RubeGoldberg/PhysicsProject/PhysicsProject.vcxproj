@@ -100,6 +100,8 @@
     <ClCompile Include="Pyramid.cpp" />
     <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="RenderObject.cpp" />
+    <ClCompile Include="RigidBody.cpp" />
+    <ClCompile Include="RigidBodySpringForceGenerator.cpp" />
     <ClCompile Include="RodContactGenerator.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Skybox.cpp" />
@@ -141,6 +143,8 @@
     <ClInclude Include="Pyramid.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="RenderObject.h" />
+    <ClInclude Include="RigidBody.h" />
+    <ClInclude Include="RigidBodySpringForceGenerator.h" />
     <ClInclude Include="RodContactGenerator.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Skybox.h" />

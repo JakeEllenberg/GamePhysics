@@ -17,3 +17,12 @@ void EarthGravityGenerator::UpdateForce(PhysicsObject* object)
 {
 	object->AddForce(m_Gravity * object->GetMass());
 }
+
+void EarthGravityGenerator::UpdateForce(RigidBody* rigidbodyOne, RigidBody* rigidbodyTwo)
+{
+	if (!rigidbodyOne->HasInfinateMass())
+	{
+		return;
+	}
+	rigidbodyOne->AddForce(m_Gravity * rigidbodyOne->GetMass());
+}

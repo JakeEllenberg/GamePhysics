@@ -9,6 +9,7 @@
 //======================================================================
 #include "PhysicsObject.h"
 #include "Generator.h"
+#include "RigidBody.h"
 //======================================================================
 class ForceGenerator : public Generator
 {
@@ -17,6 +18,7 @@ public:
 	~ForceGenerator();
 
 	virtual void UpdateForce(PhysicsObject* object) = 0;
+	virtual void UpdateForce(RigidBody* rigidbodyOne, RigidBody* rigidbodyTwo = NULL){};
 };
 #endif
 //======================================================================

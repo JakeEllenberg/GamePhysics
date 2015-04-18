@@ -1,88 +1,50 @@
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\vc120.pdb
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\vc120.idb
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\groundcontactgenerator.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\level.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\main.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\matrix.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\objectforcegenerator.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\particle.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\physicsobject.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\editorstate.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\physicsobjectforceregistry.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\physicsobjectsystem.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\player.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\pyramid.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\renderobject.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\rodcontactgenerator.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\shape.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\skybox.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\springforcegenerator.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\cube.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\tetrahedron.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\vector3d.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\bungeeforcegenerator.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\cablecontactgenerator.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\camera.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\collisionsystem.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\contact.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\contactgenerator.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\earthgravitygenerator.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\enemyai.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\firework.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\fireworklauncher.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\forcegenerator.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\gameapp.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\generator.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\gluttime.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\gravitygenerator.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\physicsproject\debug\ground.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\vc120.pdb
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\vc120.idb
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\groundcontactgenerator.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\level.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\main.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\matrix.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\objectforcegenerator.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\particle.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\physicsobject.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\editorstate.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\physicsobjectforceregistry.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\physicsobjectsystem.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\player.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\pyramid.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\renderobject.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\rodcontactgenerator.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\shape.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\skybox.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\springforcegenerator.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\cube.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\tetrahedron.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\vector3d.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\bungeeforcegenerator.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\cablecontactgenerator.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\camera.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\collisionsystem.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\contact.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\contactgenerator.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\earthgravitygenerator.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\enemyai.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\firework.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\fireworklauncher.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\forcegenerator.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\gameapp.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\generator.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\gluttime.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\gravitygenerator.obj
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\ground.obj
-c:\users\jake\desktop\physics\gamephysics\blob game\debug\physicsproject.ilk
-c:\users\jake\desktop\physics\gamephysics\blob game\debug\physicsproject.exe
-c:\users\jake\desktop\physics\gamephysics\blob game\debug\physicsproject.pdb
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\debug\physicsproject.ilk
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\debug\physicsproject.exe
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\debug\physicsproject.pdb
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\physicsproject.tlog\cl.command.1.tlog
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\physicsproject.tlog\cl.read.1.tlog
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\physicsproject.tlog\cl.write.1.tlog
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\physicsproject.tlog\link.command.1.tlog
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\physicsproject.tlog\link.read.1.tlog
-c:\users\jake\desktop\new folder (3)\gamephysics\rubegoldberg\physicsproject\debug\physicsproject.tlog\link.write.1.tlog
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\vc120.pdb
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\vc120.idb
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\level.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\main.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\matrix.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\objectforcegenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\particle.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\physicsobject.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\editorstate.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\physicsobjectforceregistry.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\physicsobjectsystem.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\player.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\pyramid.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\quaternion.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\renderobject.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\rodcontactgenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\shape.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\skybox.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\springforcegenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\cube.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\tetrahedron.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\vector3d.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\bungeeforcegenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\cablecontactgenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\camera.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\collisionsystem.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\contact.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\contactgenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\earthgravitygenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\enemyai.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\firework.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\fireworklauncher.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\forcegenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\gameapp.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\generator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\gluttime.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\gravitygenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\ground.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\groundcontactgenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\rigidbody.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\rigidbodyspringforcegenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\debug\physicsproject.ilk
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\debug\physicsproject.exe
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\debug\physicsproject.pdb
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\physicsproject.tlog\cl.command.1.tlog
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\physicsproject.tlog\cl.read.1.tlog
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\physicsproject.tlog\cl.write.1.tlog
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\physicsproject.tlog\link.command.1.tlog
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\physicsproject.tlog\link.read.1.tlog
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\physicsproject.tlog\link.write.1.tlog

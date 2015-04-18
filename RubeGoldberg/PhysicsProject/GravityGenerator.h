@@ -15,6 +15,7 @@ public:
 	GravityGenerator();
 	~GravityGenerator();
 	void UpdateForce(PhysicsObject* object1, PhysicsObject* object2);
+	
 private:
 	static const float GRAVITY;
 };

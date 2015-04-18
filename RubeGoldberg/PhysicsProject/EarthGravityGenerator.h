@@ -8,6 +8,7 @@ public:
 	~EarthGravityGenerator();
 
 	virtual void UpdateForce(PhysicsObject* object);
+	virtual void UpdateForce(RigidBody* rigidbodyOne, RigidBody* rigidbodyTwo = NULL);
 private:
 	Vector3D m_Gravity;
 };

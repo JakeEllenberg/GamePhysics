@@ -35,4 +35,10 @@ void SpringForceGenerator::UpdateForce(PhysicsObject* springObject)
 	force = force * - magnitude;
 	springObject->AddForce(force);
 }
+
+//--------------------------------------------------------------------------------
+void UpdateForce(RigidBody* rigidbodyOne, RigidBody* rigidbodyTwo = NULL)
+{
+
+}
 //======================================================================
