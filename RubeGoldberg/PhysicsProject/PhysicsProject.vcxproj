@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{44316068-083C-46DF-9093-A766B56B6BDB}</ProjectGuid>
+    <RootNamespace>PhysicsProject</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VCInstallDir)UnitTest\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VCInstallDir)UnitTest\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Libs\glui-2.36\include;$(SolutionDir)\Libs\Simple OpenGL Image Library\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glui32.lib;OpenGL32.lib;glu32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Libs\glui-2.36\Debug\;$(SolutionDir)\Libs\Simple OpenGL Image Library\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BungeeForceGenerator.cpp" />
+    <ClCompile Include="CableContactGenerator.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CollisionSystem.cpp" />
+    <ClCompile Include="Contact.cpp" />
+    <ClCompile Include="ContactGenerator.cpp" />
+    <ClCompile Include="EarthGravityGenerator.cpp" />
+    <ClCompile Include="EnemyAI.cpp" />
+    <ClCompile Include="Firework.cpp" />
+    <ClCompile Include="FireworkLauncher.cpp" />
+    <ClCompile Include="ForceGenerator.cpp" />
+    <ClCompile Include="GameApp.cpp" />
+    <ClCompile Include="Generator.cpp" />
+    <ClCompile Include="GlutTime.cpp" />
+    <ClCompile Include="GravityGenerator.cpp" />
+    <ClCompile Include="Ground.cpp" />
+    <ClCompile Include="GroundContactGenerator.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="ObjectForceGenerator.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="PhysicsObject.cpp" />
+    <ClCompile Include="EditorState.cpp" />
+    <ClCompile Include="PhysicsObjectForceRegistry.cpp" />
+    <ClCompile Include="PhysicsObjectSystem.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Pyramid.cpp" />
+    <ClCompile Include="Quaternion.cpp" />
+    <ClCompile Include="RenderObject.cpp" />
+    <ClCompile Include="RodContactGenerator.cpp" />
+    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="Skybox.cpp" />
+    <ClCompile Include="SpringForceGenerator.cpp" />
+    <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="Tetrahedron.cpp" />
+    <ClCompile Include="Vector3D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BungeeForceGenerator.h" />
+    <ClInclude Include="CableContactGenerator.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CollisionSystem.h" />
+    <ClInclude Include="Contact.h" />
+    <ClInclude Include="ContactGenerator.h" />
+    <ClInclude Include="EarthGravityGenerator.h" />
+    <ClInclude Include="EnemyAI.h" />
+    <ClInclude Include="Firework.h" />
+    <ClInclude Include="FireworkLauncher.h" />
+    <ClInclude Include="ForceGenerator.h" />
+    <ClInclude Include="GameApp.h" />
+    <ClInclude Include="Generator.h" />
+    <ClInclude Include="GlutTime.h" />
+    <ClInclude Include="GravityGenerator.h" />
+    <ClInclude Include="Ground.h" />
+    <ClInclude Include="GroundContactGenerator.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="ObjectForceGenerator.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="PhysicsObject.h" />
+    <ClInclude Include="EditorState.h" />
+    <ClInclude Include="PhysicsObjectForceRegistry.h" />
+    <ClInclude Include="PhysicsObjectSystem.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Pyramid.h" />
+    <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="RenderObject.h" />
+    <ClInclude Include="RodContactGenerator.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="Skybox.h" />
+    <ClInclude Include="SpringForceGenerator.h" />
+    <ClInclude Include="Cube.h" />
+    <ClInclude Include="Tetrahedron.h" />
+    <ClInclude Include="Vector3D.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\nupengl.core.redist.0.0.0.1\build\native\nupengl.core.redist.targets" Condition="Exists('..\packages\nupengl.core.redist.0.0.0.1\build\native\nupengl.core.redist.targets')" />
+    <Import Project="..\packages\nupengl.core.0.0.0.1\build\native\nupengl.core.targets" Condition="Exists('..\packages\nupengl.core.0.0.0.1\build\native\nupengl.core.targets')" />
+  </ImportGroup>
+</Project>
