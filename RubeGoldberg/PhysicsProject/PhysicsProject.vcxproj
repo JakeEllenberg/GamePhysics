@@ -87,6 +87,7 @@
     <ClCompile Include="GravityGenerator.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="GroundContactGenerator.cpp" />
+    <ClCompile Include="ImageHandler.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Matrix.cpp" />
@@ -131,6 +132,7 @@
     <ClInclude Include="GravityGenerator.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="GroundContactGenerator.h" />
+    <ClInclude Include="ImageHandler.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="ObjectForceGenerator.h" />

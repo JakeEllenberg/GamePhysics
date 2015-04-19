@@ -15,6 +15,32 @@ RigidBody::~RigidBody()
 {
 }
 
+void RigidBody::Inititalize(float mass, Vector3D initialPosition, Vector3D initialVelocity, Vector3D initialAcceleration, Vector3D initalRotation, float dampening, float angularDampening)
+{
+	m_InverseMass = 1.0f / mass;
+	m_Position = initialPosition;
+	m_Velocity = initialVelocity;
+	m_Rotation = initalRotation;
+	m_Acceleration = initialAcceleration;
+	m_LinearDampening = dampening;
+	m_AngularDampening = angularDampening;
+
+	m_InitPosition = m_Position;
+	m_InitVelocity = m_Velocity;
+	m_InitAcceleration = m_Acceleration;
+	m_InitRotation = m_Rotation;
+
+	m_IsAwake = false;
+}
+
+void RigidBody::Reset()
+{
+	m_Position = m_InitPosition;
+	m_Velocity = m_InitVelocity;
+	m_Acceleration = m_InitAcceleration;
+	m_Rotation = m_InitRotation;
+}
+
 //--------------------------------------------------------------------------------
 void RigidBody::CalculateTransformMatrix(Matrix& transformMatrix, const Vector3D& position, const Quaternion& orientation)
 {

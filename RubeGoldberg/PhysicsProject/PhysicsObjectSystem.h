@@ -27,12 +27,14 @@ public:
 	void Add(ObjectForceGenerator* objectForceGenerator);
 	void Add(ForceGenerator* forceGenerator);
 	void Add(ContactGenerator* contactGenerator);
+	void Add(RigidBody* rigidBody);
 
 	void Remove(PhysicsObject* physicsObject);
 	void Remove(ObjectForceGenerator* objectForceGenerator);
 	void Remove(ForceGenerator* forceGenerator);
 
 	void AddToRegistry(PhysicsObject* object, ForceGenerator* generator);
+	void AddToRegistry(ForceGenerator* generator, RigidBody* rigidBodyOne, RigidBody* rigidBodyTwo = NULL);
 	void AddToRegistry(std::vector<PhysicsObject*> objects, GeneratorType type);
 	void RemoveFromRegistry(std::vector<PhysicsObject*> objects, GeneratorType type);
 
@@ -44,6 +46,7 @@ private:
 	std::vector<PhysicsObject*> m_PhysicsObjects;
 	std::vector<ObjectForceGenerator*> m_ObjectForceGenerators;
 	std::vector<ForceGenerator*> m_ForceGenerators;
+	std::vector<RigidBody*> m_RigidBodys;
 	PhysicsObjectForceRegistry* mp_ForceRegistry;
 	CollisionSystem* mp_CollisionSystem;
 };

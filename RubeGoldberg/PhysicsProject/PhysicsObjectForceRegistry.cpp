@@ -29,6 +29,12 @@ void PhysicsObjectForceRegistry::Add(PhysicsObject* physicsObject1, PhysicsObjec
 }
 
 //--------------------------------------------------------------------------------
+void PhysicsObjectForceRegistry::Add(ForceGenerator* forceGenerator, RigidBody* rigidBodyOne, RigidBody* rigidBodyTwo)
+{
+	m_RigidBodyForceRegistry.push_back(RigidbodyForceGeneratorRegistration(rigidBodyOne, rigidBodyTwo, forceGenerator));
+}
+
+//--------------------------------------------------------------------------------
 void PhysicsObjectForceRegistry::Remove(PhysicsObject* physicsObject, ForceGenerator* forceGenerator)
 {
 	ForceGeneratorRegistration searchRegistration = ForceGeneratorRegistration(physicsObject, forceGenerator);
@@ -55,6 +61,21 @@ void PhysicsObjectForceRegistry::Remove(PhysicsObject* physicsObject1, PhysicsOb
 		}
 	}
 }
+
+//--------------------------------------------------------------------------------
+void PhysicsObjectForceRegistry::Remove(ForceGenerator* forceGenerator, RigidBody* rigidBodyOne, RigidBody* rigidBodyTwo)
+{
+	RigidbodyForceGeneratorRegistration searchRegistration = RigidbodyForceGeneratorRegistration(rigidBodyOne, rigidBodyTwo, forceGenerator);
+	for (unsigned int i = 0; i < m_RigidBodyForceRegistry.size(); i++)
+	{
+		if (m_RigidBodyForceRegistry[i].Equals(searchRegistration))
+		{
+			m_RigidBodyForceRegistry.erase(m_RigidBodyForceRegistry.begin() + i);
+			break;
+		}
+	}
+}
+
 //--------------------------------------------------------------------------------
 void PhysicsObjectForceRegistry::UpdateForces()
 {
@@ -66,6 +87,11 @@ void PhysicsObjectForceRegistry::UpdateForces()
 	{
 		m_ObjectForceGeneratorRegistry[i].UpdateForce();
 	}
+	for (unsigned int i = 0; i < m_RigidBodyForceRegistry.size(); i++)
+	{
+		m_RigidBodyForceRegistry[i].UpdateForce();
+	}
+
 }
 
 //--------------------------------------------------------------------------------
@@ -73,4 +99,5 @@ void PhysicsObjectForceRegistry::Clear ()
 {
 	m_ForceGeneratorRegistry.clear();
 	m_ObjectForceGeneratorRegistry.clear();
+	m_RigidBodyForceRegistry.clear();
 }

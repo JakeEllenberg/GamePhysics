@@ -52,6 +52,10 @@ GLUI_StaticText* g_StaticText;
 GLUI_StaticText* g_CollectableText;
 GLUI_StaticText* g_WinText;
 GLUI_StaticText* g_Time;
+GLUI_StaticText* g_Fps;
+
+int g_CurrentFrame = 0;
+int g_TimeBased;
 
 //================================================================================
 int main(int argc, char** argv) {
@@ -79,6 +83,8 @@ void initalize()
 	glutInitWindowSize((int)g_ScreenSize.X, (int)g_ScreenSize.Y);
 	glutInitWindowPosition((int)INITAL_WINDOW_POSITION.X, (int)INITAL_WINDOW_POSITION.Y);
 	g_MainWindow = glutCreateWindow("Physics");
+
+	g_TimeBased = glutGet(GLUT_ELAPSED_TIME);
 	
 	glewInit();
 
@@ -117,6 +123,7 @@ void initalize()
 	g_Glui_subwin->add_column(1);
 	g_CollectableText = g_Glui_subwin->add_statictext("Collectables: ");
 	g_WinText = g_Glui_subwin->add_statictext("You haven't won!");
+	g_Fps = g_Glui_subwin->add_statictext("Fps:");
 
 	SetCursorPos((int)(g_ScreenSize.X / 2.0f), (int)(g_ScreenSize.Y / 2.0f));
 
@@ -143,14 +150,24 @@ void updateScreenSize()
 //--------------------------------------------------------------------------------
 void idle()
 {
+	int time = glutGet(GLUT_ELAPSED_TIME);
 	glutSetWindow(g_MainWindow);
 	if (gp_GlutTime->UpdateTime())
 	{
+		g_CurrentFrame++;
 		update(gp_GlutTime->GetDeltaTime());
 		std::string collectables = "Collectables Left: " + std::to_string(gp_GameApp->GetNumCollectables());
 		g_CollectableText->set_text(collectables.c_str());
 		g_WinText->set_text((const char*)(gp_GameApp->GetNumCollectables() > 0 ? "You still haven't won!" : "You win!"));
 		gp_GlutTime->IncrementFrame();
+	}
+
+	if (time - g_TimeBased > 1000)
+	{
+		std::string fps = "Fps: " + std::to_string(g_CurrentFrame);
+		g_Fps->set_text(fps.c_str());
+		g_TimeBased = time;
+		g_CurrentFrame = 0;
 	}
 }
 

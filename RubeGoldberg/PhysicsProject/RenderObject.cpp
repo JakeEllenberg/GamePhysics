@@ -2,6 +2,7 @@
 #include "SOIL.h"
 #include "GameApp.h"
 #include <iostream>
+#include "ImageHandler.h"
 
 RenderObject::RenderObject()
 {
@@ -20,25 +21,16 @@ void RenderObject::Inititalize(float mass, Vector3D initialPosition, Vector3D in
 	loadImage(imageFileName);
 }
 
-void RenderObject::Inititalize(float mass, Vector3D initialPosition, std::string imageFileName)
+void RenderObject::Inititalize(float mass, Vector3D initialPosition, std::string imageName)
 {
 	PhysicsObject::Inititalize(mass, initialPosition);
-	loadImage(imageFileName);
+	loadImage(imageName);
 }
 
 //--------------------------------------------------------------------------------
-void RenderObject::loadImage(std::string filePath)
+void RenderObject::loadImage(std::string imageName)
 {
-	glEnable(GL_TEXTURE_2D);
-	int width;
-	int height;
-
-	glGenTextures(1, &m_Tex);
-	glBindTexture(GL_TEXTURE_2D, m_Tex);
-
-	unsigned char* image = SOIL_load_image(filePath.c_str(), &width, &height, 0, SOIL_LOAD_RGB);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-	SOIL_free_image_data(image);
+	m_Tex = *ImageHandler::GetInstance()->GetImage(imageName);
 
 	m_Quad = gluNewQuadric();
 }

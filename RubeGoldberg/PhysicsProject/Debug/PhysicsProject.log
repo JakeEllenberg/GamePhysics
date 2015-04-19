@@ -1,46 +1,8 @@
-﻿Build started 4/18/2015 2:56:51 PM.
+﻿Build started 4/19/2015 11:03:46 AM.
      1>Project "C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\PhysicsProject\PhysicsProject.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/include/" /I"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\\Libs\glui-2.36\include" /I"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\\Libs\Simple OpenGL Image Library\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BungeeForceGenerator.cpp CableContactGenerator.cpp Camera.cpp CollisionSystem.cpp Contact.cpp ContactGenerator.cpp Cube.cpp EarthGravityGenerator.cpp EnemyAI.cpp Firework.cpp FireworkLauncher.cpp ForceGenerator.cpp GameApp.cpp GravityGenerator.cpp Ground.cpp GroundContactGenerator.cpp Level.cpp Main.cpp Matrix.cpp ObjectForceGenerator.cpp Particle.cpp PhysicsObject.cpp PhysicsObjectForceRegistry.cpp PhysicsObjectSystem.cpp Player.cpp Pyramid.cpp RenderObject.cpp RigidBody.cpp RigidBodySpringForceGenerator.cpp RodContactGenerator.cpp Shape.cpp SpringForceGenerator.cpp Tetrahedron.cpp
-         Matrix.cpp
-         Generating Code...
-     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
-         Compiling...
-         BungeeForceGenerator.cpp
-         CableContactGenerator.cpp
-         Camera.cpp
-         CollisionSystem.cpp
-         Contact.cpp
-         ContactGenerator.cpp
-         Cube.cpp
-         EarthGravityGenerator.cpp
-         EnemyAI.cpp
-         Firework.cpp
-         FireworkLauncher.cpp
-         ForceGenerator.cpp
-         GameApp.cpp
-         GravityGenerator.cpp
-         Ground.cpp
-         GroundContactGenerator.cpp
-         Level.cpp
-         Main.cpp
-         ObjectForceGenerator.cpp
-         Particle.cpp
-         Generating Code...
-         Compiling...
-         PhysicsObject.cpp
-         PhysicsObjectForceRegistry.cpp
-         PhysicsObjectSystem.cpp
-         Player.cpp
-         Pyramid.cpp
-         RenderObject.cpp
-         RigidBody.cpp
-         RigidBodySpringForceGenerator.cpp
-         RodContactGenerator.cpp
-         Shape.cpp
-         SpringForceGenerator.cpp
-         Tetrahedron.cpp
-         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/include/" /I"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\\Libs\glui-2.36\include" /I"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\\Libs\Simple OpenGL Image Library\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GlutTime.cpp
+         GlutTime.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\Debug\PhysicsProject.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\\Libs\glui-2.36\Debug\\" /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\\Libs\Simple OpenGL Image Library\Debug" "C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glew32.lib" "C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glfw3dll.lib" "C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\freeglut.lib" glui32.lib OpenGL32.lib glu32.lib SOIL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\Debug\PhysicsProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\Debug\PhysicsProject.lib" /MACHINE:X86 Debug\BungeeForceGenerator.obj
          Debug\CableContactGenerator.obj
@@ -59,6 +21,7 @@
          Debug\GravityGenerator.obj
          Debug\Ground.obj
          Debug\GroundContactGenerator.obj
+         Debug\ImageHandler.obj
          Debug\Level.obj
          Debug\Main.obj
          Debug\Matrix.obj
@@ -86,4 +49,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:18.22
+Time Elapsed 00:00:01.47

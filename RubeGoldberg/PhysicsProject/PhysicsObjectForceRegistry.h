@@ -11,6 +11,7 @@
 #include "ObjectForceGenerator.h"
 #include "ForceGenerator.h"
 #include <vector>
+#include "RigidBody.h"
 //======================================================================
 struct ForceGeneratorRegistration
 {
@@ -39,6 +40,40 @@ struct ForceGeneratorRegistration
 		}
 
 		m_ForceGenerator->UpdateForce(m_PhysicsObject);
+	}
+};
+
+struct RigidbodyForceGeneratorRegistration
+{
+	RigidBody* m_RigidbodyOne;
+	RigidBody* m_RigidbodyTwo;
+	ForceGenerator* m_ForceGenerator;
+
+	//--------------------------------------------------------------------------------
+	RigidbodyForceGeneratorRegistration(RigidBody* rigidbodyOne, RigidBody* rigidbodyTwo, ForceGenerator* forceGenerator)
+	{
+		m_RigidbodyOne = rigidbodyOne;
+		m_RigidbodyOne = rigidbodyTwo;
+		m_ForceGenerator = forceGenerator;
+	}
+
+	//--------------------------------------------------------------------------------
+	bool Equals(RigidbodyForceGeneratorRegistration other)
+	{
+		return (m_RigidbodyOne == other.m_RigidbodyOne && m_RigidbodyTwo == other.m_RigidbodyTwo) ||
+			(m_RigidbodyOne == other.m_RigidbodyTwo && m_RigidbodyTwo == other.m_RigidbodyOne)
+			&& m_ForceGenerator == other.m_ForceGenerator;
+	}
+
+	//--------------------------------------------------------------------------------
+	void UpdateForce()
+	{
+		if (m_RigidbodyOne == nullptr || m_ForceGenerator == nullptr)
+		{
+			return;
+		}
+
+		m_ForceGenerator->UpdateForce(m_RigidbodyOne, m_RigidbodyTwo);
 	}
 };
 //======================================================================
@@ -85,15 +120,18 @@ public:
 
 	void Add(PhysicsObject* physicsObject, ForceGenerator* forceGenerator);
 	void Add(PhysicsObject* physicsObject1, PhysicsObject* physicsObject2, ObjectForceGenerator* objectForceGenerator);
+	void Add(ForceGenerator* forceGenerator, RigidBody* rigidBodyOne, RigidBody* rigidBodyTwo = NULL);
 
 	void Remove(PhysicsObject* physicsObject, ForceGenerator* forceGenerator);
 	void Remove(PhysicsObject* physicsObject1, PhysicsObject* physicsObject2, ObjectForceGenerator* objectForceGenerator);
+	void Remove(ForceGenerator* forceGenerator, RigidBody* rigidBodyOne, RigidBody* rigidBodyTwo = NULL);
 
 	void UpdateForces();
 	void Clear();
 private:
 	std::vector<ForceGeneratorRegistration> m_ForceGeneratorRegistry;
 	std::vector<ObjectForceGeneratorRegistration> m_ObjectForceGeneratorRegistry;
+	std::vector<RigidbodyForceGeneratorRegistration> m_RigidBodyForceRegistry;
 };
 #endif
 //======================================================================

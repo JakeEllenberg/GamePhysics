@@ -10,6 +10,7 @@
 #include "BungeeForceGenerator.h"
 #include "CableContactGenerator.h"
 #include <map>
+#include "ImageHandler.h"
 //================================================================================
 int GameApp::TimeStep = 1;
 bool GameApp::DebugData = false;
@@ -17,6 +18,7 @@ bool GameApp::DebugData = false;
 GameApp::GameApp()
 {
 	mp_Camera = nullptr;
+	m_LoadedTextures = false;
 }
 
 //--------------------------------------------------------------------------------
@@ -28,6 +30,23 @@ GameApp::~GameApp()
 //--------------------------------------------------------------------------------
 void GameApp::Init(Vector3D screenSize)
 {
+	if (!m_LoadedTextures)
+	{
+		ImageHandler::GetInstance()->AddImage("Seige/siege_right.jpg", "Sky_right");
+		ImageHandler::GetInstance()->AddImage("Seige/siege_left.jpg", "Sky_left");
+		ImageHandler::GetInstance()->AddImage("Seige/siege_top.jpg", "Sky_top");
+		ImageHandler::GetInstance()->AddImage("Seige/siege_front.jpg", "Sky_front");
+		ImageHandler::GetInstance()->AddImage("Seige/siege_bot.jpg", "Sky_bot");
+		ImageHandler::GetInstance()->AddImage("Seige/siege_back.jpg", "Sky_bck");
+		ImageHandler::GetInstance()->AddImage("Characters/smile-texture.jpg", "Smile1");
+		ImageHandler::GetInstance()->AddImage("Characters/smile-texture2.jpg", "Smile2");
+		ImageHandler::GetInstance()->AddImage("Characters/smile-texture3.jpg", "Smile3");
+		ImageHandler::GetInstance()->AddImage("Characters/smile-texture4.jpg", "Smile4");
+		ImageHandler::GetInstance()->AddImage("Characters/smile-texture5.jpg", "Smile5");
+		m_LoadedTextures = true;
+	}
+	
+
 	m_ScreenSize = screenSize;
 	Vector3D cameraOffSet = Vector3D(0, 0, 10);
 	PhysicsObject* cameraObject = new PhysicsObject();

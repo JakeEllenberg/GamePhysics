@@ -6,6 +6,7 @@
 //======================================================================
 #include "Skybox.h"
 #include <SOIL.h>
+#include "ImageHandler.h"
 
 Skybox::Skybox()
 {

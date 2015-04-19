@@ -51,6 +51,12 @@ void PhysicsObjectSystem::Add(ContactGenerator* contactGenerator)
 }
 
 //--------------------------------------------------------------------------------
+void PhysicsObjectSystem::Add(RigidBody* rigidBody)
+{
+	m_RigidBodys.push_back(rigidBody);
+}
+
+//--------------------------------------------------------------------------------
 void PhysicsObjectSystem::Remove(PhysicsObject* physicsObject)
 {
 	for (unsigned int i = 0; i < m_PhysicsObjects.size(); i++)
@@ -87,6 +93,11 @@ void PhysicsObjectSystem::Remove(ForceGenerator* forceGenerator)
 			m_ForceGenerators.erase(m_ForceGenerators.begin() + i);
 		}
 	}
+}
+
+void PhysicsObjectSystem::AddToRegistry(ForceGenerator* generator, RigidBody* rigidBodyOne, RigidBody* rigidBodyTwo)
+{
+	mp_ForceRegistry->Add(generator, rigidBodyOne, rigidBodyTwo);
 }
 
 //--------------------------------------------------------------------------------
@@ -219,6 +230,11 @@ void PhysicsObjectSystem::Update(float elapsedTime)
 	{
 		m_PhysicsObjects[i]->Update(elapsedTime);
 	}
+	for (unsigned int i = 0; i < m_RigidBodys.size(); i++)
+	{
+		m_RigidBodys[i]->Integrate(elapsedTime);
+	}
+	
 
 	mp_CollisionSystem->CheckCollisions();
 	int maxIterations = 25;
@@ -258,6 +274,7 @@ void PhysicsObjectSystem::CleanUp()
 		delete m_ObjectForceGenerators[i];
 	}
 	m_PhysicsObjects.clear();
+	m_RigidBodys.clear();
 	m_ForceGenerators.clear();
 	m_ObjectForceGenerators.clear();
 

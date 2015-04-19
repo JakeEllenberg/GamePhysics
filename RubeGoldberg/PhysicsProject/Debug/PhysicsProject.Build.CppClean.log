@@ -1,7 +1,5 @@
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\vc120.pdb
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\vc120.idb
-c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\level.obj
-c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\main.obj
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\matrix.obj
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\objectforcegenerator.obj
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\particle.obj
@@ -13,6 +11,8 @@ c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproje
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\pyramid.obj
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\quaternion.obj
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\renderobject.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\rigidbody.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\rigidbodyspringforcegenerator.obj
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\rodcontactgenerator.obj
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\shape.obj
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\skybox.obj
@@ -37,8 +37,9 @@ c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproje
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\gravitygenerator.obj
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\ground.obj
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\groundcontactgenerator.obj
-c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\rigidbody.obj
-c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\rigidbodyspringforcegenerator.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\imagehandler.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\level.obj
+c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\physicsproject\debug\main.obj
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\debug\physicsproject.ilk
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\debug\physicsproject.exe
 c:\users\jacob.ellenberg\desktop\physics 3\gamephysics\rubegoldberg\debug\physicsproject.pdb

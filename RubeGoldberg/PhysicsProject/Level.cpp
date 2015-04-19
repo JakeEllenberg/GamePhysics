@@ -14,6 +14,7 @@
 #include "Pyramid.h"
 #include <iostream>
 #include <fstream>
+#include "ImageHandler.h"
 //--------------------------------------------------------------------------------
 Level::Level()
 {
@@ -29,9 +30,12 @@ Level::~Level()
 void Level::Initialize()
 {
 	m_Ground = new Ground();
-	m_Ground->Inititalize("Seige/siege_bot.jpg");
+	m_Ground->Inititalize("Sky_bot");
 	m_Player = new Player();
-	m_Player->Inititalize(1.0f, Vector3D(0,5,0), Vector3D(0,0,0), Vector3D::Zero, Vector3D::Zero, 1.0f, "Characters/smile-texture.jpg");
+	
+	
+
+	m_Player->Inititalize(1.0f, Vector3D(0,5,0), Vector3D(0,0,0), Vector3D::Zero, Vector3D::Zero, 1.0f, "Smile1");
 	m_Player->SetSpeed(50.0f);
 	m_Player->SetDampening(.99f);
 
@@ -79,15 +83,15 @@ void Level::LoadShapes(std::string filePath)
 		{
 			case 0:
 				shapeToAdd = new Cube();
-				filePath = "Characters/smile-texture2.jpg";
+				filePath = "Smile2";
 				break;
 			case 1:
 				shapeToAdd = new Pyramid();
-				filePath = "Characters/smile-texture3.jpg";
+				filePath = "Smile3";
 				break;
 			case 2:
 				shapeToAdd = new Tetrahedron();
-				filePath = "Characters/smile-texture5.jpg";
+				filePath = "Smile5";
 				break;
 			default:
 				continue;
@@ -100,7 +104,7 @@ void Level::LoadShapes(std::string filePath)
 		else
 		{
 			m_Enemies.push_back(new EnemyAI(m_Player, shapeToAdd, 5.0f));
-			filePath = "Characters/smile-texture4.jpg";
+			filePath = "Smile4";
 		}
 		shapeToAdd->Inititalize(Vector3D((float)values[3], (float)values[4], (float)values[5]), filePath, (float)values[1]);
 		AddShape(shapeToAdd);

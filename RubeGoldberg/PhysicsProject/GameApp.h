@@ -47,6 +47,7 @@ private:
 	Skybox* mp_SkyBox;
 	Level* m_Level;
 	Vector3D m_ScreenSize;
+	bool m_LoadedTextures;
 };
 #endif
 //================================================================================
