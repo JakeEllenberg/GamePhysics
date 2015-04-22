@@ -39,10 +39,14 @@ public:
 	void RemoveFromRegistry(std::vector<PhysicsObject*> objects, GeneratorType type);
 
 	void Update(float elapsedTime);
+	
 	void Reset();
 	void CleanUp();
 
 private:
+	void updateComponent(float elapsedTime);
+	void updateCollisions(float elapsedTime);
+
 	std::vector<PhysicsObject*> m_PhysicsObjects;
 	std::vector<ObjectForceGenerator*> m_ObjectForceGenerators;
 	std::vector<ForceGenerator*> m_ForceGenerators;

@@ -336,4 +336,9 @@ Vector3D Matrix::Transform(const Vector3D vector)
 	return (*this) * vector;
 }
 
+Vector3D Matrix::GetAxisVector(unsigned int index) const
+{
+	return Vector3D(mp_Matrix[index], mp_Matrix[index + 4], mp_Matrix[index + 8]);
+}
+
 //======================================================================

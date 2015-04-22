@@ -28,6 +28,7 @@ public:
 	inline float GetMass() { return 1.0f / m_InverseMass; };
 	Vector3D GetPointInWorldSpace(Vector3D point);
 	void Reset();
+	inline Matrix& GetTransformationMatrix() { return m_TransformationMatrix; };
 private:
 	void calculateDerivedData();
 	void transfomrInertiaTensor(Matrix& iitWorld, const Quaternion& quaternion, const Matrix& iitBody, const Matrix& rotationMatrix);

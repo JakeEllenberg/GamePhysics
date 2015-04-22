@@ -225,7 +225,14 @@ void PhysicsObjectSystem::Update(float elapsedTime)
 {
 	//Update the forces
 	mp_ForceRegistry->UpdateForces();
-	//Update physics objects
+
+	updateComponent(elapsedTime);
+	updateCollisions(elapsedTime);
+}
+
+//--------------------------------------------------------------------------------
+void PhysicsObjectSystem::updateComponent(float elapsedTime)
+{
 	for (unsigned int i = 0; i < m_PhysicsObjects.size(); i++)
 	{
 		m_PhysicsObjects[i]->Update(elapsedTime);
@@ -234,8 +241,10 @@ void PhysicsObjectSystem::Update(float elapsedTime)
 	{
 		m_RigidBodys[i]->Integrate(elapsedTime);
 	}
-	
+}
 
+void PhysicsObjectSystem::updateCollisions(float elapsedTime)
+{
 	mp_CollisionSystem->CheckCollisions();
 	int maxIterations = 25;
 	int iterations = mp_CollisionSystem->GetNumContacts() * 2;
@@ -263,8 +272,7 @@ void PhysicsObjectSystem::Reset()
 
 //--------------------------------------------------------------------------------
 void PhysicsObjectSystem::CleanUp()
-{
-	
+{	
 	for (unsigned int i = 0; i < m_ForceGenerators.size(); i++)
 	{
 		delete m_ForceGenerators[i];

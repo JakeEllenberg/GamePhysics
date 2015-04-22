@@ -140,13 +140,10 @@ void RigidBody::Integrate(float duration)
 	m_Rotation += angularAcceleration * duration;
 	m_Velocity = m_Velocity * pow(m_LinearDampening, duration);
 	m_Rotation = m_Rotation * pow(m_AngularDampening, duration);
-
 	m_Position += m_Velocity * duration;
-
 	m_Orientation.AddScaledVector(m_Rotation, duration);
 
 	calculateDerivedData();
-
 	ClearAccumulators();
 }
 

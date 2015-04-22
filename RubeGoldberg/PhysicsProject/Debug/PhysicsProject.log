@@ -1,12 +1,19 @@
-﻿Build started 4/19/2015 11:03:46 AM.
-     1>Project "C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\PhysicsProject\PhysicsProject.vcxproj" on node 2 (Build target(s)).
+﻿Build started 4/22/2015 2:28:39 PM.
+     1>Project "C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\PhysicsProject\PhysicsProject.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/include/" /I"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\\Libs\glui-2.36\include" /I"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\\Libs\Simple OpenGL Image Library\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GlutTime.cpp
-         GlutTime.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/include/" /I"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\\Libs\glui-2.36\include" /I"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\\Libs\Simple OpenGL Image Library\src" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CollisionDetector.cpp CollisionPlane.cpp
+         CollisionPlane.cpp
+         CollisionDetector.cpp
+         Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\Debug\PhysicsProject.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\\Libs\glui-2.36\Debug\\" /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\\Libs\Simple OpenGL Image Library\Debug" "C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glew32.lib" "C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glfw3dll.lib" "C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\freeglut.lib" glui32.lib OpenGL32.lib glu32.lib SOIL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\Debug\PhysicsProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\Debug\PhysicsProject.lib" /MACHINE:X86 Debug\BungeeForceGenerator.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\Debug\PhysicsProject.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\\Libs\glui-2.36\Debug\\" /LIBPATH:"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\\Libs\Simple OpenGL Image Library\Debug" "C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glew32.lib" "C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\glfw3dll.lib" "C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\packages\nupengl.core.0.0.0.1\build\native\../..//build/native/lib/Win32\v120\freeglut.lib" glui32.lib OpenGL32.lib glu32.lib SOIL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\Debug\PhysicsProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\Debug\PhysicsProject.lib" /MACHINE:X86 Debug\BungeeForceGenerator.obj
          Debug\CableContactGenerator.obj
          Debug\Camera.obj
+         Debug\CollisionData.obj
+         Debug\CollisionDetector.obj
+         Debug\CollisionPlane.obj
+         Debug\CollisionPrimitive.obj
+         Debug\CollisionSphere.obj
          Debug\CollisionSystem.obj
          Debug\Contact.obj
          Debug\ContactGenerator.obj
@@ -37,6 +44,7 @@
          Debug\RenderObject.obj
          Debug\RigidBody.obj
          Debug\RigidBodySpringForceGenerator.obj
+         Debug\RigidContact.obj
          Debug\RodContactGenerator.obj
          Debug\Shape.obj
          Debug\Skybox.obj
@@ -44,9 +52,9 @@
          Debug\Cube.obj
          Debug\Tetrahedron.obj
          Debug\Vector3D.obj
-         PhysicsProject.vcxproj -> C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\Debug\PhysicsProject.exe
-     1>Done Building Project "C:\Users\jacob.ellenberg\Desktop\physics 3\GamePhysics\RubeGoldberg\PhysicsProject\PhysicsProject.vcxproj" (Build target(s)).
+         PhysicsProject.vcxproj -> C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\Debug\PhysicsProject.exe
+     1>Done Building Project "C:\Users\jacob.ellenberg\Desktop\New folder\GamePhysics\RubeGoldberg\PhysicsProject\PhysicsProject.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.47
+Time Elapsed 00:00:02.23
