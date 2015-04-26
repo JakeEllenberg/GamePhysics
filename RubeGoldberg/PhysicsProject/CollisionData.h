@@ -7,6 +7,7 @@
 #define COLLISION_DATA_H
 //======================================================================
 #include "RigidContact.h"
+#include <vector>
 //======================================================================
 class CollisionData
 {
@@ -16,7 +17,7 @@ public:
 
 
 	inline void AddContacts(int numContacts) { m_ContactsLeft += numContacts; };
-	inline RigidContact* GetContact(){ return m_Contact; };
+	inline std::vector<RigidContact*> GetContacts(){ return m_Contacts; };
 	inline int GetContactsLeft() { return m_ContactsLeft; };
 
 	inline void SetFriction(float friction) { m_Friction = friction; };
@@ -27,9 +28,9 @@ public:
 private:
 	int m_ContactsLeft;
 	
-	RigidContact* m_Contact;
 	float m_Friction;
 	float m_Restitution;
+	std::vector<RigidContact*> m_Contacts;
 };
 #endif
 //======================================================================

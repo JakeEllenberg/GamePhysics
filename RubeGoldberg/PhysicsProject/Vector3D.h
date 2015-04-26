@@ -21,7 +21,8 @@ public:
 	Vector3D(float x, float y, float z);
 	~Vector3D();
 	
-
+	Vector3D operator*(const Vector3D& rhs) const;
+	void operator*=(const Vector3D& rhs);
 	Vector3D operator*(const float&) const;
 	Vector3D operator/(const float&) const;
 	Vector3D operator+(const Vector3D&) const;
@@ -34,8 +35,8 @@ public:
 
 	float Dot(const Vector3D&) const;
 	Vector3D Cross(const Vector3D&) const;
-	float Magnitude();
-	float MagnitudeSquared();
+	float Magnitude() const ;
+	float MagnitudeSquared() const;
 
 	void Normalize();
 	Vector3D Normalized();
@@ -44,6 +45,9 @@ public:
 	float CalculateDistance(Vector3D rhs);
 
 	void Lerp(Vector3D other, float rate);
+
+	float GetIndex(int i);
+	void SetIndex(int i, float value);
 
 	std::string ToString(bool ignoreDecimals = false);
 };

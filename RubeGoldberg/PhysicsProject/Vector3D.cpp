@@ -33,6 +33,19 @@ Vector3D::~Vector3D()
 }
 
 //--------------------------------------------------------------------------------
+Vector3D Vector3D::operator*(const Vector3D& rhs) const
+{
+	return Vector3D(X * rhs.X, Y * rhs.Y, Z * rhs.Z);
+}
+//--------------------------------------------------------------------------------
+void Vector3D::operator *= (const Vector3D& rhs)
+{
+	X *= rhs.X;
+	Y *= rhs.Y;
+	Z *= rhs.Z;
+}
+
+//--------------------------------------------------------------------------------
 Vector3D Vector3D::operator*(const float& rhs) const
 {
 	return Vector3D(X * rhs, Y * rhs, Z * rhs);
@@ -97,12 +110,12 @@ void Vector3D::operator-=(const Vector3D& rhs)
 }
 
 //--------------------------------------------------------------------------------
-float Vector3D::Magnitude()
+float Vector3D::Magnitude() const
 {
 	return sqrt(MagnitudeSquared());
 }
 //--------------------------------------------------------------------------------
-float Vector3D::MagnitudeSquared()
+float Vector3D::MagnitudeSquared() const
 {
 	return (X * X) + (Y * Y) + (Z * Z);
 }
@@ -142,6 +155,36 @@ void Vector3D::Lerp(Vector3D other, float rate)
 	X += difference.X;
 	Y += difference.Y;
 	Z += difference.Z;
+}
+
+//--------------------------------------------------------------------------------
+float Vector3D::GetIndex(int i)
+{
+	switch (i)
+	{
+	case 0:
+		return X;
+	case 1:
+		return Y;
+	case 2:
+		return Z;
+	default:
+		return -1;
+	}
+}
+
+//--------------------------------------------------------------------------------
+void Vector3D::SetIndex(int i, float value)
+{
+	switch (i)
+	{
+	case 0:
+		X = value;
+	case 1:
+		Y = value;
+	case 2:
+		Z = value;
+	}
 }
 
 //--------------------------------------------------------------------------------

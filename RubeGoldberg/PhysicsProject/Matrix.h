@@ -45,6 +45,7 @@ public:
 	float Det();
 
 	Vector3D Transform(const Vector3D vector);
+	Vector3D TransformInv(const Vector3D vector);
 	Vector3D GetAxisVector(unsigned int index) const;
 
 private:
