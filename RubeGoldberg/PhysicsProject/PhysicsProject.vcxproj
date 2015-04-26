@@ -111,6 +111,8 @@
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="RigidBodySpringForceGenerator.cpp" />
     <ClCompile Include="RigidContact.cpp" />
+    <ClCompile Include="RigidRender.cpp" />
+    <ClCompile Include="RigidSphere.cpp" />
     <ClCompile Include="RodContactGenerator.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Skybox.cpp" />
@@ -163,6 +165,8 @@
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="RigidBodySpringForceGenerator.h" />
     <ClInclude Include="RigidContact.h" />
+    <ClInclude Include="RigidRender.h" />
+    <ClInclude Include="RigidSphere.h" />
     <ClInclude Include="RodContactGenerator.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Skybox.h" />

@@ -29,7 +29,7 @@ public:
 	Vector3D GetPointInWorldSpace(Vector3D point);
 	void Reset();
 	inline Matrix& GetTransformationMatrix() { return m_TransformationMatrix; };
-private:
+protected:
 	void calculateDerivedData();
 	void transfomrInertiaTensor(Matrix& iitWorld, const Quaternion& quaternion, const Matrix& iitBody, const Matrix& rotationMatrix);
 	

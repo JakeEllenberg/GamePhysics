@@ -53,7 +53,7 @@ struct RigidbodyForceGeneratorRegistration
 	RigidbodyForceGeneratorRegistration(RigidBody* rigidbodyOne, RigidBody* rigidbodyTwo, ForceGenerator* forceGenerator)
 	{
 		m_RigidbodyOne = rigidbodyOne;
-		m_RigidbodyOne = rigidbodyTwo;
+		m_RigidbodyTwo = rigidbodyTwo;
 		m_ForceGenerator = forceGenerator;
 	}
 

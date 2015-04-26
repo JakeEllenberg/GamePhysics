@@ -15,6 +15,7 @@
 #include <iostream>
 #include <fstream>
 #include "ImageHandler.h"
+#include "RigidSphere.h"
 //--------------------------------------------------------------------------------
 Level::Level()
 {
@@ -38,6 +39,12 @@ void Level::Initialize()
 	m_Player->Inititalize(1.0f, Vector3D(0,5,0), Vector3D(0,0,0), Vector3D::Zero, Vector3D::Zero, 1.0f, "Smile1");
 	m_Player->SetSpeed(50.0f);
 	m_Player->SetDampening(.99f);
+
+	RigidSphere* sphere = new RigidSphere();
+	sphere->Inititalize("Smile1", 1.0f, 1.0f, Vector3D(0, 10, 0));
+
+	m_RigidRenders.push_back(sphere);
+	
 
 	LoadShapes("Characters/LevelInfo.txt");
 }
@@ -108,7 +115,6 @@ void Level::LoadShapes(std::string filePath)
 		}
 		shapeToAdd->Inititalize(Vector3D((float)values[3], (float)values[4], (float)values[5]), filePath, (float)values[1]);
 		AddShape(shapeToAdd);
-		
 	}
 }
 
@@ -194,12 +200,18 @@ std::vector<EnemyAI*> Level::GetCollidingEnemies()
 //--------------------------------------------------------------------------------
 void Level::Draw()
 {
+	/*
 	for (unsigned int i = 0; i < m_RenderObjects.size(); i++)
 	{
 		m_RenderObjects[i]->Draw();
 	}
+	*/
+	for (unsigned int i = 0; i < m_RigidRenders.size(); i++)
+	{
+		m_RigidRenders[i]->Draw();
+	}
 	m_Ground->Draw();
-	m_Player->Draw();
+	//m_Player->Draw();
 }
 std::vector<PhysicsObject*> Level::GetCollisionObjects()
 {

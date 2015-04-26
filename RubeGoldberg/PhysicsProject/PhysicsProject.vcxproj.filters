@@ -55,6 +55,12 @@
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{06a182d2-b398-4dce-9d84-25c5624ea81b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Rigidbodies">
+      <UniqueIdentifier>{553faf55-dc4b-4435-ad94-cf8da38a3099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RigidBodies">
+      <UniqueIdentifier>{1f1eae77-2f45-4b9e-b544-1525ff212ebf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -180,9 +186,6 @@
     <ClCompile Include="Pyramid.cpp">
       <Filter>Source Files\Shapes</Filter>
     </ClCompile>
-    <ClCompile Include="RigidBody.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="RigidBodySpringForceGenerator.cpp">
       <Filter>Source Files\Force Generators</Filter>
     </ClCompile>
@@ -195,10 +198,19 @@
     <ClCompile Include="Tetrahedron.cpp">
       <Filter>Source Files\Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="RigidBody.cpp">
+      <Filter>Source Files\RigidBodies</Filter>
+    </ClCompile>
     <ClCompile Include="Box.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Collision</Filter>
     </ClCompile>
     <ClCompile Include="IntersectionTest.cpp">
+      <Filter>Source Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidSphere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidRender.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -290,9 +302,6 @@
     <ClInclude Include="CollisionSphere.h">
       <Filter>Header Files\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="RigidBody.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="GlutTime.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
@@ -341,10 +350,19 @@
     <ClInclude Include="CollisionSystem.h">
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="RigidBody.h">
+      <Filter>Header Files\Rigidbodies</Filter>
+    </ClInclude>
     <ClInclude Include="Box.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Collision</Filter>
     </ClInclude>
     <ClInclude Include="IntersectionTest.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidSphere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidRender.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

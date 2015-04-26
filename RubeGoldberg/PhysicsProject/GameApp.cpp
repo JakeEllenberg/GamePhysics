@@ -71,6 +71,13 @@ void GameApp::Init(Vector3D screenSize)
 	mp_PhysicsObjectSystem->Initialize();
 	mp_PhysicsObjectSystem->Add(earthGravity);
 
+	for each(RigidRender* rigidRender in m_Level->GetRigidRenders())
+	{
+		RigidBody* body = (RigidBody*)rigidRender;
+		mp_PhysicsObjectSystem->Add(body);
+		mp_PhysicsObjectSystem->AddToRegistry(earthGravity, body);
+	}
+
 	for each (PhysicsObject* object in collisionObjects)
 	{
 		mp_PhysicsObjectSystem->Add(object);

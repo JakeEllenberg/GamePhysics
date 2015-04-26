@@ -14,6 +14,7 @@
 #include "Player.h"
 #include "Shape.h"
 #include "EnemyAI.h"
+#include "RigidRender.h"
 class SpringForceGenerator;
 class ContactGenerator;
 //======================================================================
@@ -41,6 +42,8 @@ public:
 	std::vector<Shape*> GetCollidingCollectables();
 	std::vector<EnemyAI*> GetCollidingEnemies();
 
+	std::vector<RigidRender*> GetRigidRenders() { return m_RigidRenders; };
+
 	void LoadShapes(std::string filePath);
 private:
 	std::vector<RenderObject*> m_RenderObjects;
@@ -49,6 +52,7 @@ private:
 	std::vector<Shape*> m_Collectables;
 	std::vector<Shape*> m_Shapes;
 	std::vector<EnemyAI*> m_Enemies;
+	std::vector<RigidRender*> m_RigidRenders;
 	int GetValue(std::string, int position);
 	
 	Ground* m_Ground;

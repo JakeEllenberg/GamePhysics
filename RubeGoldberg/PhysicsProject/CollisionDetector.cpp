@@ -271,7 +271,7 @@ unsigned int CollisionDetector::BoxAndBox(const Box& boxOne, Box& boxTwo, Collis
 		Vector3D pointOnEdgeOne = boxOne.GetHalfSize();
 		Vector3D pointOnEdgeTwo = boxTwo.GetHalfSize();
 
-		for (unsigned int i; i < 3; i++)
+		for (unsigned int i = 0; i < 3; i++)
 		{
 			if (i == oneAxisIndex) pointOnEdgeOne.SetIndex(i,0);
 			else if (boxOne.GetAxis(i).Dot(axis) > 0) pointOnEdgeOne.SetIndex(i, -pointOnEdgeOne.GetIndex(i));
@@ -328,7 +328,7 @@ void CollisionDetector::fillPointFaceBoxBox(const Box& boxOne, const Box& boxTwo
 }
 
 //----------------------------------------------------------------------
-Vector3D getContactPoint(const Vector3D& pointOne, const Vector3D& directionOne, float oneSize,
+Vector3D CollisionDetector::getContactPoint(const Vector3D& pointOne, const Vector3D& directionOne, float oneSize,
 	const Vector3D& pointTwo, const Vector3D& directionTwo, float twoSize, bool useOne)
 {
 	Vector3D toSt, cOne, cTwo;
