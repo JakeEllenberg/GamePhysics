@@ -44,9 +44,13 @@ public:
 	Matrix InvMatrix() const;
 	float Det();
 
+	Matrix TransposeMatrix() const;
+
 	Vector3D Transform(const Vector3D vector);
 	Vector3D TransformInv(const Vector3D vector);
 	Vector3D GetAxisVector(unsigned int index) const;
+	Vector3D TransformTranspose(const Vector3D vector);
+	void SetSkewSymetric(const Vector3D vector);
 
 private:
 	void initalizeMatrix(int rows, int columns);

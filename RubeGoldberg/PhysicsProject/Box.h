@@ -12,7 +12,7 @@
 class Box : public CollisionPrimitive
 {
 public:
-	Box(Vector3D halfSize);
+	Box(Vector3D halfSize, RigidBody* rigidBody, Matrix offset);
 	~Box();
 
 	inline Vector3D GetHalfSize() const { return m_HalfSize; };

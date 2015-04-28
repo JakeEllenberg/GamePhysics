@@ -29,8 +29,29 @@ public:
 	Vector3D GetPointInWorldSpace(Vector3D point);
 	void Reset();
 	inline Matrix& GetTransformationMatrix() { return m_TransformationMatrix; };
+	inline Vector3D GetPosition() { return m_Position; };
+
+	inline Vector3D GetRotation() { return m_Rotation; };
+	inline Vector3D GetVelocity() { return m_Velocity; };
+	inline Vector3D GetLastFrameAcc() { return m_LastFrameAcceleration; };
+	inline bool GetAwake() { return m_IsAwake; };
+	inline void SetAwake(bool awake) { m_IsAwake = awake; };
+
+	void GetInverseInertiaTensorWorld(Matrix& inverseInertiaTensor);
+
+	inline void SetPosition(Vector3D pos) { m_Position = pos; };
+
+	void CalculateDerivedData();
+
+	inline Quaternion GetOrientation() { return m_Orientation; };
+	inline void SetOrientation(Quaternion q) { m_Orientation = q; };
+
+	inline float GetInverseMass() { return m_InverseMass; };
+
+	inline void AddVelocity(Vector3D amount) { m_Velocity += amount; };
+	inline void AddRotation(Vector3D amount) { m_Rotation += amount; };
 protected:
-	void calculateDerivedData();
+	
 	void transfomrInertiaTensor(Matrix& iitWorld, const Quaternion& quaternion, const Matrix& iitBody, const Matrix& rotationMatrix);
 	
 

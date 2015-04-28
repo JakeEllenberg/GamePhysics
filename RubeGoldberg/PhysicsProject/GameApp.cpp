@@ -10,7 +10,9 @@
 #include "BungeeForceGenerator.h"
 #include "CableContactGenerator.h"
 #include <map>
+#include "RigidContactGenerator.h"
 #include "ImageHandler.h"
+#include "RigidGroundContact.h"
 //================================================================================
 int GameApp::TimeStep = 1;
 bool GameApp::DebugData = false;
@@ -90,6 +92,10 @@ void GameApp::Init(Vector3D screenSize)
 	{
 		mp_PhysicsObjectSystem->Add(contactGenerator);
 	}
+
+	RigidContactGenerator* rigidGroundContact = new RigidGroundContact(0);
+
+	mp_PhysicsObjectSystem->Add(rigidGroundContact);
 
 	std::map<SpringForceGenerator*, std::vector<PhysicsObject*>> springForceGenerators = m_Level->GetSpringForceGenerators();
 

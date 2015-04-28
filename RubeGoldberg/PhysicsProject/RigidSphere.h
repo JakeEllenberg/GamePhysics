@@ -16,6 +16,8 @@ public:
 
 	virtual void Inititalize(std::string imageName,float radius, float mass = 1, Vector3D initialPosition = Vector3D::Zero);
 
+	inline float GetRadius() { return m_Radius; };
+
 private:
 	virtual void drawObject();
 

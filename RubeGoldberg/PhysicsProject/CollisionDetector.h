@@ -12,6 +12,7 @@
 #include "CollisionPlane.h"
 #include "Box.h"
 #include "IntersectionTest.h"
+#include "CollisionSystem.h"
 //======================================================================
 class CollisionDetector
 {
@@ -19,16 +20,16 @@ public:
 	CollisionDetector();
 	~CollisionDetector();
 
-	unsigned int SphereandSphere(const CollisionSphere& sphereOne, const CollisionSphere& sphereTwo, CollisionData* collisionData);
-	unsigned int SphereAndHalfSpace(const CollisionSphere& sphere, const CollisionPlane& plane, CollisionData* collisionData);
-	unsigned int SphereAndTruePlane(const CollisionSphere& sphere, const CollisionPlane& plane, CollisionData* collisionData);
-	unsigned int BoxAndHalfSpace(const Box& box, const CollisionPlane& plane, CollisionData* data);
-	unsigned int BoxAndSphere(const Box& box, const CollisionSphere& sphere, CollisionData* data);
-	unsigned int BoxAndBox(const Box& boxOne, Box& boxTwo, CollisionData* data);
+	unsigned int SphereandSphere(const CollisionSphere& sphereOne, const CollisionSphere& sphereTwo, CollisionSystem* collisionSystem);
+	unsigned int SphereAndHalfSpace(const CollisionSphere& sphere, const CollisionPlane& plane, CollisionSystem* collisionSystem);
+	unsigned int SphereAndTruePlane(const CollisionSphere& sphere, const CollisionPlane& plane, CollisionSystem* collisionSystem);
+	unsigned int BoxAndHalfSpace(const Box& box, const CollisionPlane& plane, CollisionSystem* collisionSystem);
+	unsigned int BoxAndSphere(const Box& box, const CollisionSphere& sphere, CollisionSystem* collisionSystem);
+	unsigned int BoxAndBox(const Box& boxOne, Box& boxTwo, CollisionSystem* collisionSystem);
 private:
 	Vector3D getContactPoint(const Vector3D& pointOne, const Vector3D& directionOne, float oneSize,
 		const Vector3D& pointTwo, const Vector3D& directionTwo, float towSize, bool useOne);
-	void fillPointFaceBoxBox(const Box& boxOne, const Box& boxTwo, const Vector3D toCenter, CollisionData* data, unsigned int best, float penetration);
+	void fillPointFaceBoxBox(const Box& boxOne, const Box& boxTwo, const Vector3D toCenter, CollisionSystem* collisionSystem, unsigned int best, float penetration);
 	static float m_Mults[8][3];
 };
 #endif;

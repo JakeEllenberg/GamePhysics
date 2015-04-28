@@ -11,7 +11,7 @@
 class CollisionPrimitive
 {
 public:
-	CollisionPrimitive();
+	CollisionPrimitive(RigidBody* rigidBody, Matrix offset = Matrix());
 	~CollisionPrimitive();
 
 	inline void CalculateInternals() { m_Transform = m_RigidBody->GetTransformationMatrix() * m_Offset; };

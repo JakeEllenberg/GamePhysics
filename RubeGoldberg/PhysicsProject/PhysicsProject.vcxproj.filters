@@ -213,6 +213,12 @@
     <ClCompile Include="RigidRender.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RigidContactGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidGroundContact.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -363,6 +369,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RigidRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidContactGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidGroundContact.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

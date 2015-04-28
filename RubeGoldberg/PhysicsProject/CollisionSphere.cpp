@@ -6,7 +6,8 @@
 #include "CollisionSphere.h"
 
 //======================================================================
-CollisionSphere::CollisionSphere()
+CollisionSphere::CollisionSphere(RigidBody* rigidBody, Matrix offset)
+:CollisionPrimitive(rigidBody, offset)
 {
 }
 

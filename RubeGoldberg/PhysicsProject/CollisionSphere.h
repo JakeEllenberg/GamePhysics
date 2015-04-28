@@ -11,7 +11,7 @@
 class CollisionSphere : public CollisionPrimitive
 {
 public:
-	CollisionSphere();
+	CollisionSphere(RigidBody* rigidBody, Matrix offset);
 	~CollisionSphere();
 
 	inline void SetRadius(float radius) { m_Radius = radius; };

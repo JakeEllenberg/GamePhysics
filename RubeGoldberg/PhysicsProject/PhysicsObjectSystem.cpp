@@ -50,10 +50,16 @@ void PhysicsObjectSystem::Add(ContactGenerator* contactGenerator)
 	mp_CollisionSystem->AddContactGenerator(contactGenerator);
 }
 
+void PhysicsObjectSystem::Add(RigidContactGenerator* contactGenerator)
+{
+	mp_CollisionSystem->AddRigidContactGenerator(contactGenerator);
+}
+
 //--------------------------------------------------------------------------------
 void PhysicsObjectSystem::Add(RigidBody* rigidBody)
 {
 	m_RigidBodys.push_back(rigidBody);
+	mp_CollisionSystem->AddRigidBody(rigidBody);
 }
 
 //--------------------------------------------------------------------------------

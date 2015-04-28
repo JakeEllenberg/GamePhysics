@@ -8,6 +8,9 @@
 //======================================================================
 RigidBody::RigidBody()
 {
+	m_TransformationMatrix = Matrix(4, 4);
+	m_InverseInertiaTensorWorld = Matrix(4, 4);
+	m_InerseInertiaTensor = Matrix(3, 3);
 }
 
 //--------------------------------------------------------------------------------
@@ -29,6 +32,8 @@ void RigidBody::Inititalize(float mass, Vector3D initialPosition, Vector3D initi
 	m_InitVelocity = m_Velocity;
 	m_InitAcceleration = m_Acceleration;
 	m_InitRotation = m_Rotation;
+
+	m_TransformationMatrix = Matrix(4, 4);
 
 	m_IsAwake = false;
 }
@@ -73,7 +78,7 @@ void RigidBody::CalculateTransformMatrix(Matrix& transformMatrix, const Vector3D
 }
 
 //--------------------------------------------------------------------------------
-void RigidBody::calculateDerivedData()
+void RigidBody::CalculateDerivedData()
 {
 	m_Orientation.Normalize();
 
@@ -143,7 +148,7 @@ void RigidBody::Integrate(float duration)
 	m_Position += m_Velocity * duration;
 	m_Orientation.AddScaledVector(m_Rotation, duration);
 
-	calculateDerivedData();
+	CalculateDerivedData();
 	ClearAccumulators();
 }
 
@@ -172,7 +177,14 @@ void RigidBody::AddForceAtBodyPoint(const Vector3D& force, const Vector3D& point
 	Vector3D worldPoint = GetPointInWorldSpace(point);
 }
 
+//--------------------------------------------------------------------------------
 Vector3D RigidBody::GetPointInWorldSpace(Vector3D point)
 {
 	return m_TransformationMatrix.Transform(point);
+}
+
+//--------------------------------------------------------------------------------
+void RigidBody::GetInverseInertiaTensorWorld(Matrix& inverseInertiaTensor)
+{
+	inverseInertiaTensor = m_InverseInertiaTensorWorld;
 }

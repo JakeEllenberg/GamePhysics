@@ -27,6 +27,7 @@ public:
 	void Add(ObjectForceGenerator* objectForceGenerator);
 	void Add(ForceGenerator* forceGenerator);
 	void Add(ContactGenerator* contactGenerator);
+	void Add(RigidContactGenerator* contactGenerator);
 	void Add(RigidBody* rigidBody);
 
 	void Remove(PhysicsObject* physicsObject);

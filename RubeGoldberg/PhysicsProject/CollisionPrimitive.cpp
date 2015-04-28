@@ -6,8 +6,12 @@
 #include "CollisionPrimitive.h"
 
 //======================================================================
-CollisionPrimitive::CollisionPrimitive()
+CollisionPrimitive::CollisionPrimitive(RigidBody* rigidBody, Matrix offset)
 {
+	m_Offset = offset;
+	m_RigidBody = rigidBody;
+
+	CalculateInternals();
 }
 
 

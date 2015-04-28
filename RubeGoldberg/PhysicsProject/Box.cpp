@@ -5,7 +5,8 @@
 //======================================================================
 #include "Box.h"
 
-Box::Box(Vector3D halfSize)
+Box::Box(Vector3D halfSize, RigidBody* rigidBody, Matrix offset)
+:CollisionPrimitive(rigidBody, offset)
 {
 	m_HalfSize = halfSize;
 

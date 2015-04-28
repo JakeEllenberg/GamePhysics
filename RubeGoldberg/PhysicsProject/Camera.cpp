@@ -175,7 +175,7 @@ void Camera::Update()
 	glRotatef(m_Rotation.X, 1.0, 0.0, 0.0);
 	glRotatef(m_Rotation.Y, 0.0, 1.0, 0.0);
 	//glTranslated(-m_Position.X, -m_Position.Y, -m_Position.Z);
-	glTranslated(-m_Position.X, -10.0f, -m_Position.Z);
+	glTranslated(-m_Position.X, -m_Position.Y, -m_Position.Z);
 	m_LastMousePosition = Vector3D((float)((int)((m_ScreenSize.X / 2.0f))),
 		(float)((int)((m_ScreenSize.Y / 2.0f))), 0);
 }
