@@ -274,12 +274,11 @@ float Matrix::Det()
 //--------------------------------------------------------------------------------------------
 
 //-----------http://www.sanfoundry.com/cpp-program-finds-inverse-graph-matrix/----------------
-Matrix Matrix::InvMatrix() const
+void Matrix::InvMatrix()
 {
-	Matrix inv = *this;
-	if (inv.Det() != 0)
+	if (Det() != 0)
 	{
-		int n = inv.GetNumRows();
+		int n = GetNumRows();
 		int i, j, k;
 		float d;
 		for (int i = 1; i <= n; i++)
@@ -288,19 +287,19 @@ Matrix Matrix::InvMatrix() const
 			{
 				if (j == (i + n))
 				{
-					inv.Set(i, j, 1);
+					Set(i, j, 1);
 				}
 			}
 		}
 		for (i = n; i > 1; i--)
 		{
-			if (inv.Get(i - 1, 1) < inv.Get(i, 1))
+			if (Get(i - 1, 1) < Get(i, 1))
 			{
 				for (j = 1; j <= n * 2; j++)
 				{
-					d = inv.Get(i, j);
-					inv.Set(i, j, inv.Get(i - 1, j));
-					inv.Set(i - 1, j, d);
+					d = Get(i, j);
+					Set(i, j, Get(i - 1, j));
+					Set(i - 1, j, d);
 				}
 			}
 		}
@@ -310,25 +309,23 @@ Matrix Matrix::InvMatrix() const
 			{
 				if (j != i)
 				{
-					d = inv.Get(j, i) / inv.Get(i, i);
+					d = Get(j, i) / Get(i, i);
 					for (k = 1; k <= n * 2; k++)
 					{
-						inv.Set(j, k, inv.Get(j, k) - (inv.Get(i, k) * d));
+						Set(j, k, Get(j, k) - (Get(i, k) * d));
 					}
 				}
 			}
 		}
 		for (i = 1; i <= n; i++)
 		{
-			d = inv.Get(i, i);
+			d = Get(i, i);
 			for (j = 1; j <= n * 2; j++)
 			{
-				inv.Set(i, j, inv.Get(i, j) / d);
+				Set(i, j, Get(i, j) / d);
 			}
 		}
-		return inv;
 	}
-	return Matrix(inv.GetNumRows(), inv.GetNumColumns());
 }
 
 Vector3D Matrix::Transform(const Vector3D vector)
@@ -338,7 +335,11 @@ Vector3D Matrix::Transform(const Vector3D vector)
 
 Vector3D Matrix::TransformInv(const Vector3D vector)
 {
-	return InvMatrix() * vector;
+	Vector3D returnVector;
+	InvMatrix();
+	returnVector = *this * vector;
+	InvMatrix();
+	return returnVector;
 }
 
 Vector3D Matrix::GetAxisVector(unsigned int index) const

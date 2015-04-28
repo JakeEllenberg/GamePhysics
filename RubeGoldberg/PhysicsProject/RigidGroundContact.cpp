@@ -18,10 +18,10 @@ RigidGroundContact::~RigidGroundContact()
 
 void RigidGroundContact::AddContact(CollisionSystem* collisionSystem)
 {
-	for each(RigidBody* body in collisionSystem->GetRigidBodies())
+	for (unsigned int i = 0; i < collisionSystem->GetRigidBodies().size(); i++)
 	{
-		CollisionSphere sphere = CollisionSphere(body, Matrix());
-		RigidSphere* rigidSphere = (RigidSphere*)body;
+		CollisionSphere sphere = CollisionSphere(collisionSystem->GetRigidBodies()[i], Matrix());
+		RigidSphere* rigidSphere = (RigidSphere*)collisionSystem->GetRigidBodies()[i];
 		sphere.SetRadius(rigidSphere->GetRadius());
 		collisionSystem->GetCollisionDetector()->SphereAndHalfSpace(sphere, *m_CollisionPlane, collisionSystem);
 	}

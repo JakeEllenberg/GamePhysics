@@ -90,7 +90,8 @@ void RigidBody::CalculateDerivedData()
 //--------------------------------------------------------------------------------
 void RigidBody::SetInitertiaTensor(const Matrix& inertiaTensor)
 {
-	m_InerseInertiaTensor = inertiaTensor.InvMatrix();
+	m_InerseInertiaTensor = inertiaTensor;
+	m_InerseInertiaTensor.InvMatrix();
 }
 
 //--------------------------------------------------------------------------------
@@ -184,7 +185,7 @@ Vector3D RigidBody::GetPointInWorldSpace(Vector3D point)
 }
 
 //--------------------------------------------------------------------------------
-void RigidBody::GetInverseInertiaTensorWorld(Matrix& inverseInertiaTensor)
+void RigidBody::GetInverseInertiaTensorWorld(Matrix* inverseInertiaTensor)
 {
-	inverseInertiaTensor = m_InverseInertiaTensorWorld;
+	*inverseInertiaTensor = m_InverseInertiaTensorWorld;
 }

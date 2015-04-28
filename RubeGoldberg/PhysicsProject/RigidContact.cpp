@@ -85,7 +85,7 @@ Vector3D RigidContact::CalculateLocalVelocity(bool useBodyOne, float duration)
 	Vector3D velocity = body->GetRotation().Cross(relativePosition);
 	velocity += body->GetVelocity();
 
-	Vector3D contactVelocity = m_ContactToWorld.Transform(velocity);
+	Vector3D contactVelocity = m_ContactToWorld.TransformTranspose(velocity);
 
 	Vector3D accVelocity = body->GetLastFrameAcc() * duration;
 
@@ -164,7 +164,6 @@ void RigidContact::MatchAwakeState()
 void RigidContact::ApplyPositionChange(Vector3D linearChange[2], Vector3D angularChange[2], float penetration)
 {
 	const float angularLimit = 0.2f;
-
 	float angularMove[2];
 	float linearMove[2];
 
@@ -174,104 +173,112 @@ void RigidContact::ApplyPositionChange(Vector3D linearChange[2], Vector3D angula
 
 	for (unsigned int i = 0; i < 2; i++)
 	{
-		if ((i == 0 && m_BodyOne == NULL) || (i == 1 && m_BodyTwo == NULL))
+		if (i == 0 && m_BodyOne || i == 1 && m_BodyTwo)
 		{
-			continue;
+			RigidBody* rigidBody;
+			Vector3D relativeContactPosition;
+			if (i == 0)
+			{
+				rigidBody = m_BodyOne;
+				relativeContactPosition = m_RelativePositionOne;
+			}
+			else
+			{
+				rigidBody = m_BodyTwo;
+				relativeContactPosition = m_RelativePositionTwo;
+			}
+
+			Matrix inverseInertiaTensor = Matrix(3, 3);
+			rigidBody->GetInverseInertiaTensorWorld(&inverseInertiaTensor);
+
+			Vector3D angularInertiaWorld = relativeContactPosition.Cross(m_ContactNormal);
+			angularInertiaWorld = inverseInertiaTensor.Transform(angularInertiaWorld);
+			angularInertiaWorld = angularInertiaWorld.Cross(relativeContactPosition);
+			angularInertia[i] = angularInertiaWorld.Dot(m_ContactNormal);
+
+			linearInertia[i] = rigidBody->GetInverseMass();
+
+			totalInertia += linearInertia[i] + angularInertia[i];
 		}
-
-		RigidBody* body = i == 0 ? m_BodyOne : m_BodyTwo;
-		Vector3D relativeContactPosition = i == 0 ? m_RelativePositionOne : m_RelativePositionTwo;
-
-		Matrix inverseInertiaTensor = Matrix(3, 3);
-		
-		body->GetInverseInertiaTensorWorld(inverseInertiaTensor);
-
-		Vector3D angularInertiaWorld = relativeContactPosition.Cross(m_ContactNormal);
-		angularInertiaWorld = inverseInertiaTensor.Transform(angularInertiaWorld);
-		angularInertiaWorld = angularInertiaWorld.Cross(relativeContactPosition);
-		angularInertia[i] = angularInertiaWorld.Dot(m_ContactNormal);
-
-		linearInertia[i] = 1 / body->GetMass();
-
-		totalInertia += linearInertia[i] + angularInertia[i];
 	}
 
 	for (unsigned int i = 0; i < 2; i++)
 	{
-		if ((i == 0 && m_BodyOne == NULL) || (i == 1 && m_BodyTwo == NULL))
+		if (i == 0 && m_BodyOne || i == 1 && m_BodyTwo)
 		{
-			continue;
+			RigidBody* rigidBody;
+			Vector3D relativeContactPosition;
+			if (i == 0)
+			{
+				rigidBody = m_BodyOne;
+				relativeContactPosition = m_RelativePositionOne;
+			}
+			else
+			{
+				rigidBody = m_BodyTwo;
+				relativeContactPosition = m_RelativePositionTwo;
+			}
+
+			int sign = (i == 0) ? 1 : -1;
+			angularMove[i] = sign * m_Pentration * (angularInertia[i] / totalInertia);
+			linearMove[i] = sign * penetration * (linearInertia[i] / totalInertia);
+
+			Vector3D projection = relativeContactPosition;
+			projection += m_ContactNormal * ((relativeContactPosition * -1) * m_ContactNormal);
+
+			float maxMagnitude = angularLimit * projection.Magnitude();
+
+			if (angularMove[i] < -maxMagnitude)
+			{
+				float totalMove = angularMove[i] + linearMove[i];
+				angularMove[i] = -maxMagnitude;
+				linearMove[i] = totalMove - angularMove[i];
+			}
+			else if (angularMove[i] > maxMagnitude)
+			{
+				float totalMove = angularMove[i] + linearMove[i];
+				angularMove[i] = maxMagnitude;
+				linearMove[i] = totalMove - angularMove[i];
+			}
+
+			if (angularMove[i] == 0)
+			{
+				angularChange[i] = Vector3D::Zero;
+			}
+			else
+			{
+				Vector3D targetAngularDirection = relativeContactPosition * m_ContactNormal;
+
+				Matrix inverseInertiaTensor = Matrix(3, 3);
+				rigidBody->GetInverseInertiaTensorWorld(&inverseInertiaTensor);
+
+				angularChange[i] = inverseInertiaTensor.Transform(targetAngularDirection) * (angularMove[i] / angularInertia[i]);
+			}
+
+			linearChange[i] = m_ContactNormal * linearMove[i];
+
+			Vector3D position = rigidBody->GetPosition();
+			position += m_ContactNormal * linearMove[i];
+			rigidBody->SetPosition(position);
+
+			Quaternion q;
+			q = rigidBody->GetOrientation();
+			q.AddScaledVector(angularChange[i], 1.0f);
+			rigidBody->SetOrientation(q);
+
+			if (!rigidBody->GetAwake())
+				rigidBody->CalculateDerivedData();
 		}
-
-		RigidBody* body = i == 0 ? m_BodyOne : m_BodyTwo;
-		Vector3D relativeContactPosition = i == 0 ? m_RelativePositionOne : m_RelativePositionTwo;
-
-		float sign = i == 0 ? 1.0f : -1.0f;
-
-		angularMove[i] = sign * penetration * (angularInertia[i] / totalInertia);
-		linearMove[i] = sign * penetration * (linearInertia[i] / totalInertia);
-
-		Vector3D projection = relativeContactPosition;
-		projection += m_ContactNormal * ((relativeContactPosition * -1) * m_ContactNormal);
-
-		float maxMagnitude = angularLimit * projection.Magnitude();
-
-		if (angularMove[i] < -maxMagnitude)
-		{
-			float totalMove = angularMove[i] + linearMove[i];
-			angularMove[i] = -maxMagnitude;
-			linearMove[i] = totalMove - angularMove[i];
-		}
-		else if (angularMove[i] > maxMagnitude)
-		{
-			float totalMove = angularMove[i] + linearMove[i];
-			angularMove[i] = -maxMagnitude;
-			linearMove[i] = totalMove - angularMove[i];
-		}
-
-		if (angularMove[i] == 0)
-		{
-			angularChange[i] = Vector3D::Zero;
-		}
-		else
-		{
-			Vector3D targetAngularDirection = relativeContactPosition * m_ContactNormal;
-			Matrix inverseInertiaTensor = Matrix(3, 3);
-			
-			body->GetInverseInertiaTensorWorld(inverseInertiaTensor);
-
-			angularChange[i] = inverseInertiaTensor.Transform(targetAngularDirection) * (angularMove[i] / angularInertia[i]);
-		}
-
-		linearChange[i] = m_ContactNormal * linearMove[i];
-
-		Vector3D pos;
-		pos = body->GetPosition();
-
-		pos += m_ContactNormal * linearMove[i];
-		body->SetPosition(pos);
-
-		Quaternion q;
-		q = body->GetOrientation();
-		q.AddScaledVector(angularChange[i], 1.0f);
-		body->SetOrientation(q);
-
-		if (!body->GetAwake()) 
-			body->CalculateDerivedData();
 	}
 }
 
+//-----------------------------------------------------------------------------
 void RigidContact::ApplyVelocityChange(Vector3D velocityChange[2], Vector3D rotationChange[2])
 {
 	Matrix inverseInertiaTensor[2];
-	inverseInertiaTensor[0] = Matrix(3, 3);
-	inverseInertiaTensor[1] = Matrix(3, 3);
-
-	m_BodyOne->GetInverseInertiaTensorWorld(inverseInertiaTensor[0]);
-	if (m_BodyTwo != NULL)
-	{
-		m_BodyTwo->GetInverseInertiaTensorWorld(inverseInertiaTensor[1]);
-	}
+	m_BodyOne->GetInverseInertiaTensorWorld(&inverseInertiaTensor[0]);
+	if (m_BodyTwo)
+		m_BodyTwo->GetInverseInertiaTensorWorld(&inverseInertiaTensor[1]);
 
 	Vector3D impulseContact;
 
@@ -287,12 +294,23 @@ void RigidContact::ApplyVelocityChange(Vector3D velocityChange[2], Vector3D rota
 	Vector3D impulse = m_ContactToWorld.Transform(impulseContact);
 
 	Vector3D impulsiveTorque = m_RelativePositionOne.Cross(impulse);
-	rotationChange[1] = inverseInertiaTensor[1].Transform(impulsiveTorque);
-	velocityChange[1] = Vector3D::Zero;
-	velocityChange[1] += impulse * (m_BodyOne->GetInverseMass());
+	rotationChange[0] = inverseInertiaTensor[0].Transform(impulsiveTorque);
+	velocityChange[0] = Vector3D::Zero;
+	velocityChange[0] += impulse * m_BodyOne->GetInverseMass();
 
-	m_BodyOne->AddVelocity(velocityChange[1]);
-	m_BodyOne->AddRotation(rotationChange[1]);
+	m_BodyOne->AddVelocity(velocityChange[0]);
+	m_BodyOne->AddRotation(rotationChange[0]);
+
+	if (m_BodyTwo)
+	{
+		Vector3D impulsiveTorque = impulse.Cross(m_RelativePositionTwo);
+		rotationChange[1] = inverseInertiaTensor[1].Transform(impulsiveTorque);
+		velocityChange[1] = Vector3D::Zero;
+		velocityChange[1] += impulse * m_BodyTwo->GetInverseMass();
+
+		m_BodyTwo->AddVelocity(velocityChange[1]);
+		m_BodyTwo->AddRotation(rotationChange[1]);
+	}
 }
 
 Vector3D RigidContact::calculateFrictionlessImpulse(Matrix* inverseInertiaTensor)
@@ -360,7 +378,10 @@ Vector3D RigidContact::calculateFrictionImpulse(Matrix* inverseInertiaTensor)
 	deltaVelocity.Set(4, deltaVelocity.Get(4) + inverseMass);
 	deltaVelocity.Set(8, deltaVelocity.Get(8) + inverseMass);
 
-	Matrix impulseMatrix = deltaVelocity.InvMatrix();
+	//deltaVelocity.InvMatrix();
+	Matrix impulseMatrix = Matrix(deltaVelocity);
+	//impulseMatrix.InvMatrix();
+	//deltaVelocity.InvMatrix();
 
 	Vector3D velKill(m_DesiredDeltaVelocity, -m_ContactVelocity.Y, -m_ContactVelocity.Z);
 

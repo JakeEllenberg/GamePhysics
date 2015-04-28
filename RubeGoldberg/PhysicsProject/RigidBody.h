@@ -37,7 +37,7 @@ public:
 	inline bool GetAwake() { return m_IsAwake; };
 	inline void SetAwake(bool awake) { m_IsAwake = awake; };
 
-	void GetInverseInertiaTensorWorld(Matrix& inverseInertiaTensor);
+	void GetInverseInertiaTensorWorld(Matrix* inverseInertiaTensor);
 
 	inline void SetPosition(Vector3D pos) { m_Position = pos; };
 

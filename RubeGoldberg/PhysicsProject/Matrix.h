@@ -41,7 +41,7 @@ public:
 	void Set(int index, float value);
 	float Get(int index) const;
 
-	Matrix InvMatrix() const;
+	void InvMatrix();
 	float Det();
 
 	Matrix TransposeMatrix() const;

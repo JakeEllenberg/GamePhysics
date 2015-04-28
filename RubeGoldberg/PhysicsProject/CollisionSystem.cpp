@@ -83,9 +83,12 @@ void CollisionSystem::ResolveContacts(float deltaTime)
 	{
 		contact.Resolve(deltaTime);
 	}
-	m_Contacts.clear();
+	
 
 	resolveRigidContacts(deltaTime);
+
+	m_Contacts.clear();
+	m_RigidContacts.clear();
 }
 
 //--------------------------------------------------------------------------------
@@ -94,63 +97,66 @@ void CollisionSystem::resolveRigidContacts(float duration)
 	prepareRigidContacts(duration);
 	adjustPosition(duration);
 	adjustVelocities(duration);
+	
 }
 //--------------------------------------------------------------------------------
 void CollisionSystem::prepareRigidContacts(float duration)
 {
-	for each(RigidContact rigidContact in m_RigidContacts)
+	for (int i = 0; i < m_RigidContacts.size(); i++)
 	{
-		rigidContact.CalculateInternals(duration);
+		m_RigidContacts[i].CalculateInternals(duration);
 	}
 }
 
-void CollisionSystem::adjustPosition(float duration)
+
+//-----------------------------------------------------------------------------
+void CollisionSystem::adjustPosition(float deltaTime)
 {
-	unsigned int numContacts = m_RigidContacts.size();
-	unsigned int i, index;
-
-	Vector3D linearChange[2], angularChange[2];
-
+	unsigned int i;
+	unsigned int index;
+	Vector3D linearChange[2];
+	Vector3D angularChange[2];
 	float max;
 	Vector3D deltaPosition;
 
+	m_PositionIterationsUsed = 0;
 	while (m_PositionIterationsUsed < m_PositionIterations)
 	{
 		max = m_PositionEpsilon;
+		index = m_RigidContacts.size();
 
-		index = 0;
 		for (i = 0; i < m_RigidContacts.size(); i++)
 		{
-			if (m_RigidContacts[i].GetPenetration() > max)
+			float penetration = m_RigidContacts[i].GetPenetration();
+			if (penetration > max)
 			{
-				max = m_RigidContacts[i].GetPenetration();
+				max = penetration;
 				index = i;
 			}
 		}
-		if (index == m_RigidContacts.size()) 
+		if (index == m_RigidContacts.size())
 			break;
 
 		m_RigidContacts[index].MatchAwakeState();
-
 		m_RigidContacts[index].ApplyPositionChange(linearChange, angularChange, max);
 
 		for (i = 0; i < m_RigidContacts.size(); i++)
 		{
-
-			for (unsigned int b = 0; b < 2; b++)
+			for (unsigned int body = 0; body < 2; body++)
 			{
-				if (m_RigidContacts[i].GetBody(b) == NULL)
+				if (m_RigidContacts[i].GetBody(body))
 				{
-					continue;
-				}
+					for (unsigned int d = 0; d < 2; d++)
+					{
+						if (m_RigidContacts[i].GetBody(body) == m_RigidContacts[index].GetBody(d))
+						{
+							deltaPosition = linearChange[d] + angularChange[d] * m_RigidContacts[i].GetRelativePosition(body);
 
-				for (unsigned int d = 0; d < 2; d++)
-				{
-					deltaPosition = linearChange[d] + angularChange[d] * m_RigidContacts[i].GetRelativePosition(b);
-
-					float pen = m_RigidContacts[i].GetPenetration();
-					pen += ((deltaPosition.Dot(m_RigidContacts[i].GetContactNormal())) * (b ? 1 : -1));
-					m_RigidContacts[i].SetPenetration(pen);
+							float penetration = m_RigidContacts[i].GetPenetration();
+							penetration += deltaPosition.Dot(m_RigidContacts[i].GetContactNormal()) * (body ? 1 : -1);
+							m_RigidContacts[i].SetPenetration(penetration);
+						}
+					}
 				}
 			}
 		}
@@ -158,18 +164,19 @@ void CollisionSystem::adjustPosition(float duration)
 	}
 }
 
-void CollisionSystem::adjustVelocities(float duration)
+
+//-----------------------------------------------------------------------------
+void CollisionSystem::adjustVelocities(float deltaTime)
 {
-	Vector3D velocityChange[2], rotationChange[2];
+	Vector3D velocityChange[2];
+	Vector3D rotationChange[2];
 	Vector3D deltaVelocity;
 
 	m_VelocityIterationsUsed = 0;
 	while (m_VelocityIterationsUsed < m_VelocityIterations)
 	{
 		float max = m_VelocityEpsilon;
-
 		unsigned int index = m_RigidContacts.size();
-
 		for (unsigned int i = 0; i < m_RigidContacts.size(); i++)
 		{
 			if (m_RigidContacts[i].GetDesiredDeltaVelocity() > max)
@@ -189,22 +196,17 @@ void CollisionSystem::adjustVelocities(float duration)
 		{
 			for (unsigned int b = 0; b < 2; b++)
 			{
-				if (m_RigidContacts[i].GetBody(b) == NULL)
+				if (m_RigidContacts[i].GetBody(b))
 				{
-					continue;
-				}
-
-				for (unsigned d = 0; d < 2; d++)
-				{
-					if (m_RigidContacts[i].GetBody(b) == m_RigidContacts[index].GetBody(d))
+					for (unsigned d = 0; d < 2; d++)
 					{
-						deltaVelocity = velocityChange[d] + rotationChange[d] * m_RigidContacts[i].GetRelativePosition(b);
+						if (m_RigidContacts[i].GetBody(b) == m_RigidContacts[index].GetBody(d))
+						{
+							deltaVelocity = velocityChange[d] + rotationChange[d] * m_RigidContacts[i].GetRelativePosition(b);
 
-						Vector3D conVel = m_RigidContacts[i].GetContactVelocity();
-						conVel += m_RigidContacts[i].GetContactToWorld().TransformTranspose(deltaVelocity) * (b ? -1.0f : 1.0f);
-						m_RigidContacts[i].SetContactVelocity(conVel);
-
-						m_RigidContacts[i].CalculateDesiredDeltaVelocity(duration);
+							m_RigidContacts[i].SetContactVelocity(m_RigidContacts[i].GetContactVelocity() + m_RigidContacts[i].GetContactToWorld().TransformTranspose(deltaVelocity) * (float)(b ? -1 : 1));
+							m_RigidContacts[i].CalculateDesiredDeltaVelocity(deltaTime);
+						}
 					}
 				}
 			}
