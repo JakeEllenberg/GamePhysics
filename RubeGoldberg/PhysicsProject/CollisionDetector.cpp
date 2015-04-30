@@ -97,34 +97,30 @@ unsigned int CollisionDetector::BoxAndHalfSpace(const Box& box, const CollisionP
 		return 0;
 	}
 
-	std::vector<RigidContact> contacts = collisionSystem->GetRigidContacts();
 	unsigned int contactsUsed = 0;
 	for (unsigned int i = 0; i < 8; i++)
 	{
 		Vector3D vertexPos(m_Mults[i][0], m_Mults[i][1], m_Mults[i][2]);
-		vertexPos *= box.GetHalfSize();
+		vertexPos *= box.GetHalfSize() * 2;
 		vertexPos = box.GetTransform().Transform(vertexPos);
 
 		float vertexDistance = vertexPos.Dot(plane.GetDirection());
 
 		if (vertexDistance <= plane.GetOffset())
 		{
+			RigidContact contact;
 			Vector3D contactPoint = plane.GetDirection();
 			contactPoint = contactPoint * ( vertexDistance - plane.GetOffset());
 			contactPoint += vertexPos;
 			Vector3D contactNormal = plane.GetDirection();
-			float penetrationDepth = plane.GetOffset() - vertexDistance;
+			float penetrationDepth = plane.GetOffset() - vertexDistance + 0.01f;
 			
-			contacts[i].Inititalize(collisionSystem->GetRestitution(), collisionSystem->GetFriction(), contactNormal, contactPoint, penetrationDepth,
+			contact.Inititalize(collisionSystem->GetRestitution(), collisionSystem->GetFriction(), contactNormal, contactPoint, penetrationDepth,
 				box.GetRigidBody(), NULL); 
-
-			contactsUsed++;
-
-			if ( i >= contacts.size()) return contactsUsed;
+			collisionSystem->AddRigidContact(contact);
 		}
 	}
 
-	//data->AddContacts(contactsUsed);
 	return contactsUsed;
 }
 
@@ -132,13 +128,16 @@ unsigned int CollisionDetector::BoxAndHalfSpace(const Box& box, const CollisionP
 unsigned int CollisionDetector::BoxAndSphere(const Box& box, const CollisionSphere& sphere, CollisionSystem* collisionSystem)
 {
 	Vector3D center = sphere.GetAxis(3);
-	Vector3D relCenter = box.GetTransform().TransformInv(center);
+	
+	Matrix inverse = box.GetTransform().InvMatrix();
+	Vector3D relCenter = inverse.Transform(center);
 
 	bool insideX = abs(relCenter.X) - sphere.GetRadius() > box.GetHalfSize().X;
 	bool insideY = abs(relCenter.Y) - sphere.GetRadius() > box.GetHalfSize().Y;
 	bool insideZ = abs(relCenter.Z) - sphere.GetRadius() > box.GetHalfSize().Z;
 
-	if (insideX || insideY || insideZ)
+
+	if ((insideX || insideY || insideZ))
 	{
 		return 0;
 	}
@@ -176,6 +175,7 @@ unsigned int CollisionDetector::BoxAndSphere(const Box& box, const CollisionSphe
 		distance = -box.GetHalfSize().Z;
 	}
 	closestPoint.Z = distance;
+
 	distance = (closestPoint - relCenter).MagnitudeSquared();
 
 	Vector3D closestWorldPoint = box.GetTransform().Transform(closestPoint);

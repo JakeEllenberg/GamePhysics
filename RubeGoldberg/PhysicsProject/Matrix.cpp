@@ -19,7 +19,6 @@ Matrix::Matrix(const Matrix& rhs)
 	m_NumRows = rhs.GetNumRows();
 	m_NumColumns = rhs.GetNumColumns();
 	m_Size = m_NumRows * m_NumColumns;
-	mp_Matrix = new float[m_Size];
 	for (int i = 0; i < m_Size; ++i)
 	{
 		mp_Matrix[i] = rhs.mp_Matrix[i];
@@ -63,8 +62,6 @@ Matrix::Matrix(int rows, int columns, float* matrixValues)
 //--------------------------------------------------------------------------------
 Matrix::~Matrix()
 {
-	delete [] mp_Matrix;
-	mp_Matrix = nullptr;
 }
 
 //--------------------------------------------------------------------------------
@@ -73,7 +70,6 @@ void Matrix::initalizeMatrix(int rows, int columns)
 	m_NumRows = rows;
 	m_NumColumns = columns;
 	m_Size = m_NumRows * m_NumColumns;
-	mp_Matrix = new float[m_Size];
 }
 
 //--------------------------------------------------------------------------------
@@ -168,7 +164,7 @@ Matrix Matrix::operator*(const Matrix& rhs) const
 //--------------------------------------------------------------------------------
 Matrix Matrix::operator*(const float& rhs) const
 {
-	float* tempArray = new float[m_Size];
+	float tempArray[16];
 
 	for (int i = 0; i < m_Size; ++i)
 	{
@@ -181,7 +177,7 @@ Matrix Matrix::operator*(const float& rhs) const
 //--------------------------------------------------------------------------------
 Vector3D Matrix::operator*(const Vector3D& rhs) const
 {
-	float* tempArray = new float[3];
+	float tempArray[3];
 	tempArray[0] = rhs.X;
 	tempArray[1] = rhs.Y;
 	tempArray[2] = rhs.Z;
@@ -198,7 +194,6 @@ Matrix& Matrix::operator=(const Matrix& rhs)
 	m_NumRows = rhs.GetNumRows();
 	m_NumColumns = rhs.GetNumColumns();
 	m_Size = m_NumRows * m_NumColumns;
-	mp_Matrix = new float[m_Size];
 	for (int i = 0; i < m_Size; ++i)
 	{
 		mp_Matrix[i] = rhs.mp_Matrix[i];
@@ -274,11 +269,12 @@ float Matrix::Det()
 //--------------------------------------------------------------------------------------------
 
 //-----------http://www.sanfoundry.com/cpp-program-finds-inverse-graph-matrix/----------------
-void Matrix::InvMatrix()
+Matrix Matrix::InvMatrix() const
 {
-	if (Det() != 0)
+	Matrix inv = *this;
+	if (inv.Det() != 0)
 	{
-		int n = GetNumRows();
+		int n = inv.m_NumRows;
 		int i, j, k;
 		float d;
 		for (int i = 1; i <= n; i++)
@@ -287,19 +283,19 @@ void Matrix::InvMatrix()
 			{
 				if (j == (i + n))
 				{
-					Set(i, j, 1);
+					inv.Set(i, j, 1);
 				}
 			}
 		}
 		for (i = n; i > 1; i--)
 		{
-			if (Get(i - 1, 1) < Get(i, 1))
+			if (inv.Get(i - 1, 1) < inv.Get(i, 1))
 			{
 				for (j = 1; j <= n * 2; j++)
 				{
-					d = Get(i, j);
-					Set(i, j, Get(i - 1, j));
-					Set(i - 1, j, d);
+					d = inv.Get(i, j);
+					inv.Set(i, j, inv.Get(i - 1, j));
+					inv.Set(i - 1, j, d);
 				}
 			}
 		}
@@ -309,23 +305,26 @@ void Matrix::InvMatrix()
 			{
 				if (j != i)
 				{
-					d = Get(j, i) / Get(i, i);
+					d = inv.Get(j, i) / inv.Get(i, i);
 					for (k = 1; k <= n * 2; k++)
 					{
-						Set(j, k, Get(j, k) - (Get(i, k) * d));
+						inv.Set(j, k, inv.Get(j, k) - (inv.Get(i, k) * d));
 					}
 				}
 			}
 		}
 		for (i = 1; i <= n; i++)
 		{
-			d = Get(i, i);
+			d = inv.Get(i, i);
 			for (j = 1; j <= n * 2; j++)
 			{
-				Set(i, j, Get(i, j) / d);
+				inv.Set(i, j, inv.Get(i, j) / d);
 			}
 		}
+		return inv;
 	}
+
+	return Matrix(inv.m_NumRows, inv.m_NumColumns);
 }
 
 Vector3D Matrix::Transform(const Vector3D vector)
@@ -335,11 +334,7 @@ Vector3D Matrix::Transform(const Vector3D vector)
 
 Vector3D Matrix::TransformInv(const Vector3D vector)
 {
-	Vector3D returnVector;
-	InvMatrix();
-	returnVector = *this * vector;
-	InvMatrix();
-	return returnVector;
+	return InvMatrix() * vector;
 }
 
 Vector3D Matrix::GetAxisVector(unsigned int index) const

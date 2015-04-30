@@ -16,6 +16,7 @@
 #include <fstream>
 #include "ImageHandler.h"
 #include "RigidSphere.h"
+#include "RigidBox.h"
 //--------------------------------------------------------------------------------
 Level::Level()
 {
@@ -41,9 +42,28 @@ void Level::Initialize()
 	m_Player->SetDampening(.99f);
 
 	RigidSphere* sphere = new RigidSphere();
-	sphere->Inititalize("Smile1", 1.0f, 1.0f, Vector3D(0, 10, 0));
+	sphere->Inititalize("Smile1", 1.0f, 1.0f, Vector3D(0, 15, 0));
 
+	RigidBox* box = new RigidBox();
+	box->Inititalize("Smile2", 1.0f, 1.0f, Vector3D(0, 25, 0));
+
+	RigidSphere* sphere2 = new RigidSphere();
+	sphere2->Inititalize("Smile3", 1.0f, 1.0f, Vector3D(0, 10, 0));
+
+	RigidSphere* sphere3 = new RigidSphere();
+	sphere3->Inititalize("Smile4", 1.0f, 1.0f, Vector3D(0, 5, 0));
+	//sphere2->AddVelocity(Vector3D(6, 0, 0));
+
+	RigidSphere* sphere4 = new RigidSphere();
+	sphere4->Inititalize("Smile4", 1.0f, 1.0f, Vector3D(0, 20, 0));
+	
 	m_RigidRenders.push_back(sphere);
+	m_RigidRenders.push_back(sphere2);
+	m_RigidRenders.push_back(sphere3);
+	m_RigidRenders.push_back(sphere4);
+	//m_RigidRenders.push_back(box);
+
+	
 	
 
 	LoadShapes("Characters/LevelInfo.txt");

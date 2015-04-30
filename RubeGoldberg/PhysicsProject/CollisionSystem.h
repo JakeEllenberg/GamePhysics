@@ -54,6 +54,9 @@ private:
 	void adjustPosition(float duration);
 	void adjustVelocities(float duration);
 
+	void adjustVelocitiesLikeAParticle(float duration);
+	void adjustPositionLikeAParticle(float duration);
+
 	std::vector<PhysicsObject*> m_CollisionObjects;
 	std::vector<Contact> m_Contacts;
 	std::vector<ContactGenerator*> m_ContactGenerators;

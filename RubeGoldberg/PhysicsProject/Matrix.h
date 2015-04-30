@@ -41,7 +41,7 @@ public:
 	void Set(int index, float value);
 	float Get(int index) const;
 
-	void InvMatrix();
+	Matrix InvMatrix() const;
 	float Det();
 
 	Matrix TransposeMatrix() const;
@@ -56,7 +56,7 @@ private:
 	void initalizeMatrix(int rows, int columns);
 
 private:
-	float* mp_Matrix;
+	float mp_Matrix[100];
 	int  m_NumRows;
 	int  m_NumColumns;
 	int m_Size;

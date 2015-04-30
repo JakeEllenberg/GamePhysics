@@ -8,10 +8,6 @@
 //--------------------------------------------------------------------------------
 CollisionSystem::CollisionSystem()
 {
-	m_PositionIterations = 1;
-	m_VelocityIterations = 1;
-	m_PositionEpsilon = 0.01f;
-	m_VelocityEpsilon = 0.01f;
 }
 
 //--------------------------------------------------------------------------------
@@ -24,11 +20,11 @@ void CollisionSystem::Inititalize(float groundPos)
 {
 	m_ContactGenerators.push_back(new GroundContactGenerator(groundPos));
 	m_Friction = .5f;
-	m_Restitution = .5f;
+	m_Restitution = .1f;
 	m_PositionIterations = 1;
 	m_VelocityIterations = 1;
-	m_PositionEpsilon = 0.01f;
-	m_VelocityEpsilon = 0.01f;
+	m_PositionEpsilon = 0.0000000001f;
+	m_VelocityEpsilon = 0.0000000001f;
 }
 
 //--------------------------------------------------------------------------------
@@ -97,17 +93,159 @@ void CollisionSystem::resolveRigidContacts(float duration)
 	prepareRigidContacts(duration);
 	adjustPosition(duration);
 	adjustVelocities(duration);
+	//adjustPositionLikeAParticle(duration);
+	//adjustVelocitiesLikeAParticle(duration);
 	
 }
 //--------------------------------------------------------------------------------
 void CollisionSystem::prepareRigidContacts(float duration)
 {
-	for (int i = 0; i < m_RigidContacts.size(); i++)
+	for (unsigned int i = 0; i < m_RigidContacts.size(); i++)
 	{
 		m_RigidContacts[i].CalculateInternals(duration);
 	}
 }
 
+void CollisionSystem::adjustVelocitiesLikeAParticle(float deltaTime)
+{
+	unsigned int i;
+	unsigned int index;
+	Vector3D linearChange[2];
+	Vector3D angularChange[2];
+	float max;
+	Vector3D deltaPosition;
+	m_PositionIterationsUsed = 0;
+	while (m_PositionIterationsUsed < m_PositionIterations)
+	{
+		max = m_PositionEpsilon;
+		index = m_RigidContacts.size();
+
+		for (i = 0; i < m_RigidContacts.size(); i++)
+		{
+			float penetration = m_RigidContacts[i].GetPenetration();
+			if (penetration > max)
+			{
+				max = penetration;
+				index = i;
+			}
+		}
+		if (index == m_RigidContacts.size())
+			break;
+
+		
+		RigidBody* bodyOne = m_RigidContacts[index].GetBody(0);
+		RigidBody* bodyTwo = m_RigidContacts[index].GetBody(1);
+		Vector3D contactNormal = m_RigidContacts[index].GetContactNormal();
+		Vector3D relativeVelocity = bodyOne->GetVelocity();
+		if (bodyTwo)
+		{
+			relativeVelocity -= bodyTwo->GetVelocity();
+		}
+
+		float separatingVelocity = relativeVelocity.Dot(contactNormal);
+
+		if (separatingVelocity > 0)
+		{
+			return;
+		}
+
+		float newSeparatingVelocity = -separatingVelocity * m_Restitution;
+
+		Vector3D acceleration = bodyOne->GetAcceleration();
+		if (bodyTwo != nullptr)
+		{
+			acceleration -= bodyTwo->GetAcceleration();
+		}
+		float accumVelocity = acceleration.Dot(contactNormal) * deltaTime;
+		if (accumVelocity < 0)
+		{
+			separatingVelocity -= accumVelocity;
+		}
+
+		float deltaVelocity = newSeparatingVelocity - separatingVelocity;
+
+		float totalInverseMass = bodyOne->GetInverseMass();
+		if (bodyOne)
+		{
+			totalInverseMass += bodyOne->GetInverseMass();
+		}
+
+		if (totalInverseMass <= 0)
+		{
+			return;
+		}
+
+		float impulse = deltaVelocity / totalInverseMass;
+		Vector3D impulsePerIMass = contactNormal * impulse;
+
+		bodyOne->SetVelocity(bodyOne->GetVelocity() + impulsePerIMass * bodyOne->GetInverseMass());
+		if (bodyTwo)
+		{
+			bodyTwo->SetVelocity(bodyTwo->GetVelocity() + impulsePerIMass * -bodyTwo->GetInverseMass());
+		}
+	}
+}
+void CollisionSystem::adjustPositionLikeAParticle(float deltaTime)
+{
+	unsigned int i;
+	unsigned int index;
+	Vector3D linearChange[2];
+	Vector3D angularChange[2];
+	float max;
+	Vector3D deltaPosition;
+	m_PositionIterationsUsed = 0;
+	while (m_PositionIterationsUsed < m_PositionIterations)
+	{
+		max = m_PositionEpsilon;
+		index = m_RigidContacts.size();
+
+		for (i = 0; i < m_RigidContacts.size(); i++)
+		{
+			float penetration = m_RigidContacts[i].GetPenetration();
+			if (penetration > max)
+			{
+				max = penetration;
+				index = i;
+			}
+		}
+		if (index == m_RigidContacts.size())
+			break;
+
+
+		RigidBody* bodyOne = m_RigidContacts[index].GetBody(0);
+		RigidBody* bodyTwo = m_RigidContacts[index].GetBody(1);
+		Vector3D contactNormal = m_RigidContacts[index].GetContactNormal();
+		Vector3D relativeVelocity = bodyOne->GetVelocity();
+		float penetration = m_RigidContacts[index].GetPenetration();
+
+		if (penetration <= 0)
+		{
+			return;
+		}
+
+		float totalInverseMass = bodyOne->GetInverseMass();
+
+		if (bodyTwo != nullptr)
+		{
+			totalInverseMass += bodyTwo->GetInverseMass();
+		}
+
+		if (totalInverseMass <= 0)
+		{
+			return;
+		}
+
+		Vector3D movePerIMass = contactNormal * (penetration / totalInverseMass);
+		Vector3D particleMovementOne = movePerIMass * bodyOne->GetInverseMass() * deltaTime;
+		bodyOne->SetPosition(bodyOne->GetPosition() + particleMovementOne);
+		Vector3D particleMovementTwo = Vector3D::Zero;
+		if (bodyTwo != nullptr)
+		{
+			particleMovementTwo = movePerIMass * -bodyTwo->GetInverseMass() * deltaTime;
+			bodyTwo->SetPosition(bodyTwo->GetPosition() + particleMovementTwo);
+		}
+	}
+}
 
 //-----------------------------------------------------------------------------
 void CollisionSystem::adjustPosition(float deltaTime)
@@ -138,7 +276,7 @@ void CollisionSystem::adjustPosition(float deltaTime)
 			break;
 
 		m_RigidContacts[index].MatchAwakeState();
-		m_RigidContacts[index].ApplyPositionChange(linearChange, angularChange, max);
+		m_RigidContacts[index].ApplyPositionChange(linearChange, angularChange, max, deltaTime);
 
 		for (i = 0; i < m_RigidContacts.size(); i++)
 		{
@@ -190,7 +328,7 @@ void CollisionSystem::adjustVelocities(float deltaTime)
 			break;
 
 		m_RigidContacts[index].MatchAwakeState();
-		m_RigidContacts[index].ApplyVelocityChange(velocityChange, rotationChange);
+		m_RigidContacts[index].ApplyVelocityChange(velocityChange, rotationChange, deltaTime);
 
 		for (unsigned int i = 0; i < m_RigidContacts.size(); i++)
 		{

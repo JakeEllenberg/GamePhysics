@@ -36,6 +36,7 @@ void RigidBody::Inititalize(float mass, Vector3D initialPosition, Vector3D initi
 	m_TransformationMatrix = Matrix(4, 4);
 
 	m_IsAwake = false;
+	m_InverseInertiaTensorWorld = Matrix(4, 4);
 }
 
 void RigidBody::Reset()
@@ -90,8 +91,7 @@ void RigidBody::CalculateDerivedData()
 //--------------------------------------------------------------------------------
 void RigidBody::SetInitertiaTensor(const Matrix& inertiaTensor)
 {
-	m_InerseInertiaTensor = inertiaTensor;
-	m_InerseInertiaTensor.InvMatrix();
+	m_InerseInertiaTensor = inertiaTensor.InvMatrix();
 }
 
 //--------------------------------------------------------------------------------
@@ -145,10 +145,11 @@ void RigidBody::Integrate(float duration)
 	m_Velocity += m_LastFrameAcceleration  * duration;
 	m_Rotation += angularAcceleration * duration;
 	m_Velocity = m_Velocity * pow(m_LinearDampening, duration);
-	m_Rotation = m_Rotation * pow(m_AngularDampening, duration);
+	m_Rotation = m_Rotation * pow(m_AngularDampening, duration); 
 	m_Position += m_Velocity * duration;
 	m_Orientation.AddScaledVector(m_Rotation, duration);
 
+	m_InverseInertiaTensorWorld = Matrix(4, 4);
 	CalculateDerivedData();
 	ClearAccumulators();
 }

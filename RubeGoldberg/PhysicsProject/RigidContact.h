@@ -26,8 +26,8 @@ public:
 	inline void SetPenetration(float penetration) { m_Pentration = penetration; };
 
 	void MatchAwakeState();
-	void ApplyPositionChange(Vector3D linearChange[2], Vector3D angularChange[2], float penetration);
-	void ApplyVelocityChange(Vector3D velocityChange[2], Vector3D rotationChange[2]);
+	void ApplyPositionChange(Vector3D linearChange[2], Vector3D angularChange[2], float penetration, float deltaTime);
+	void ApplyVelocityChange(Vector3D velocityChange[2], Vector3D rotationChange[2], float deltaTime);
 
 	inline RigidBody* GetBody(int index) { return index == 0 ? m_BodyOne : m_BodyTwo; };
 	inline Vector3D GetRelativePosition(int index) { return index == 0 ? m_RelativePositionOne : m_RelativePositionTwo; };

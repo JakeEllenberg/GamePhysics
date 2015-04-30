@@ -13,6 +13,7 @@
 #include "RigidContactGenerator.h"
 #include "ImageHandler.h"
 #include "RigidGroundContact.h"
+#include "RigidShapesContactGenerator.h"
 //================================================================================
 int GameApp::TimeStep = 1;
 bool GameApp::DebugData = false;
@@ -94,8 +95,11 @@ void GameApp::Init(Vector3D screenSize)
 	}
 
 	RigidContactGenerator* rigidGroundContact = new RigidGroundContact(0);
+	RigidShapesContactGenerator* rigidShapeContact = new RigidShapesContactGenerator();
+	
 
 	mp_PhysicsObjectSystem->Add(rigidGroundContact);
+	mp_PhysicsObjectSystem->Add(rigidShapeContact);
 
 	std::map<SpringForceGenerator*, std::vector<PhysicsObject*>> springForceGenerators = m_Level->GetSpringForceGenerators();
 

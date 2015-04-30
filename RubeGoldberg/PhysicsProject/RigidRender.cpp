@@ -9,6 +9,7 @@
 
 RigidRender::RigidRender()
 {
+	m_RigidType = RigidType::NONE;
 }
 
 

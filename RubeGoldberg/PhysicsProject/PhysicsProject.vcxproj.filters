@@ -207,16 +207,22 @@
     <ClCompile Include="IntersectionTest.cpp">
       <Filter>Source Files\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="RigidSphere.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RigidRender.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RigidContactGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RigidGroundContact.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidRender.cpp">
+      <Filter>Source Files\RigidBodies</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidSphere.cpp">
+      <Filter>Source Files\RigidBodies</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidBox.cpp">
+      <Filter>Source Files\RigidBodies</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidShapesContactGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -375,6 +381,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RigidGroundContact.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidShapesContactGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

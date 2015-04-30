@@ -50,6 +50,10 @@ public:
 
 	inline void AddVelocity(Vector3D amount) { m_Velocity += amount; };
 	inline void AddRotation(Vector3D amount) { m_Rotation += amount; };
+
+	inline Vector3D GetAcceleration() { return m_Acceleration; };
+
+	inline void SetVelocity(Vector3D vel) { m_Velocity = vel; };
 protected:
 	
 	void transfomrInertiaTensor(Matrix& iitWorld, const Quaternion& quaternion, const Matrix& iitBody, const Matrix& rotationMatrix);

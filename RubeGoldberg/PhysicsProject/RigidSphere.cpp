@@ -7,6 +7,7 @@
 
 RigidSphere::RigidSphere()
 {
+	m_RigidType = RigidType::SPHERE;
 }
 
 
@@ -18,6 +19,7 @@ void RigidSphere::Inititalize(std::string imageName, float radius, float mass, V
 {
 	RigidRender::Inititalize(imageName, mass, initialPosition);
 	m_Radius = radius;
+	m_RigidType = RigidType::SPHERE;
 }
 
 void RigidSphere::drawObject()
