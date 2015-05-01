@@ -110,10 +110,10 @@ unsigned int CollisionDetector::BoxAndHalfSpace(const Box& box, const CollisionP
 		{
 			RigidContact contact;
 			Vector3D contactPoint = plane.GetDirection();
-			contactPoint = contactPoint * ( vertexDistance - plane.GetOffset());
+			contactPoint = contactPoint * (vertexDistance - plane.GetOffset());
 			contactPoint += vertexPos;
 			Vector3D contactNormal = plane.GetDirection();
-			float penetrationDepth = plane.GetOffset() - vertexDistance + 0.01f;
+			float penetrationDepth = plane.GetOffset() - vertexDistance + 0.08f;
 			
 			contact.Inititalize(collisionSystem->GetRestitution(), collisionSystem->GetFriction(), contactNormal, contactPoint, penetrationDepth,
 				box.GetRigidBody(), NULL); 

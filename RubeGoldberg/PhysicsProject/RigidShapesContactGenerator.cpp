@@ -17,7 +17,7 @@ void RigidShapesContactGenerator::AddContact(CollisionSystem* collisionSystem)
 	std::vector<RigidSphere*> spheres = GetRigidSpheres(collisionSystem);
 
 	//BoxOnBoxContacts(boxes, collisionSystem);
-	BoxOnSphereContacts(boxes, spheres, collisionSystem);
+	//BoxOnSphereContacts(boxes, spheres, collisionSystem);
 	SphereOnSphereContacts(spheres, collisionSystem);
 }
 
